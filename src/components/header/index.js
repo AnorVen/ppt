@@ -1,11 +1,10 @@
 'use client';
 import Image from 'next/image';
 import './header.scss';
-import Logo from '../../images/logo.png';
+import Logo from '../../images/logo.svg';
 import LinkWithActive from '@/components/linkWithActive';
 
 export default () => {
-
 	return (
 		<nav>
 			<ul className="topmenu">

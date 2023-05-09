@@ -1,0 +1,17 @@
+.swiper-block{
+  max-width: 1024px;
+  .slide{
+    position: relative;
+    .swiper_text{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      min-height: 50px;
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 100%;
+      color: #b2b0b0;
+      padding: 1em;
+    }
+  }
+
+}
