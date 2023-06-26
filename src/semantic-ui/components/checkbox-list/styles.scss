@@ -1,0 +1,125 @@
+@import "./src/semantic-ui/variables";
+
+.checkbox-list {
+  width: 300px;
+  height: 470px;
+  box-sizing: border-box;
+  cursor: auto;
+  &__list {
+    padding-top: 10px;
+    height: calc(100% - 62px);
+    list-style: none;
+    position: relative;
+  }
+  &__list-with-search {
+    height: calc(100% - 143px);
+  }
+  &__list-item {
+    font-size: 12px;
+    padding: 10px 0 10px 20px;
+    cursor: pointer;
+  }
+  &__checkbox-wrapper {
+    display: flex;
+  }
+  &__list-item:hover {
+    background-color: $TableHoverBackgroundColor;
+  }
+  &__footer {
+    font-size: 12px;
+    padding: 22px 20px 20px;
+    color:$RedBadgeColorLight;
+    border-top: 1px solid $BorderColorLight;
+    border-bottom: 1px solid $BorderColorLight;
+  }
+  &__footer-text {
+    cursor: pointer;
+  }
+  &__count {
+    float: right;
+    margin-right: 20px;
+  }
+  &__slider {
+    width: 50px;
+    float: right;
+  }
+  &__checked-list {
+    border-bottom: 1px solid $BorderColorLight;
+    margin-bottom: 5px;
+  }
+  &__checked-list:only-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  &__checked-list-item {
+    padding-left: 20px;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  &__checked-list-text {
+    float: right;
+    margin-right: 20px;
+  }
+  &__accordion {
+    margin-top: -10px;
+    height: calc(100% + 10px);
+  }
+  &__accordion-checked-list {
+    height: 100%;
+  }
+  &__accordion-title.active {
+    border-bottom: 1px solid $BorderColorLight;
+  }
+  .ui.styled.accordion &__accordion-title.title {
+    font-weight: normal;
+    font-size: 14px;
+    height: 45px;
+    line-height: 21px;
+    padding: 10px 14px;
+  }
+  &__accordion-title-count {
+    float: right;
+  }
+  & .ui.accordion &__accordion-content.active {
+    padding: 0;
+    height: calc(100% - 90px);
+  }
+  &__no-result-message {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    &-text {
+      text-align: center;
+    }
+  }
+  &__footer-disabled-with-search {
+    height: calc(100% - 80px);
+  }
+  &__footer-disabled {
+    height: 100%;
+    margin: 0;
+  }
+}
+.ui.inverted.dimmer {
+  background-color: rgba(255, 255, 255, 1) !important;
+}
+
+@media (max-width: 425px) {
+  .checkbox-list {
+    &__list-with-search {
+      height: calc(100% - 115px);
+    }
+    .ui.styled.accordion &__accordion-title.title {
+      height: 40px;
+      line-height: 17px;
+      padding: 10px 14px;
+    }
+    &__footer {
+      padding: 14px 15px 12px;
+    }
+  }
+}

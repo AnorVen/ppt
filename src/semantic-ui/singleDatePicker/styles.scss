@@ -1,0 +1,8 @@
+.single-data-picker {
+  display: inline-block;
+  text-align: center;
+  &__label-left {
+    display: inline-block;
+    margin-right: 20px;
+  }
+}

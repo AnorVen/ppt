@@ -1,0 +1,34 @@
+@import './src/semantic-ui/variables';
+
+.ui.styled.accordion {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  & .title {
+    height: 54px;
+    line-height: 34px;
+    padding: 0;
+    padding-left: 20px;
+    color: $AccordionTextColor !important;
+    border-top: 1px solid $AccordionBorderColor;
+  }
+  & .title.error {
+    color: $RedBadgeColorLight !important;
+  }
+  & .title.active {
+    border-bottom: 1px solid $AccordionBorderColor;
+  }
+}
+
+@media (max-width: 425px) {
+  .ui.styled.accordion {
+    & .title {
+      height: 48px;
+      padding: 6px 0 0 8px;
+      font-weight: normal;
+    }
+
+    & .content {
+      padding: 0;
+    }
+  }
+}

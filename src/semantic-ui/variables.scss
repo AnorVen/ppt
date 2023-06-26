@@ -1,0 +1,257 @@
+$FontFamily: Roboto, sans-serif;
+$TextColorLight: #313131;
+$TextColorDark: #F6F9FF;
+$BackGroundColorLight: #F5F6FA;
+$BackGroundColorDark: #1C1E22;
+$BorderColorDark: #4B4E54;
+$InputTextColorLight: #CACACD;
+$InputBackgroundColorLight: #FFFFFF;
+$InputBackgroundColorDark: #26282E;
+$InputTextColorDark: #CACACD;
+$BorderColorLight: #e5e5e5;
+$PrimaryColor: #3184FF;
+$SecondaryColor: #FFFFFF;
+$AvatarBackgroundColor: #C4C4C4;
+$BackGroundWithOpacity: rgba(0, 0, 0, 0.4);
+$UsersModalTextColor: #72787e;
+$ActionsButtonBackground: rgba(63, 49, 132, 0.12);
+$InputBorderColor: rgba(34, 36, 38, 0.15);
+
+// Table Colors
+$TableHeaderTextColorLight: #b6b5b0;
+$TableHeaderTextColorDark: #888F96;
+$TableBorderColorLight: #EDEDED;
+$TableBorderColorDark: #36383F;
+$TableHoverBackgroundColor: #f8f7f5;
+$TableShadow: 0 2px 6px 0 rgba(0, 4, 7, .2);
+
+// Badge Colors
+$BlueBadgeColorLight: #3184FF;
+$BlueBadgeBackgroundColorLight: #E6F0FF;
+$BlueBadheBackgourndColorDarkActive: rgba(49, 132, 255, 0.2);
+
+$GreenBadgeColorLight: #55CE63;
+$GreenBadgeBackgroundColorLight: rgba(85, 206, 99, 0.15);
+
+$OrangeBadgeColorLight: #FF9800;
+$OrangeBadgeBackgroundColorLight: rgba(255, 152, 0, 0.15);
+
+$RedBadgeColorLight: #FF3636;
+$RedBadgeBackgroundColorLight: rgba(255, 54, 54, 0.12);
+
+$BlackBadgeColorLight: $TextColorLight;
+$BlackBadgeBackgroundColorLight: rgba(49,49,49,0.12);
+
+
+$BlackBadgeColorDark: $TextColorDark;
+$BlackBadgeBackgroundColorDark: rgba(246,249,255,0.12);
+
+
+//Pagination
+$PaginationBackgroundActiveColor: rgba(49, 132, 255, 0.12);
+$PaginationBackGroundColor: #f65d50;
+$PaginationHoverBackGroundColor: #bd574f;
+
+//Notification
+$NotificationInfoBGColor: #D8E5FB;
+$NotificationWarningBGColor: #F6E8D5;
+$NotificationSuccessBGColor: #CCFFCC;
+$NotificationTimeColor: rgba(49, 49, 49, 0.5);
+
+//Checkbox
+$CheckboxBorderColor: #cdd1da;
+$CheckboxShadowColor: rgba(202, 35, 21, 0.5);
+
+//Input
+$InputTextColor: #373d42;
+$InputPlaceholderColor: rgba(0,0,0,.25);
+
+$UPLOAD_BLOCK_WIDTH: 300px;
+
+//Content Wrapper Page
+$contentWrapperHeight: calc(100vh - 54px);
+
+//Role editor
+$roleEditorLabelColor: #b6b5b0;
+
+//Page Header
+$pageHeaderBackgroundColor: #454b52;
+$PageHeaderTitleFont: 400 20px 'Roboto', sans-serif;
+$PageHeaderIconColor: #FF695E;
+$breadCrumbFont: 400 16px 'Roboto', sans-serif;
+$breadCrumbTitleFont: 700 16px 'Roboto', sans-serif;
+
+//Accordion
+$AccordionTextColor: #373d42;
+$AccordionBorderColor: #F1F0EC;
+
+//FormSelect
+$FormSelectBorderColor: rgba(55,61,66,.1);
+
+// Modal window
+$ModalWindowButtonHover: #ff443b;
+
+// Audit
+$AuditTextBackgroundColor: #f5f5f5;
+$AuditTextBorderColor: #ccc;
+
+// Role editor
+$RoleEditorFont: 14px, 'Roboto', sans-serif;
+
+// History player
+$HistoryPlayerBackgroundColor: #464a53;
+$HistoryPlayerBackgroundColorDark: #383d43;
+$HistoryPlayerBorderColor: #3f434c;
+$HistoryPlayerTitleColor: #858992;
+$HistoryPlayerGreenIgnitionPoint: #93b103;
+$HistoryPlayerGreenIgnitionPointHover: #b6dd00;
+$HistoryPlayerRedIgnitionPoint: #f55c54;
+$HistoryPlayerRedIgnitionPointHover: #fb3b31;
+$HistoryPlayerSelectedAreaBackgroundColor: #d3d3d34d;
+$HistoryPlayerBackgroundHoverColor: #ffffff0a;
+
+// Clusters
+$ClusterBaseColor: #3184FF;
+$ClusterMainColor: darken($ClusterBaseColor, 2%);
+$ClusterMainColorHover: darken($ClusterBaseColor, 10%);
+$ClusterOutlineColor: #ededed;
+
+// Markers color
+$StopPointMarkerBackgroundColor: #b070eb;
+$StopPointMarkerOrangeBorderColor: #ffa500;
+$StopPointMarkerGreyBorderColor: #696969;
+$StopPointMarkerAquaBorderColor: #00ffff;
+$StopPointMarkerGreenBorderColor: #008000;
+$StopPointMarkerSeaGreenBorderColor: #20b2aa;
+
+// Popup
+$popupBaseFontSize: 14px;
+$popupTitleFontSize: 16px;
+$popupTitleLineHeight: 20px;
+$popupContentFontSize: 12px;
+$popupSubtitleLineHeight: 14px;
+
+// Permissions
+$PermissionsBgColor: #f1f0ec;
+
+// Portal
+$RedMarkerColor: #f76054;
+$GreenMarkerColor: #94b400;
+
+// text loader
+$TextLoaderBackgroundColor: #ebebeb;
+$TextLoaderHighlightColor: #f5f5f5;
+$textLoaderGradient: linear-gradient(to right, #eeeeee 5%, #c5c5c5 20%, #eeeeee 35%);
+
+// Vehicle tooltip
+$VehicleTooltipBackgroundColorGreen: #0080003b;
+$VehicleTooltipBackgroundColorRed: #ff00003b;
+
+// Orders
+$SnakePointColorGreen: #52b68d;
+
+// not used colors
+//Analytics
+$AnalyticsCardShadow: rgba(34, 60, 80, 0.6);
+
+$red: #FF5C55;
+$red2: #faa99d;
+$red3: #fa837b;
+$red4: #c7254e;
+$codeBackGround: #f9f2f4;
+$redLight: #f65d50;
+$redRoleEditorHover: #e3483e;
+$redHover2: #bd574f;
+$redActive: #ab4038;
+$asphalt2: #373d42;
+$asphalt3: #666666;
+$blue: #39a1db;
+$green: #98c200;
+$purple: #b070eb;
+$orange: #fb9237;
+$orange2: #ff9800;
+$orange3: #ffb74d;
+$yellow: #ffb400;
+$gray: #a1a4a6;
+$grayLight: #dcdcdc;
+$grayText: #b3b2ad;
+$gray2: #8a8e92;
+$gray3: #c3c2be;
+$gray4: #b6b5b0;
+$gray5: #e5e5e5;
+$gray6: #faf9f5;
+$gray7: #edecea;
+$gray8: #c9c9c9;
+$gray9: #c7c9cb;
+$green: #4faf7d;
+$white: #ffffff;
+$black: #000000;
+$green: #94b400;
+$green2: #4caf50;
+$green3: #81c784;
+$disabled: #cbcac7;
+$overlay: #1f2327;
+$dark_asphalt: #303539;
+$dark_active: #4f575d;
+$darkgray: #373D42;
+$lightYellow: #fdedc9;
+$yellow2: #ecb50e;
+$translucentWhite: rgba(255, 255, 255, .9);
+
+$bgColor: #F1F0EC;
+$textFieldBg: #f8f7f5;
+$selectedCellBg: darken($textFieldBg, 2%);
+
+$leftMenuWidth: 80px;
+$leftMenuExpandedWidth: 200px;
+$pageHeaderHeight: 80px;
+$headerHeight: 64px;
+$headerMinHeight: 54px;
+
+
+$sector_red: #f65c50;
+$sector_gray: #c9c9c9;
+$sector_green: #81c784;
+$sector_dark: #78909c;
+
+
+$planningTaskEditorModalWidth: 580px;
+$planningTaskMapEditorModalWidth: 656px;
+
+$leftMenuMinHeight: 992px;
+$desktop: 1600px;
+$laptop: 1280px;
+$tablet: 1024px;
+
+// $lgHeight: 48px;
+$lgHeight: 46px; //RSKIUTR-602
+$smHeight: 35px;
+$mdHeight: 40px;
+$mdWidth: 122px;
+$lgWidth: 300px;
+
+$blue-marker: #1186e9;
+$orange-marker: #f3760d;
+$green-marker: #95b400;
+$light-blue-marker: #00b1a5;
+$yellow-marker: #ffc00e;
+$blue-smut-ns: #1b84eb;
+
+.clearAfter {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                   not supported by any browser */
+}

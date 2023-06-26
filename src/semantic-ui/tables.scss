@@ -1,0 +1,287 @@
+@import 'variables';
+
+.ui.table {
+  border-radius: 6px;
+  tbody {
+    tr {
+      td {
+        border: 0 !important;
+        outline: none !important;
+      }
+      td.active {
+        background-color: transparent !important;
+        outline: none !important;
+      }
+    }
+  }
+}
+
+.Light {
+  .ui.table {
+    thead {
+      tr {
+        th {
+          border-bottom-color: transparent !important;
+          background: $SecondaryColor;
+          color: $TableHeaderTextColorLight;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td.active {
+          & .suicr-content-item {
+            color: $TextColorLight;
+            border-bottom: 2px solid $BorderColorLight;
+          }
+        }
+        td.disabled {
+          color: $TableHeaderTextColorLight;
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+
+  // REPORTS TABLE
+  .report-table {
+    background-color: $InputBackgroundColorLight;
+    color: $TextColorLight;
+    &-header-row {
+      border-top: 1px solid $TableBorderColorLight;
+    }
+    &-body {
+      &__row {
+        border-top: 1px solid $TableBorderColorLight;
+        &:last-child {
+          border-bottom: 1px solid $TableBorderColorLight;
+        }
+      }
+    }
+    &-cell {
+      border-left: 0.5px solid $TableBorderColorLight;
+      &:first-child {
+        border-left: none;
+      }
+    }
+  }
+
+  // BOOK LIST
+  .list-content__item {
+    background: $SecondaryColor;
+  }
+
+  & .suicr-day-view-header {
+    th {
+      span {
+        color: $TextColorLight;
+      }
+    }
+  }
+  & .suicr-month-view-header {
+    th {
+      span {
+        color: $TextColorLight;
+      }
+    }
+  }
+  & .suicr-year-view-header {
+    th {
+      span {
+        color: $TextColorLight;
+      }
+    }
+  }
+  // jspreadsheet table styles
+  .jexcel {
+    & > thead {
+      & > tr {
+        & > td {
+          background-color: $TableBorderColorLight;
+          &.arrow-down {
+            background-position: center right -6px;
+          }
+          &.arrow-up {
+            background-position: center right -6px;
+          }
+        }
+      }
+    }
+    & > tbody {
+      & > tr {
+        & > td {
+          &:first-child {
+            background-color: $TableBorderColorLight;
+          }
+        }
+      }
+    }
+  }
+}
+
+.Dark {
+  .ui.table {
+    background: $InputBackgroundColorDark;
+    color: $TextColorDark;
+    thead {
+      tr {
+        th {
+          background: $InputBackgroundColorDark;
+          color: $TableHeaderTextColorDark;
+          border-bottom: 1px solid $TableBorderColorDark;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td.active {
+          & .suicr-content-item {
+            color: $TextColorDark;
+            border-bottom: 2px solid $BorderColorDark;
+          }
+        }
+        td.disabled {
+          color: $TableHeaderTextColorDark;
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+
+  // REPORTS TABLE
+  .report-table {
+    background-color: $InputBackgroundColorDark;
+    color: $TextColorDark;
+    &-header-row {
+      border-top: 1px solid $TableBorderColorDark;
+    }
+    &-body {
+      &__row {
+        border-top: 1px solid $TableBorderColorDark;
+        &:last-child {
+          border-bottom: 1px solid $TableBorderColorDark;
+        }
+      }
+    }
+    &-cell {
+      border-left: 1px solid $TableBorderColorDark;
+      &:first-child {
+        border-left: none;
+      }
+    }
+  }
+  // BOOK LIST
+  .list-content__item {
+    background: $InputBackgroundColorDark;
+  }
+  & .suicr-day-view-header {
+    th {
+      span {
+        color: $TextColorDark;
+      }
+    }
+  }
+  & .suicr-month-view-header {
+    th {
+      span {
+        color: $TextColorDark;
+      }
+    }
+  }
+  & .suicr-year-view-header {
+    th {
+      span {
+        color: $TextColorDark;
+      }
+    }
+  }
+  // jspreadsheet table styles
+  .jexcel {
+    background-color: $InputBackgroundColorDark;
+    border-right-color: $BorderColorDark;
+    border-bottom-color: $BorderColorDark;
+    & .highlight {
+      background-color: $BackGroundWithOpacity;
+      &-right {
+        border-right-color: $InputTextColorDark;
+      }
+      &-bottom {
+        border-bottom-color: $InputTextColorDark;
+      }
+    }
+    & > thead {
+      & > tr {
+        & > td {
+          border-top-color: $BorderColorDark;
+          border-left-color: $BorderColorDark;
+          background-color: $TableBorderColorDark;
+          &.selected {
+            background-color: $UsersModalTextColor;
+          }
+          &.arrow-down {
+            background-position: center right -6px;
+          }
+          &.arrow-up {
+            background-position: center right -6px;
+          }
+        }
+      }
+    }
+    & > tbody {
+      & > tr {
+        &.selected {
+          & > td {
+            &:first-child {
+              background-color: $UsersModalTextColor;
+            }
+          }
+        }
+        & > td {
+          border-top-color: $BorderColorDark;
+          border-left-color: $BorderColorDark;
+          background-color: $TableBorderColorDark;
+          &:first-child {
+            background-color: $TableBorderColorDark;
+          }
+          &.jexcel_freezed {
+            background-color: $TableBorderColorDark;
+            border-color: $BorderColorDark;
+          }
+        }
+      }
+    }
+  }
+}
+
+.input_row {
+  & .ui.fluid {
+    height: 40px;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+@media (max-width:767px) {
+  .input_row {
+    position: relative;
+    margin-bottom: 20px;
+    &:last-of-type {
+      margin-bottom: 30px;
+    }
+    .ui.input {
+      width: 100%;
+      border: 0;
+      input {
+        border-radius: 6px;
+      }
+    }
+    .validation_error {
+      position: absolute;
+      display: block;
+      font-size: 12px;
+      color: $RedBadgeColorLight;
+    }
+  }
+}

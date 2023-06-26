@@ -1,0 +1,62 @@
+@import '$/semantic-ui/variables.less';
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  margin-left: 40px;
+  margin-top: 25px;
+  border-radius: 50%;
+  background: $TableHoverBackgroundColor;
+  text-align: center;
+  line-height: 240px;
+  position: relative;
+  &__image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  .image.icon {
+    font-size: 10em;
+    color: $roleEditorLabelColor;
+  }
+  .ui.input {
+    position: absolute;
+    bottom: 15px;
+    right: 22px;
+    z-index: 2;
+    overflow: hidden;
+    height: 36px;
+    opacity: 0;
+  }
+  .ui.input input[type="file"] {
+    padding: 0;
+    width: 36px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    top: -25px;
+  }
+
+  &__icon-wrapper {
+    position: absolute;
+    bottom: 15px;
+    right: 22px;
+    background: $PaginationBackGroundColor;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+  &__icon:before {
+    color: $InputBackgroundColorLight;
+    position: absolute;
+    top: -102px;
+    left: 11px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .avatar {
+    margin-left: 0;
+  }
+}

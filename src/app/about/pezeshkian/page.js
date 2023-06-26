@@ -1,3 +1,4 @@
-export default ()=>{
-	return <div>pezeshkian</div>
-}
+const PezeshkianPage = () => {
+	return <div>pezeshkian</div>;
+};
+export default PezeshkianPage;

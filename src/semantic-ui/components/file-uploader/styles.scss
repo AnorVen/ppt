@@ -1,0 +1,107 @@
+@import '$/semantic-ui/variables.less';
+
+.file-uploader {
+  display: inline-block;
+  vertical-align: top;
+
+  &:nth-child(5n) &__wrapper {
+    margin: 0 0 10px 0;
+  }
+
+  &__wrapper {
+    margin: 0 10px 10px 0;
+  }
+
+  &__file {
+    width: 106px;
+    height: 106px;
+    background: $TableHoverBackgroundColor;
+    text-align: center;
+    line-height: 100px;
+    position: relative;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  .file.icon {
+    font-size: 3em;
+    color: $roleEditorLabelColor;
+  }
+
+  .ui.input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    overflow: hidden;
+    height: 36px;
+    opacity: 0;
+  }
+
+  .ui.input input[type="file"] {
+    padding: 0;
+    width: 36px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    top: -25px;
+  }
+
+  &__icon-wrapper {
+    position: absolute;
+    bottom: 35px;
+    right: 35px;
+    background: $PaginationBackGroundColor;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+
+    &_disabled {
+      background: $red2;
+    }
+  }
+
+  &__icon:before {
+    color: $InputBackgroundColorLight;
+    position: absolute;
+    top: -32px;
+    left: 12px;
+  }
+
+  &__delete-icon-wrapper {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    background: $roleEditorLabelColor;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &__delete-icon-wrapper:hover{
+    background: $PaginationBackGroundColor;
+  }
+
+  &__delete-icon:before {
+    color: $InputBackgroundColorLight;
+    position: absolute;
+    top: 5px;
+    left: 6px;
+  }
+
+  &__link {
+    display: block;
+    width: 106px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

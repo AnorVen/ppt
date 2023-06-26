@@ -4,7 +4,7 @@ import './header.scss';
 import Logo from '../../images/logo.svg';
 import LinkWithActive from '@/components/linkWithActive';
 
-export default () => {
+const Header = () => {
 	return (
 		<nav>
 			<ul className="topmenu">
@@ -73,3 +73,5 @@ export default () => {
 		</nav>
 	);
 }
+
+export default Header

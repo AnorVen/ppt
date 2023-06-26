@@ -1,0 +1,98 @@
+@import './src/semantic-ui/variables';
+
+.table-pagination {
+  background: $InputBackgroundColorLight;
+  display: inline-flex;
+  border-top: none;
+
+  &__text {
+    position: relative;
+    font-size: 14px;
+    margin-right: 22px;
+    vertical-align: middle;
+    color: $roleEditorLabelColor;
+    line-height: 60px;
+    white-space: nowrap;
+  }
+
+  &__text:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    width: 1px;
+    height: 24px;
+    margin-top: -11px;
+    background: $bgColor;
+  }
+
+  .ui.pagination.menu {
+    margin: 13px 0;
+    border: none;
+    background: $InputBackgroundColorLight;
+    font-size: 12px;
+    box-shadow: none;
+  }
+
+  .ui.pagination .item {
+    background: $InputBackgroundColorLight;
+    border: none;
+    color: $PaginationBackGroundColor;
+    margin-right: 5px;
+  }
+
+  .ui.pagination .item.hidden {
+    opacity: 0;
+    cursor: default;
+    width: 0;
+    padding: 0;
+  }
+
+  .ui.pagination .item:hover {
+    background: $InputBackgroundColorLight;
+    color: $PaginationHoverBackGroundColor;
+  }
+
+  .ui.pagination.menu .active.item {
+    color: $InputBackgroundColorLight;
+    background: $PaginationBackGroundColor;
+    border-radius: 3px;
+  }
+
+  .ui.pagination .item:before {
+    display: none;
+  }
+
+  .ui.pagination .item:first-child {
+    margin-right: 28px;
+  }
+
+  .ui.pagination .item:last-child {
+    margin-left: 28px;
+  }
+
+  .ui.pagination .item:first-child:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: 1px;
+    height: 24px;
+    margin-top: -11px;
+    background: $bgColor;
+    right: 0;
+  }
+
+  .ui.pagination .item:last-child:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 1px;
+    height: 24px;
+    margin-top: -11px;
+    background: $bgColor;
+  }
+}

@@ -1,0 +1,54 @@
+@import './src/semantic-ui/variables';
+
+.notification {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 13px;
+  background: $SecondaryColor;
+}
+
+.notification-info {
+  background: $NotificationInfoBGColor;
+}
+
+.notification-warning {
+  background: $NotificationWarningBGColor;
+}
+
+.notification-success {
+  background: $NotificationSuccessBGColor;
+}
+
+.notification__content {
+  flex: 1;
+}
+
+.notification__message {
+  font-weight: 500;
+  margin: 0;
+  padding-right: 10px;
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.notification__time {
+  color: $NotificationTimeColor;
+  font-size: 13px;
+  position: relative;
+  top: 7px;
+}
+
+.notification__button {
+  cursor: pointer;
+}
+
+.notification__button-wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	margin-top: 10px;
+}

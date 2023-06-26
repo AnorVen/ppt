@@ -3,7 +3,12 @@ body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
 }
-nav {background: #413F3C;}
+nav {
+  background: #413F3C;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 nav ul {
   display: flex;
   justify-content: center;
@@ -40,7 +45,7 @@ nav a {
 }
 .topmenu > li > a {
   padding: 20px 30px;
-  font-size: 12px;
+  font-size: 20px;
   text-transform: uppercase;
   color: #FEFDFD;
   letter-spacing: 2px;
@@ -75,6 +80,7 @@ nav a {
   padding: 10px 20px;
   font-size: 13px;
   border-bottom: 1px solid #CBCBCC;
+  text-align: center;
 }
 .submenu .submenu {
   position: absolute;

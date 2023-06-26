@@ -1,0 +1,56 @@
+@import './src/semantic-ui/variables';
+
+.custom-menu {
+    display: flex;
+    align-items: center;
+    &__list {
+        display: flex;
+    }
+    &__list-item {
+        display: flex;
+        align-items: center;
+        height: 36px;
+        min-width: 39px;
+        margin: 0 7px;
+        position: relative;
+    }
+    &__separator {
+        display: block;
+        width: 1px;
+        height: 40px;
+        background: $darkgray;
+        margin: -2px 7px 0 7px;
+    }
+    & &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        color: $PaginationBackGroundColor;
+        border-radius: 3px;
+        text-align: center;
+        line-height: 36px;
+        cursor: pointer;
+        &-active {
+          background: $PaginationBackGroundColor;
+          color: $InputBackgroundColorLight;
+        }
+    }
+    & &__button:focus{
+      outline: 0;
+    }
+    & &__button:focus &__icon {
+      background: $PaginationBackGroundColor;
+      color: $InputBackgroundColorLight;
+      border: 1px solid $InputBackgroundColorLight;
+    }
+    &__popup {
+        text-align: center;
+    }
+    &__search {
+        min-width: 30px;
+        display: flex;
+        align-items: baseline;
+    }
+}

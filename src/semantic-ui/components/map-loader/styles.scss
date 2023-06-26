@@ -1,0 +1,37 @@
+@import './src/semantic-ui/variables';
+
+.map-loader {
+	position: absolute;
+	z-index: 2;
+	width: fit-content;
+	opacity: 80%;
+	padding: 0 5px 0px 5px;
+	&__item {
+		display: flex;
+		padding-top: 2px;
+		background-color: $InputBackgroundColorLight;
+		margin-bottom: 3px;
+		padding: 0 5px;
+		animation-duration: 5s;
+		color: $gray2;
+		animation-fill-mode: forwards;
+		animation-iteration-count: infinite;
+		animation-name: placeHolderShimmer;
+		animation-timing-function: linear;
+		background: $textLoaderGradient;
+		position: relative;
+	}
+	&__item-text {
+		font-size: 16px;
+		color: $gray2;
+	}
+}
+
+$keyframes placeHolderShimmer {
+	0% {
+		background-position: -200px 0;
+	}
+	100% {
+		background-position: 200px 0;
+	}
+}

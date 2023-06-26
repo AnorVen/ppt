@@ -16,7 +16,7 @@ import Img3 from '@/images/3.png';
 import 'swiper/css';
 import './swiper.scss';
 
-export default () => {
+const SwiperSlider = () => {
 	return (
 		<div className="swiper-block">
 			<Swiper
@@ -63,3 +63,5 @@ export default () => {
 		</div>
 	);
 };
+
+export default SwiperSlider

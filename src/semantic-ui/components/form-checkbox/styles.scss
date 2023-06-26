@@ -1,0 +1,72 @@
+@import './src/semantic-ui/variables';
+
+.form-checkbox {
+
+  .ui.checkbox label:before {
+    width: 20px;
+    height: 20px;
+    border: 1px solid $CheckboxBorderColor;
+  }
+
+  .ui.checkbox input:checked ~ label:after {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    box-shadow: 0 1px 5px $CheckboxShadowColor;
+    background: $redLight;
+    color: $InputBackgroundColorLight;
+  }
+
+  .ui.checkbox.checked input:focus ~ label:after {
+    color: $InputBackgroundColorLight;
+  }
+
+  .ui.checkbox input:focus ~ label:before {
+    border-color: $CheckboxBorderColor;
+  }
+
+  .ui.checkbox label {
+    padding-left: 36px;
+    color: $TextColorLight;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .ui.slider.checkbox label:after, 
+  .ui.toggle.checkbox label:after,
+  .ui.checked.slider.checkbox label:after,
+  .ui.checked.toggle.checkbox label:after {
+    background: $InputBackgroundColorLight;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px $BackGroundWithOpacity;
+  }
+
+  .ui.slider.checkbox label:before, 
+  .ui.toggle.checkbox label:before,
+  .ui.checked.slider.checkbox label:before, 
+  .ui.checked.toggle.checkbox label:before {
+    width: 40px;
+    height: 9px;
+    border-radius: 5px;
+    background-color: $CheckboxBorderColor !important;
+    top: 2px;
+  }
+
+  .ui.toggle.checkbox label:before,
+  .ui.checked.toggle.checkbox label:before {
+    top: 6px;
+  }
+
+  .ui.slider.checkbox.checked input:focus ~ label:before, 
+  .ui.toggle.checkbox.checked input:focus ~ label:before,
+  .ui.slider.checkbox input:checked ~ label:before, 
+  .ui.checked.toggle.checkbox label:before {
+    background-color: $redLight !important;
+    border: none;
+  }
+
+  .ui.slider.checkbox label, .ui.toggle.checkbox label {
+    padding-left: 55px;
+    color: $TextColorLight;
+  }
+}

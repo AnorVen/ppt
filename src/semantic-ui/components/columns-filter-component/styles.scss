@@ -1,0 +1,18 @@
+@import './src/semantic-ui/variables';
+
+.columns-filter {
+  & &__icon {
+    display: flex;
+    justify-content: center;
+    padding-top: 9px;
+    width: 36px;
+    height: 36px;
+    color: $PaginationBackGroundColor;
+    border-radius: 3px;
+    cursor: pointer;
+    &-active {
+      background: $PaginationBackGroundColor;
+      color: $InputBackgroundColorLight;
+    }
+}
+}

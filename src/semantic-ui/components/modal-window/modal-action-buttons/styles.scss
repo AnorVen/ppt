@@ -1,0 +1,40 @@
+@import '.././src/semantic-ui/variables';
+
+.modal-action-buttons {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  &__button-wrapper {
+    .ui.button {
+      margin-right: 0;
+    }
+  }
+  &__button-wrapper:last-child {
+    margin-right: 0;
+  }
+  &__button-wrapper:last-child &__separator {
+    display: none;
+  }
+  &__icon-wrapper {
+    margin: 0 7px;
+    min-width: 36px;
+    height: 40px;
+    color: $PaginationBackGroundColor;
+    line-height: 36px;
+    cursor: pointer;
+  }
+  &__separator {
+    display: inline-block;
+    height: 40px;
+    width: 1px;
+    margin: 0 16px 0 17px;
+    vertical-align: middle;
+    background: $bgColor;
+  }
+  &__popup {
+		text-align: center;
+		font-size: 12px !important;
+	}
+}

@@ -1,0 +1,36 @@
+@import "../.././src/semantic-ui/variables";
+
+.checkbox-list-header {
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid $BorderColorLight;
+    &__search {
+      display: inline-block;
+      width: calc(100% - 45px);
+    }
+    &__search_size_small {
+        width: calc(100% - 90px);
+    }
+    & &__icon {
+      width: 36px;
+      height: 36px;
+      margin-right: 9px;
+      color: $PaginationBackGroundColor;
+      border-radius: 3px;
+      text-align: center;
+      line-height: 36px;
+      cursor: pointer;
+      display: inline-block;
+      vertical-align: bottom;
+      &_active {
+        background: $PaginationBackGroundColor;
+        color: $InputBackgroundColorLight;
+      }
+    }
+}
+
+@media (max-width: 425px) {
+  .checkbox-list-header {
+    padding: 15px;
+  }
+}

@@ -1,0 +1,53 @@
+@import './src/semantic-ui/variables';
+
+.custom-dropdown {
+    position: relative;
+    &__icon-wrapper {
+        cursor: pointer;
+    }
+
+    &__wrapper {
+        position: absolute;
+        z-index: 2;
+        &-align-left {
+            right: 0;
+            &:before {
+                content: '';
+                border: 6px solid transparent; border-bottom: 6px solid $SecondaryColor;
+                position: absolute;
+                top: -12px;
+                right: 12px;
+                left: auto;
+                z-index: 2;
+            }
+        }
+        &-align-center {
+            right: 5px;
+            top: 43px;
+            &:before {
+                content: '';
+                border: 6px solid transparent; border-bottom: 6px solid $SecondaryColor;
+                position: absolute;
+                top: -12px;
+                right: 12px;
+                left: auto;
+                z-index: 2;
+            }
+        }
+        &-align-top {
+            left: 5px;
+            bottom: 43px;
+        }
+				&-align-top-right {
+					right: 20px;
+					bottom: 43px;
+				}
+    }
+    
+    &__content {
+        background-color: $SecondaryColor;
+        border-radius: 4px;
+        box-shadow: 0 4px 13px rgba(0, 0, 0, .2);
+        width: 100%;
+    }
+}

@@ -1,0 +1,44 @@
+@import "$/semantic-ui/variables";
+
+.form-radio-input {
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+  align-items: center;
+}
+
+.form-radio-input__elem {
+  display: none;
+}
+.form-radio-input__elem:checked ~ .form-radio-input__visible::before {
+  display: block;
+}
+
+.form-radio-input__visible {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  border-radius: 50%;
+  background: $white;
+  margin-right: 10px;
+  border: 1px solid $CheckboxBorderColor;
+}
+.form-radio-input__visible:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: $SecondaryColor;
+  border-radius: 50%;
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 6px solid $redLight;
+}
+.form-radio-input__visible_disabled:before {
+	border: 6px solid $CheckboxBorderColor;
+}
+.form-radio-input__title_disabled {
+	color: $InputTextColorLight;
+}

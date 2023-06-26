@@ -1,0 +1,47 @@
+@import './src/semantic-ui/variables';
+
+.ui.breadcrumb.custom-breadcrumbs{
+  display: flex;
+  align-items: center;
+
+  & .custom-breadcrumbs {
+    &__link {
+      font: $breadCrumbFont;
+      color: $InputBackgroundColorLight;
+      cursor: default;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+
+      &:hover:not(.active) {
+        color: $InputBackgroundColorLight;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      &.active:not(&_single) {
+        text-decoration: underline;
+      }
+    }
+
+    &__title {
+      font: $breadCrumbTitleFont;
+      cursor: default;
+      color: $InputBackgroundColorLight;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    &__icon {
+      color: $InputBackgroundColorLight;
+    }
+
+    &__container {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

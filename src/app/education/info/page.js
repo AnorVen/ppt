@@ -1,4 +1,4 @@
-export default ()=>{
+const InfoPage =  ()=>{
 	return(
 		<div>
 			study info pages
@@ -6,3 +6,5 @@ export default ()=>{
 		</div>
 	)
 }
+
+export default InfoPage

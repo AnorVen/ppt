@@ -1,0 +1,60 @@
+@import './src/semantic-ui/variables';
+
+.search-field { 
+    display: inline-block;
+    width: 100%;
+    height: 36px;
+    position: relative;
+    &__input {
+      width: 100%;
+      border-radius: 3px;
+      color: $TextColorLight;
+      border: none;
+      outline: none;
+      display: none;
+      font-size: 12px;
+      line-height: 12px;
+      padding: 0 36px 0 16px;
+      height: 36px;
+      & + .search-field__icon {
+        top: 25%;
+      }
+      &-visible {
+        display: block;
+      }
+    }
+    .search-field__input::placeholder  {
+      color: $InputPlaceholderColor;
+    }
+    &__icon {
+      position: absolute;
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      color: $PaginationBackGroundColor;
+      top: 25%;
+      right:5px;
+    }
+    &.dark {
+      .search-field__input {
+        height: 40px;
+        padding: 0 2px 0 13px;
+        background: $TableHoverBackgroundColor;
+        padding: 0 27px 0 13px;
+        font-size: 14px;
+      }
+      
+      .search-field__input:focus {
+        border: 1px solid $TableHoverBackgroundColor;
+        outline: none;
+        background: $InputBackgroundColorLight;
+        transition: background-color .3s;
+      }
+      .search-field__icon {
+        color: $RedBadgeColorLight;
+        top: 27%;
+        right: 10px;
+        color: $InputPlaceholderColor;
+      }
+    }
+  }

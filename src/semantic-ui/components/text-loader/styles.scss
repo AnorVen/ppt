@@ -1,0 +1,40 @@
+@import './src/semantic-ui/variables';
+
+$keyframes text-loading {
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+.text-loader {
+	background-color: $TextLoaderBackgroundColor;
+	width: 100%;
+	border-radius: 3px;
+	display: inline-flex;
+	line-height: 1;
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+	&:after {
+		content: ' ';
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 100%;
+		background-repeat: no-repeat;
+		background-image: linear-gradient(
+			90deg,
+			$TextLoaderBackgroundColor,
+			$TextLoaderHighlightColor,
+			$TextLoaderBackgroundColor
+		);
+		transform: translateX(-100%);
+		animation-name: text-loading;
+		animation-direction: normal;
+		animation-duration: 1.5s;
+		animation-timing-function: ease-in-out;
+		animation-iteration-count: infinite;
+	}
+}

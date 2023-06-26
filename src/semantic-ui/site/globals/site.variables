@@ -1,0 +1,11 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+
+@primaryColor: #FF5C55;
+@pageBackground: #f1f0ec;
+@paragraphMargin: 0;
+@headerMargin: 0;
+@linkColor: #FF5C55;
+@pageFont: Roboto, sans-serif;

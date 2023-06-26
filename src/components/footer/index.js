@@ -1,7 +1,9 @@
+import { DateTime } from "luxon";
 import './footer.scss'
 
-export default ()=>{
+const Footer = ()=>{
 	return (
-		<div className="footer">Footer</div>
+		<div className="footer">&#169; Российская ассоциация ППТ {DateTime.now().toFormat('yyyy')}</div>
 	)
 }
+export default Footer;

@@ -1,0 +1,68 @@
+@import './src/semantic-ui/variables';
+
+.ui.table {
+    border: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    &.fixed {
+        table-layout: fixed;
+        & th {
+            overflow: visible !important;
+        }
+    }
+    thead {
+        background-color: $InputBackgroundColorLight !important;
+        tr {
+            th:not(:first-child) {
+                border-left: 1px solid $TableBorderColorLight !important;
+            }
+            th {
+                background-color: $InputBackgroundColorLight;
+                color: $TableHeaderTextColorLight !important;
+                font-weight: 400 !important;
+            }
+        }
+    }
+    tbody {
+        tr {
+            td {
+                border-left: none !important;
+                outline: none !important;
+            }
+            td:not(:first-child) {
+                border-left: 1px solid $TableBorderColorLight !important;
+            }
+            td.active {
+                background-color: transparent !important;
+                outline: none !important;
+            }
+            td.no-result-text {
+                text-align: center;
+                padding: 15px 20px;
+            }
+        }
+        .pointer {
+            cursor: pointer;
+        }
+        tr.pointer:hover {
+            background-color: $TableHoverBackgroundColor !important;
+        }
+        tr:last-child td {
+            border-bottom: 1px solid $TableBorderColorLight !important;
+        }
+    }
+}
+
+.table-body {
+    height: calc(100% - 50px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: absolute;
+
+    & .ui.dimmer {
+        z-index: 1;
+    }
+}
+.active-row {
+    background-color: $TableHoverBackgroundColor;
+}

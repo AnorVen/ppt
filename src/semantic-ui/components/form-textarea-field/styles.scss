@@ -1,0 +1,33 @@
+@import './src/semantic-ui/variables';
+
+.validation_error {
+  color: $RedBadgeColorLight;
+}
+
+.input_row {
+  label {
+    font-size: 12px;
+    line-height: 12px;
+    min-height: 12px;
+    margin-bottom: 6px;
+    color: $TableHeaderTextColorLight;
+  }
+  &.dark {
+    textarea {
+      border: none;
+      background: $TableHoverBackgroundColor;
+      outline: none;
+      padding: 10px 20px;
+      height: 92px;
+      color: $InputTextColor;
+    }
+    textarea:focus {
+      border: 1px solid $BorderColorLight;
+      background: $InputBackgroundColorLight;
+      transition: background-color .3s;
+    }
+  }
+  &.error .ui.form textarea {
+    border: 1px solid $RedBadgeColorLight;
+  }
+}
