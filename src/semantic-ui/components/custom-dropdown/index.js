@@ -1,3 +1,4 @@
+'use client';
 /* eslint-disable consistent-return */
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
