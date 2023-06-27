@@ -1,8 +1,8 @@
-import Link from &#39;next/link&#39;;
+import Link from "next/link";
 
 const AboutPage = () => {
 	return <div className="wrapper_text">
-		<p>Автор: <Link href={&#39;/&#39;}>Кириллов Иван Олегович</Link></p>
+		<p>Автор: <Link href={"#"}>Кириллов Иван Олегович</Link></p>
 		<p>Иван Кириллов к.м.н., врач психиатр, психотерапевт, Член IJP; Основатель Академии Транскультуральной
 			Психотерапии; Создатель концепции Stress Surfing™</p>
 		<h1>Введение в Позитивную Психотерапию</h1>
