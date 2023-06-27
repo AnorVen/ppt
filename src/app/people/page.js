@@ -34,8 +34,6 @@ const PeoplePage = async ({ params }) => {
 			id: "64972d7ca74dcb4dd4eed4ae",
 		},
 	];
-	console.log('trainers', trainers);
-	console.log('people', params);
 	return (
 		<div>news uuid page - {params.uuid}
 			<div>

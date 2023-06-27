@@ -17,5 +17,29 @@ body {
   height: 100%;
 }
 .content {
-  flex: 1 0 auto;
+  overflow: auto;
+  min-height: calc(100vh - 195px);
+}
+
+.wrapper_text{
+  margin: 0 auto;
+  max-width: 1024px;
+  margin-bottom: 20px;
+  p {
+    text-indent: 25px;
+    margin-bottom: 10px;
+  }
+  h1, h2, h3,h4{
+    text-indent:25px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+  ul, li{
+    padding-left: 30px;
+    margin-bottom: 10px;
+  }
+  a{
+    color: #1b84eb;
+    font-style: italic;
+  }
 }
