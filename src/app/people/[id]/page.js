@@ -67,7 +67,7 @@ const PeopleInfo = ({ params }) => {
 				{seminarsForTrainer.length && <div>Семинары:
 					<div>
 						{seminarsForTrainer.map(seminar=>{
-							return <div>
+							return <div key={seminar.id}>
 								<div>{seminar.title}</div>
 								<div>{seminar.type}</div>
 								<div dangerouslySetInnerHTML={{__html: seminar.description}} />
