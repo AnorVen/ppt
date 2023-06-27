@@ -77,7 +77,6 @@ const PeopleInfo = ({ params }) => {
 							</div>
 						})}
 					</div></div>}
-
 			</div>
 		</div>
 	);

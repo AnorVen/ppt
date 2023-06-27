@@ -307,6 +307,7 @@ const seminars = [
 		organizer: 'Смирнова Светлана Викторовна',
 		organizer_contacts: '+7914-564-66-44',
 		organizer_center: '6499f95c36af5a507e2ae3ab',
+		id: 'fawf2123'
 	},
 ];
 
