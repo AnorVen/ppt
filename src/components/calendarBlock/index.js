@@ -1,15 +1,13 @@
 'use client';
 
 import Calendar from '@/components/calendar';
+import { CalendarPopup } from '@/components/calendar-popup';
 import { useMemo, useState } from 'react';
 import { DateTime } from 'luxon';
-import { A11y, Autoplay, Navigation, Pagination, Scrollbar } from 'swiper';
+import { A11y, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import 'swiper/css/autoplay';
 import 'swiper/css/a11y';
 import './style.scss';
 
@@ -20,20 +18,22 @@ export const ClaendaeBlock = () => {
 		year: null,
 	});
 
+	const [isPopupShow, setIsPopupShow] = useState(false);
 	const handleSelectDay = (date) => {
-		console.log(date);
 		if (
 			date.day !== selectedDate.day
 			|| date.month !== selectedDate.month
 			|| selectedDate.year !== date.year
 		) {
 			onSelectDate(date);
+			setIsPopupShow(true);
 		} else {
 			onSelectDate({
 				day: null,
 				month: null,
 				year: null,
 			});
+			setIsPopupShow(false);
 		}
 	};
 	const monthesName = [
@@ -49,12 +49,16 @@ export const ClaendaeBlock = () => {
 	}, []);
 
 	return <div className="calendar-block">
+		{isPopupShow && <CalendarPopup
+			onClosePopup={() => setIsPopupShow(false)}
+			date={selectedDate}
+		/>
+		}
 		<Swiper
 			spaceBetween={50}
 			slidesPerView={1}
-			modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+			modules={[Navigation, A11y]}
 			navigation
-			pagination={{ clickable: true }}
 			loop
 		>
 
