@@ -73,7 +73,6 @@ const PeopleInfo = ({ params }) => {
 								<div dangerouslySetInnerHTML={{ __html: seminar.description }} />
 								<div>Продолжительность: {seminar.count}</div>
 								<div>Даты: {seminar.dates.join(', ')}</div>
-
 							</div>;
 						})}
 					</div></div>}

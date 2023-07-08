@@ -24,17 +24,17 @@ const Header = () => {
 							<ul className="submenu">
 								<li><LinkWithActive href="/education/basic_course">Базовый курс</LinkWithActive></li>
 								<li><LinkWithActive href="/education/master_course">Мастер курс</LinkWithActive></li>
-								<li><LinkWithActive href="/education/master_classes">мастер-классы</LinkWithActive></li>
+								<li><LinkWithActive href="/education/master_classes">Мастер-классы</LinkWithActive></li>
 							</ul>
 						</li>
 						<li>
-							<LinkWithActive href="/education/additional_programs">дополнительные программы<span
+							<LinkWithActive href="/education/additional_programs">Дополнительные программы<span
 								className="fa fa-angle-down"></span></LinkWithActive>
 							<ul className="submenu">
-								<li><LinkWithActive href="/education/conferences">конференции</LinkWithActive></li>
+								<li><LinkWithActive href="/education/conferences">Конференции</LinkWithActive></li>
 							</ul>
 						</li>
-						<li><LinkWithActive href="/education/all_courses">все курсы</LinkWithActive></li>
+						<li><LinkWithActive href="/education">Все курсы</LinkWithActive></li>
 					</ul>
 				</li>
 				<li>
