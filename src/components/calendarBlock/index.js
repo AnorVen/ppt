@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/a11y';
 import './style.scss';
 
-export const ClaendaeBlock = () => {
+export const CalendarBlock = () => {
 	const [selectedDate, onSelectDate] = useState({
 		day: null,
 		month: null,

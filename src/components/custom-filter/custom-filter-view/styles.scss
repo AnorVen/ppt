@@ -1,0 +1,29 @@
+.custom-filter {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  padding: 1px 0;
+  white-space: nowrap;
+
+  &__title {
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__sorting {
+    position: absolute;
+    top: 2px;
+    right: 9px;
+  }
+  &__filter {
+    width: 32px;
+    position: absolute;
+    top: 18px;
+    right: -9px;
+    .custom-dropdown__wrapper{
+      top: 30px;
+    }
+  }
+}

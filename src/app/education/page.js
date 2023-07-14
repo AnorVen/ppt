@@ -1,14 +1,26 @@
+'use client';
 import { bd } from '@/bd';
-import { ClaendaeBlock } from '@/components/calendarBlock';
+import { sagaActions } from '@/components/sagaActions';
+import { TableComponent } from '@/semantic-ui/components/table';
 
-const StudyPage = ()=>{
-	const { seminars, courses, master_thems, base_thems } = bd;
-	return(
-		<div  className="">
+import { COLUMNS } from '@/app/constants';
+import { useDispatch, useSelector } from 'react-redux';
 
+const StudyPage = () => {
+	const todos = useSelector((state) => state.todo.todos);
+	const courses = useSelector((state) => state.todo.courses);
+	const dispatch = useDispatch();
+
+	console.log(courses);
+
+
+	const tableData = [];
+	return (
+		<div className="">
 			study pages
-			<ClaendaeBlock/>
+			<button onClick={() => dispatch({ type: sagaActions.GET_COURSES })}> afwawf</button>
+
 		</div>
-	)
-}
-export default StudyPage
+	);
+};
+export default StudyPage;

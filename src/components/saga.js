@@ -1,14 +1,15 @@
+import { setCourses } from '@/components/store/store';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
-import { v4 as uuidv4 } from 'uuid';
 import { change, stopSubmit, touch } from 'redux-form';
 
 import {
 	CREATE,
+	DELETE,
 	GET_COURSE,
-	GET_COURSES, UPDATE,
+	GET_COURSES,
+	UPDATE,
 } from './actions';
 import { } from './selectors';
-import { FORM_NAME, REQUEST_ERROR_MESSAGE, SELECT_FIELDS, ROOT_URL } from './constants';
 
 function* createSaga() {
 	console.log('createSaga');
@@ -20,6 +21,7 @@ function* updateSaga() {
 
 export function* getCoursesSaga() {
 	console.log('getCoursesSaga');
+	yield put(setCourses([{id: '1', couese: 'coueses'}]))
 }
 
 export function* getCourseSaga({uuid}) {
