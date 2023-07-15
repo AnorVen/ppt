@@ -2,13 +2,9 @@ import { configureStore, createSlice } from '@reduxjs/toolkit';
 import createSagaMiddleware from "redux-saga";
 import saga from "@/components/saga";
 
-const todoSlice = createSlice({
-	name: "todo",
+const mainSlice = createSlice({
+	name: "main",
 	initialState: {
-		todos: [{
-			id: 1,
-			name: name,
-		}],
 		courses: [],
 	},
 
@@ -18,14 +14,9 @@ const todoSlice = createSlice({
 				courses: action.payload
 			};
 		},
-		fetchData: (state, action) => {
-			return {
-				todos: action.payload
-			};
-		}
 	}
 });
-export const { setCourses } = todoSlice.actions;
+export const { setCourses } = mainSlice.actions;
 
 let sagaMiddleware = createSagaMiddleware();
 
@@ -37,7 +28,7 @@ const logger = store => next => action => {
 }
 const store = configureStore({
 	reducer: {
-		todo: todoSlice.reducer
+		main: mainSlice.reducer
 	},
 	middleware: [sagaMiddleware, logger],
 
