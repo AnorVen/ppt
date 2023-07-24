@@ -1,32 +1,58 @@
+import { FilterDateRange } from '@/components/filter-dropdown-content/filter-date';
+import { sagaActions } from '@/components/sagaActions';
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { createStructuredSelector } from 'reselect';
 import { CheckboxList } from '@/semantic-ui/components/checkbox-list';
 import { FilterSearch } from './filter-search';
-import {
-	getCheckboxFiltersSelector,
-	getCheckboxListOptionsSelector,
-	getCheckedOptionsCountSelector,
-	getCheckedOptionsSelector,
-	getFilterSearchSelector,
-	getIsAllOptionsCheckedSelector,
-} from '@/components/selectors';
-import { getCourseAction, setCheckboxFiltersAction, setFilterSearchAction } from '@/components/actions';
+import { setCheckboxFiltersAction, setFilterSearchAction } from '@/components/store/store';
 import { FilterSearchType, OptionsType } from '../prop-types';
 
 export const FilterDropdownContentWrapper = ({
 	columnData,
-	filterSearch,
-	onSetFilterSearch,
-	chosenOptions,
-	checkedCount,
-	options,
-	isAllChecked,
-	onGetNewsList,
-	onSetCheckboxFilters,
-	checkboxFilters,
 }) => {
+	const dispatch = useDispatch()
+	const onSetFilterSearch = (...params) => dispatch(setFilterSearchAction(...params))
+	const onGetCoursesList = () => dispatch({ type: sagaActions.GET_COURSES })
+	const onSetCheckboxFilters = (...params) => dispatch(setCheckboxFiltersAction(...params))
+	const checkboxFilters = useSelector((state) => state.main.checkboxFilters)
+
+
+	const filterSearch = useSelector((state) => state.main.sorting)
+	const chosenOptions =  useSelector(() => {
+		return Object.keys(checkboxFilters).reduce((result, key) => {
+			result[key] = Object.entries(checkboxFilters[key]).reduce((prev, [key, value]) => {
+				if (value) {
+					prev[key] = value;
+				}
+				return prev;
+			}, {});
+			return result;
+		}, {})
+	})
+	const options = useSelector((state) => state.main.checkboxListOptions)
+	console.log(options);
+	console.log(checkboxFilters);
+	const checkedCount = useSelector((state) =>{
+		return Object.entries(options).reduce((result, [key]) => {
+			console.log(key);
+			result[key] = Object.values(checkboxFilters[key]).filter(Boolean).length;
+			return result;
+		}, {});
+	} )
+
+	const isAllChecked = useSelector((state) =>{
+		return Object.entries(options).reduce((result, [key, values]) => {
+			result[key] = values.length === checkedCount[key] && values.length !== 0;
+			return result;
+		}, {});
+
+	})
+
+	console.log('chosenOptions', chosenOptions);
+	console.log('checkboxFilters', checkboxFilters);
+
+
 	const handleFilterSearchChange = ({ target: { value } }) => {
 		onSetFilterSearch({ ...filterSearch, [columnData.id]: value });
 	};
@@ -44,7 +70,7 @@ export const FilterDropdownContentWrapper = ({
 						: !checkboxFilters[columnData.filterName][option.value],
 			},
 		});
-		onGetNewsList();
+		onGetCoursesList();
 	};
 
 	const handleAllOptionsSelect = () => {
@@ -63,15 +89,15 @@ export const FilterDropdownContentWrapper = ({
 				),
 			},
 		});
-		onGetNewsList();
+		onGetCoursesList();
 	};
 
-	if (columnData.id === 'is_active' || columnData.id === 'is_pinned') {
+	if (columnData.id !== 'dates') {
 		return (
 			<CheckboxList
 				choosenOptions={chosenOptions[columnData.filterName]}
 				onCheckboxChange={handleCheckboxChange}
-				options={options[columnData.filterName]}
+				options={options[columnData.filterName] || []}
 				hasFooter
 				isCount
 				isAllChecked={isAllChecked[columnData.filterName]}
@@ -81,25 +107,17 @@ export const FilterDropdownContentWrapper = ({
 		);
 	}
 
-	return <FilterSearch searchValue={filterSearch[columnData.id]} onSearchValueChange={handleFilterSearchChange} />;
+	return <FilterDateRange value={
+		{
+			from: '',
+			to: ''
+		}
+	} onDateRangeChange={(e)=>{
+		console.log(e);
+	}} />;
 };
 
-const mapStateToProps = createStructuredSelector({
-	filterSearch: getFilterSearchSelector(),
-	chosenOptions: getCheckedOptionsSelector(),
-	checkedCount: getCheckedOptionsCountSelector(),
-	options: getCheckboxListOptionsSelector(),
-	isAllChecked: getIsAllOptionsCheckedSelector(),
-	checkboxFilters: getCheckboxFiltersSelector(),
-});
-
-const mapDispatchToProps = {
-	onSetFilterSearch: setFilterSearchAction,
-	onGetNewsList: getCourseAction,
-	onSetCheckboxFilters: setCheckboxFiltersAction,
-};
-
-const FilterDropdownContent = connect(mapStateToProps, mapDispatchToProps)(FilterDropdownContentWrapper);
+const FilterDropdownContent = connect(null, null)(FilterDropdownContentWrapper);
 
 FilterDropdownContentWrapper.propTypes = {
 	columnData: PropTypes.shape({
@@ -110,7 +128,7 @@ FilterDropdownContentWrapper.propTypes = {
 	}).isRequired,
 	filterSearch: FilterSearchType,
 	onSetFilterSearch: PropTypes.func.isRequired,
-	onGetNewsList: PropTypes.func.isRequired,
+	onGetCoursesList: PropTypes.func.isRequired,
 	onSetCheckboxFilters: PropTypes.func.isRequired,
 	chosenOptions: PropTypes.shape({
 		withActive: PropTypes.objectOf(PropTypes.bool.isRequired).isRequired,

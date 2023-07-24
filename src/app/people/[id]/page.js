@@ -13,10 +13,10 @@ const getPeople = (id) => {
 };
 
 const getThem = (type, them) => {
-	if (type === 'base') {
-		return bd.base_thems.find(item => item.key === them).title;
+	if (type === 'basic_course') {
+		return bd.base_thems[them];
 	}
-	return bd.master_thems.find(item => item.key === them).title;
+	return bd.master_thems[them]
 };
 
 const PeopleInfo = ({ params }) => {

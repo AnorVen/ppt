@@ -1,5 +1,50 @@
 .custom-row {
-    width: 20px;
-    height: 20px;
-    margin: 0 auto;
+  .show-more {
+    cursor: pointer;
+    color: #1b84eb;
+  }
+  .popup{
+    position: absolute;
+    border: 1px solid #ededed;
+    background-color: #fff;
+    padding:  30px 10px 10px;
+    border-radius: 5px;
+    top: 0;
+    width: 400px;
+    height: 500px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    .close-popup {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 23px;
+      height: 23px;
+      cursor: pointer;
+      border: 1px;
+    }
+
+    .close-popup:before {
+      content: '';
+      background-color: #000;
+      position: absolute;
+      height: 1px;
+      width: 20px;
+      top: 11px;
+      left: -4px;
+      transform: rotate(-45deg);
+    }
+
+    .close-popup:after {
+      content: '';
+      background-color: #000;
+      position: absolute;
+      height: 1px;
+      width: 20px;
+      top: 11px;
+      transform: rotate(45deg);
+      left: -4px;
+    }
+  }
+
 }

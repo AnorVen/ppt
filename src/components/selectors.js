@@ -1,11 +1,12 @@
+import store from '@/components/store/store';
 import moment from 'moment';
-import { createSelector } from 'reselect';
+import { createSelector } from '@reduxjs/toolkit'
 import { getFormValues } from 'redux-form';
-import { initialState } from './reducer';
 import { FORM_NAME } from '@/app/constants';
 
-const selectPptDomain = state => state.pptReducer || initialState;
-
+const selectPptDomain = state =>{
+	return  state || store.getState().main;
+}
 export const getActiveAccordionIndexSelector = () =>
 	createSelector(selectPptDomain, ({ activeAccordionIndex }) => activeAccordionIndex);
 

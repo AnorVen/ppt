@@ -1,30 +1,46 @@
-/*import { CustomFilter } from '@/components/custom-filter';
-import { CustomRow } from '@/components/custom-row';*/
+import { CustomRow } from '@/components/custom-row';
+
+import { CustomFilter } from '@/components/custom-filter';
 
 export const FORM_NAME = 'form-ppt'
 export  const COLUMNS = [
 	{
-		name: 'Дата публикации',
-		id: 'timestamp',
-		//customHeaderComponent: CustomFilter,
+		name: 'Тип Курса',
+		id: 'type',
+		customHeaderComponent: CustomFilter,
+		filterName: 'withCourseType',
 	},
 	{
-		name: 'Заголовок',
+		name: 'Модуль',
 		id: 'title',
-		//customHeaderComponent: CustomFilter,
+		customHeaderComponent: CustomFilter,
+		filterName: 'withModule',
 	},
 	{
-		name: 'Активна',
-		id: 'is_active',
-		//customHeaderComponent: CustomFilter,
-		//customComponent: CustomRow,
-		filterName: 'withActive',
+		name: 'Город',
+		id: 'city',
+		customHeaderComponent: CustomFilter,
+		filterName: 'withCity',
 	},
 	{
-		name: 'Закреплена',
-		id: 'is_pinned',
-		//customHeaderComponent: CustomFilter,
-	//	customComponent: CustomRow,
-		filterName: 'withPinned',
+		name: 'Даты',
+		id: 'dates',
+		customHeaderComponent: CustomFilter,
+		filterName: 'withDates',
+	},
+	{
+		name: 'Тренер',
+		id: 'trainer',
+		customHeaderComponent: CustomFilter,
+		filterName: 'withTrainer',
+	},
+	{
+		name: 'Тренер',
+		id: 'trainer',
+	},
+	{
+		name: 'Описание',
+		id: 'description',
+		customComponent: CustomRow,
 	},
 ];

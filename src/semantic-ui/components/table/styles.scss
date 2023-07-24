@@ -1,4 +1,4 @@
-@import './src/semantic-ui/variables';
+@import '../../variables';
 
 .ui.table {
     border: none !important;
@@ -44,17 +44,48 @@
         .pointer {
             cursor: pointer;
         }
-        tr.pointer:hover {
-            background-color: $TableHoverBackgroundColor !important;
-        }
-        tr:last-child td {
-            border-bottom: 1px solid $TableBorderColorLight !important;
-        }
+
     }
+
+
+    /* Table Row */
+    tr:first-child td {
+        border-top: none;
+    }
+    tr.pointer:hover {
+        background-color: $TableHoverBackgroundColor !important;
+    }
+    tr:last-child td {
+        border-bottom: 1px solid $TableBorderColorLight !important;
+    }
+    tbody tr td:not(:first-child){
+        border-left: 1px solid #ededed!important;
+    }
+    td, th{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-top: 1px solid rgba(34,36,38,.1);
+        padding: 10px;
+    }
+    thead th {
+        cursor: auto;
+        background: #f9fafb;
+        text-align: inherit;
+        color: rgba(0,0,0,.87);
+
+        vertical-align: inherit;
+        font-style: none;
+        font-weight: 700;
+        text-transform: none;
+        border-bottom: 1px solid rgba(34,36,38,.1);
+    }
+}
+#tableHeader{
+    padding-right: 17px !important;
 }
 
 .table-body {
-    height: calc(100% - 50px);
+    height: calc(100% - 340px);
     overflow-y: auto;
     overflow-x: hidden;
     position: absolute;

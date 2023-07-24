@@ -5,7 +5,7 @@ import { newsType } from '../prop-types';
 import { CustomRowView } from './custom-row-view';
 
 export const CustomRowWrapper = ({ rowData, columnId }) => {
-	return <CustomRowView status={rowData[columnId]} />;
+	return <CustomRowView description={rowData[columnId]} />;
 };
 
 const CustomRow = connect()(CustomRowWrapper);

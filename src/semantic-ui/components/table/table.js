@@ -2,7 +2,9 @@
 import React, { memo, useMemo, useRef } from 'react';
 import { Dimmer, Loader, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import '../../tables.scss';
 import './styles.scss';
+
 
 // eslint-disable-next-line react/display-name
 const TableComponent = memo(

@@ -1,28 +1,24 @@
 import React, { useMemo } from 'react';
 import { createStructuredSelector } from 'reselect';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { CustomFilterView } from './custom-filter-view';
-import { setFilterSearchAction, setOpenedFilterDropdownIdAction, setSortingAction } from '@/components/actions';
-import {
-	getCheckboxFiltersSelector,
-	getFilterSearchSelector,
-	getIsFiltersVisibleSelector,
-	getOpenedFilterDropdownIdSelector,
-	getSortingSelector,
-} from '@/components/selectors';
+import { setFilterSearchAction, setOpenedFilterDropdownIdAction, setSortingAction } from '@/components/store/store';
 import { FilterSearchType } from '../prop-types';
 
 export const CustomFilterWrapper = ({
 	columnData,
-	sorting,
-	onSetSorting,
-	onSetDropdownOpen,
-	openedFilterDropdownId,
-	filterSearch,
-	isFiltersVisible,
-	checkboxFilters,
 }) => {
+	const dispatch = useDispatch()
+	const onSetDropdownOpen = (...params) => dispatch(setOpenedFilterDropdownIdAction(...params))
+	const onSetSorting =(...params) => dispatch(setSortingAction(...params))
+
+	const sorting =  useSelector((state) => state.main.sorting)
+	const openedFilterDropdownId = useSelector((state) => state.main.openedFilterDropdownId)
+	const filterSearch = useSelector((state) => state.main.filterSearch)
+	const isFiltersVisible = useSelector((state) => state.main.isFiltersVisible)
+	const checkboxFilters = useSelector((state) => state.main.checkboxFilters)
+
 	const handleSetDropdown = () => {
 		onSetDropdownOpen(openedFilterDropdownId === columnData.id ? '' : columnData.id);
 	};
@@ -67,23 +63,17 @@ export const CustomFilterWrapper = ({
 			iconColor={iconColor}
 			customFilterDropdownId={openedFilterDropdownId}
 			isDropdownOpen={isDropdownOpen}
-			isDropdownIconVisible={columnData.id !== 'timestamp' && isFiltersVisible}
+			isDropdownIconVisible={isFiltersVisible}
 		/>
 	);
 };
 
 const mapStateToProps = createStructuredSelector({
-	sorting: getSortingSelector(),
-	openedFilterDropdownId: getOpenedFilterDropdownIdSelector(),
-	filterSearch: getFilterSearchSelector(),
-	isFiltersVisible: getIsFiltersVisibleSelector(),
-	checkboxFilters: getCheckboxFiltersSelector(),
+
 });
 
 const mapDispatchToProps = {
-	onSetDropdownOpen: setOpenedFilterDropdownIdAction,
-	onSetSorting: setSortingAction,
-	onSetFilterSearch: setFilterSearchAction,
+
 };
 
 const CustomFilter = connect(mapStateToProps, mapDispatchToProps)(CustomFilterWrapper);
