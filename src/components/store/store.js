@@ -33,7 +33,6 @@ const mainSlice = createSlice({
 			withCity: [],
 			withModule: [],
 			withTrainer: [],
-			withDates: [],
 		},
 	},
 

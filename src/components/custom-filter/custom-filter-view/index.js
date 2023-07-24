@@ -31,7 +31,7 @@ const CustomFilterView = ({
 						dropdownContent={<FilterDropdownContent columnData={columnData} />}
 						isOpen={isDropdownOpen}
 						onOpenChange={onSetDropdownOpen}
-						alignLeft
+						alignLeft={columnData.alignLeft}
 					/>
 				</div>
 			)}

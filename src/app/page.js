@@ -1,3 +1,4 @@
+import { CalendarBlock } from '@/components/calendarBlock';
 import Image from 'next/image';
 import Swiper from '@/components/swiper';
 import './page.scss';
@@ -11,6 +12,7 @@ export default function Home() {
 			<div className="content-block">
 				<MainText />
 				<NewsBlock />
+				<CalendarBlock />
 			</div>
 		</main>
 	);

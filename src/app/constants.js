@@ -9,30 +9,35 @@ export  const COLUMNS = [
 		id: 'type',
 		customHeaderComponent: CustomFilter,
 		filterName: 'withCourseType',
+		alignLeft: false
 	},
 	{
 		name: 'Модуль',
 		id: 'title',
 		customHeaderComponent: CustomFilter,
 		filterName: 'withModule',
+		alignLeft: false
 	},
 	{
 		name: 'Город',
 		id: 'city',
 		customHeaderComponent: CustomFilter,
 		filterName: 'withCity',
+		alignLeft: true
 	},
 	{
 		name: 'Даты',
 		id: 'dates',
 		customHeaderComponent: CustomFilter,
 		filterName: 'withDates',
+		alignLeft: true
 	},
 	{
 		name: 'Тренер',
 		id: 'trainer',
 		customHeaderComponent: CustomFilter,
 		filterName: 'withTrainer',
+		alignLeft: true
 	},
 	{
 		name: 'Тренер',
