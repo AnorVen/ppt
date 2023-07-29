@@ -1,4 +1,3 @@
-'use client'
 import './globals.css';
 import { ProviderWrapper } from '@/components/provider';
 import { Inter } from 'next/font/google';
@@ -31,7 +30,6 @@ export default function RootLayout({ children }) {
 			</div>
 		</ProviderWrapper>
 		</body>
-
 		</html>
 	);
 }
