@@ -1,10 +1,9 @@
 'use client'
 import './globals.css';
+import { ProviderWrapper } from '@/components/provider';
 import { Inter } from 'next/font/google';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
-import { Provider } from 'react-redux';
-import store from '@/components/store/store';
 
 import './main.scss';
 
@@ -22,7 +21,7 @@ export default function RootLayout({ children }) {
 		<html lang="ru">
 
 		<body className={inter.className}>
-		<Provider store={store}>
+		<ProviderWrapper>
 			<div className="wrapper">
 				<Header />
 				<div className="content">
@@ -30,7 +29,7 @@ export default function RootLayout({ children }) {
 				</div>
 				<Footer />
 			</div>
-		</Provider>
+		</ProviderWrapper>
 		</body>
 
 		</html>
