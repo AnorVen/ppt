@@ -1,4 +1,5 @@
 import { bd } from '@/bd';
+import { getCoursesRequest } from '@/components/requests';
 import { setCourses } from '@/components/store/store';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 import { change, stopSubmit, touch } from 'redux-form';
@@ -22,7 +23,21 @@ function* updateSaga() {
 
 export function* getCoursesSaga() {
 	console.log('getCoursesSaga');
-	yield put(setCourses(bd.courses))
+	try {
+		const { success, payload, errors, headers } = yield call(getCoursesRequest);
+
+		if (success) {
+			yield put(setCourses(payload))
+		} else {
+			console.log('errors', errors);
+		}
+	} catch (e) {
+		console.log(e);
+		yield put(setCourses(bd.courses))
+	} finally {
+		console.log('finally');
+	}
+
 }
 
 export function* getCourseSaga({uuid}) {

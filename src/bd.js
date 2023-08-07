@@ -8,7 +8,7 @@ export const trainers = [
 		email: 'smirnova2001@mail.ru',
 		phone: '+7914-564-66-44',
 		description: '<span>Врач педиатр высшей квалификационной категории, врач психотерапевт, клинический психолог, кандидат психологических наук, доцент Амурского государственного университета и Севастопольского государственного университета. Тренер Международной Академии Позитивной Психотерапии, IAPP (Висбаден, Германия) <a>http://positum.org/training/trainers/</a>, действительный член  Всемирной ассоциации позитивной психотерапии (WAPP). Супервизор Российской психотерапевтической Ассоциации. <a>https://rpa-russia.ru/sovet-supervizorov-rpa/</a></span>',
-		id: '6497237355aef7adde8b3581',
+		id: '64d0f2bc9e9c802989eefa88',
 	},
 	{
 		name: 'Oksana',
@@ -61,7 +61,7 @@ export const master_thems = {
 	master_them_18: 'Модуль 18: САМОПОЗНАНИЕ/САМОРАСКРЫТИЕ',
 };
 
-const types = {
+export const types = {
 	basic_course: 'Базовый курс',
 	seminar: 'Семинар',
 	master_course: 'Мастер курс',
@@ -90,7 +90,7 @@ export const centers = [
 export const courses = [
 	{
 		type: 'basic_course',
-		main_trainer: '6497237355aef7adde8b3581',
+		main_trainer: '64d0f52784fd8d33c4a40b50',
 		city: 'Санкт -Петербург',
 		title: 'группа набора 2022 года',
 		organizer: 'Елена Зенкова',
@@ -100,13 +100,13 @@ export const courses = [
 		modules: [
 			{
 				module_number: 1,
-				trainer: '6497237355aef7adde8b3581',
+				trainer: '64d0f52784fd8d33c4a40b50',
 				dates: ['10.03.2023', '11.03.2023', '12.03.2023'],
 				count: 30,
 				them: 'base_them_1',
 			}, {
 				module_number: 2,
-				trainer: '6497237355aef7adde8b3581',
+				trainer: '64d0f52784fd8d33c4a40b50',
 				dates: ['02.06.2023', '03.06.2023', '04.06.2023'],
 				count: 30,
 				them: 'base_them_2',
@@ -124,7 +124,7 @@ export const courses = [
 				them: 'base_them_3',
 			}, {
 				module_number: 5,
-				trainer: '6497237355aef7adde8b3581',
+				trainer: '64d0f52784fd8d33c4a40b50',
 				dates: ['01.03.2024', '02.03.2024', '03.03.2024'],
 				count: 30,
 				them: 'base_them_5',
@@ -133,7 +133,7 @@ export const courses = [
 	},
 	{
 		type: 'basic_course',
-		main_trainer: '6497237355aef7adde8b3581',
+		main_trainer: '64d0f52784fd8d33c4a40b50',
 		city: 'Санкт -Петербург ',
 		title: 'группа набора 2023 года',
 		description: `Слушателям выдается диплом о профессиональной переподготовке для выполнения нового вида деятельности. 
@@ -143,7 +143,7 @@ export const courses = [
 		modules: [
 			{
 				module_number: 1,
-				trainer: '6497237355aef7adde8b3581',
+				trainer: '64d0f52784fd8d33c4a40b50',
 				dates: ['07.04.2023', '08.04.2023', '09.04.2023'],
 				count: 30,
 				them: 'base_them_1',
@@ -155,7 +155,7 @@ export const courses = [
 				them: 'base_them_2',
 			}, {
 				module_number: 3,
-				trainer: '6497237355aef7adde8b3581',
+				trainer: '64d0f52784fd8d33c4a40b50',
 				dates: ['08.09.2023', '09.09.2023', '10.09.2023'],
 				count: 30,
 				them: 'base_them_3',
@@ -167,7 +167,7 @@ export const courses = [
 				them: 'base_them_5',
 			}, {
 				module_number: 5,
-				trainer: '6497237355aef7adde8b3581',
+				trainer: '64d0f52784fd8d33c4a40b50',
 				dates: ['01.03.2024', '02.03.2024', '03.03.2024'],
 				count: 30,
 				them: 'base_them_4',
@@ -176,16 +176,16 @@ export const courses = [
 	},
 	{
 		type: 'basic_course',
-		main_trainer: '6497237355aef7adde8b3581',
+		main_trainer: '64d0f52784fd8d33c4a40b50',
 		city: 'Севастополь',
 		title: '',
 		description: ``,
-		organizer: '6497237355aef7adde8b3581',
+		organizer: '64d0f52784fd8d33c4a40b50',
 		organizer_contacts: '+7914-564-66-44',
 		modules: [
 			{
 				module_number: 1,
-				trainer: '6497237355aef7adde8b3581',
+				trainer: '64d0f52784fd8d33c4a40b50',
 				date_start: '17.12.2022',
 				date_end: '09.04.2023',
 				dates: ['17.12.2022', '18.12.2022', '24.12.2022', '25.12.2022'],
@@ -193,7 +193,7 @@ export const courses = [
 				them: 'base_them_1',
 			}, {
 				module_number: 2,
-				trainer: '6497237355aef7adde8b3581',
+				trainer: '64d0f52784fd8d33c4a40b50',
 				dates: ['18.03.2023', '19.03.2023', '25.03.2023', '26.03.2023'],
 				date_start: '07.07.2023',
 				date_end: '09.07.2023',
@@ -215,7 +215,7 @@ export const courses = [
 				them: 'base_them_5',
 			}, {
 				module_number: 5,
-				trainer: '6497237355aef7adde8b3581',
+				trainer: '64d0f52784fd8d33c4a40b50',
 				dates: ['02.12.2023', '03.12.2023', '09.12.2023', '10.12.2023'],
 				count: 30,
 				them: 'base_them_4',
@@ -243,7 +243,7 @@ export const seminars = [
 		dates: ['03.11.2023', '04.11.2023', '05.11.2023'],
 		type: 'seminar',
 		count: '30',
-		trainer: '6497237355aef7adde8b3581',
+		trainer: '64d0f52784fd8d33c4a40b50',
 		organizer: 'Смирнова Светлана Викторовна',
 		organizer_contacts: '+7914-564-66-44',
 		organizer_center: '6499f95c36af5a507e2ae3ab',

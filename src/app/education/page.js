@@ -27,8 +27,8 @@ const StudyPage = () => {
 				const main_trainer = trainers.find(item=> item.id === course.main_trainer)
 				const trainer = trainers.find(item=> item.id === module.trainer)
 				line.push({...module,
-					trainer:  `${trainer.surname} ${trainer.name}`,
-					main_trainer: `${main_trainer.surname} ${main_trainer.name}`,
+					trainer:  `${trainer?.surname} ${trainer?.name}`,
+					main_trainer: `${main_trainer?.surname} ${main_trainer?.name}`,
 					city: course.city,
 					type:`${bd.types[course.type]} - ${course.title}` ,
 					title: getThem(course.type, module.them),
@@ -42,9 +42,6 @@ const StudyPage = () => {
 		return line
 	});
 	const dispatch = useDispatch();
-
-	console.log(isDescriptionPopupShow);
-
 
 	const tableData = [];
 	return (

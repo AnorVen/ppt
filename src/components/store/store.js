@@ -14,7 +14,11 @@ const mainSlice = createSlice({
 			column: 'type',
 			direction: 'asc',
 		},
-		filterSearch: {},
+		filterSearch: {
+			withCourseType: '',
+			withModule: '',
+			withTrainer: ''
+		},
 		checkboxFilters: COLUMNS.reduce((acc, val)=> {
 			if (val.filterName){
 				acc[val.filterName] = {}
@@ -34,9 +38,36 @@ const mainSlice = createSlice({
 			withModule: [],
 			withTrainer: [],
 		},
+		checkboxListSearch: {
+			// Строки поиска в фильтрах с checkbox
+			withCity: '',
+			withModule: '',
+			withTrainer: '',
+			withCourseType: '',
+		},
+		from: '',
+		to: ''
 	},
 
 	reducers: {
+		setCheckboxListSearchAction: (state, action) => {
+			return {
+				...state,
+				checkboxListSearch: action.payload,
+			};
+		},
+		setFrom: (state, action) => {
+			return {
+				...state,
+				from: action.payload,
+			};
+		},
+		setTo: (state, action) => {
+			return {
+				...state,
+				to: action.payload,
+			};
+		},
 		setCheckboxFiltersAction: (state, action) => {
 			return {
 				...state,
@@ -89,6 +120,10 @@ const mainSlice = createSlice({
 	},
 });
 export const {
+	setCheckboxListSearchAction,
+	setTo,
+	setFrom,
+	setIsTableDataLoading,
 	setCourses,
 	setIsDescriptionPopupShow,
 	setDescriptionInPopup,

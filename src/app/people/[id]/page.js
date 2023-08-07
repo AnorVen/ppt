@@ -22,6 +22,7 @@ const getThem = (type, them) => {
 const PeopleInfo = ({ params }) => {
 	const { trainers, courses, seminars } = bd;
 	const trainer = trainers.filter(item => item.id === params.id)[0];
+	console.log(trainer);
 	const coursesForTrainer = courses.filter(item => item.main_trainer === params.id);
 	const seminarsForTrainer = seminars.filter(item => item.trainer === params.id);
 	return (
@@ -29,7 +30,7 @@ const PeopleInfo = ({ params }) => {
 			<div className="description">
 				<div className="avatar">
 					<Image src={`/images/avatars/${trainer.id}.png`} width={200} height={200}
-					       alt={`${trainer.surname} ${trainer.surname} ${trainer.second_name}`} />
+					       alt={`${trainer?.surname} ${trainer?.name} ${trainer?.second_name}`} />
 				</div>
 				<div className="text-block">
 					<div>{trainer.surname} {trainer.surname} {trainer.second_name}</div>

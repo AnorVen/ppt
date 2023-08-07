@@ -14,7 +14,7 @@ const PeoplePage = async ({ params }) => {
 							<div className="avatar">
 								<Link href={`/people/${trainer.id}`}>
 									<Image src={`/images/avatars/${trainer.id}.png`} width={200} height={200}
-									       alt={`${trainer.surname} ${trainer.surname} ${trainer.second_name}`} ></Image>
+									       alt={`${trainer?.surname} ${trainer?.surname} ${trainer?.second_name}`} ></Image>
 								</Link>
 							</div>
 							<div className="text-block">
