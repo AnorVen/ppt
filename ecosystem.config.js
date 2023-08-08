@@ -6,7 +6,6 @@ module.exports = {
 	deploy: {
 		production: {
 			user: 'root',
-			key: 'key.pem',
 			host: '45.90.34.143',
 			ref: 'origin/main',
 			repo: 'git@github.com:AnorVen/ppt.git',
