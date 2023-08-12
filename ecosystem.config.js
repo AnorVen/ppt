@@ -1,6 +1,6 @@
 module.exports = {
 	apps: [{
-		script: 'yarn start',
+		script: 'npm run start',
 	}],
 
 	deploy: {
@@ -11,7 +11,7 @@ module.exports = {
 			repo: 'git@github.com:AnorVen/ppt.git',
 			path: '/root/client',
 			'pre-deploy-local': '',
-			'post-deploy': 'source ~/.nvm/nvm.sh && yarn && yarn build && pm2 reload ecosystem.config.js --env production',
+			'post-deploy': 'source ~/.nvm/nvm.sh && npm i -f && npm run build && pm2 reload ecosystem.config.js --env production',
 			'pre-setup': '',
 			'ssh_options': 'ForwardAgent=yes',
 		},
