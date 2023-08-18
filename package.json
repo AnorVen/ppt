@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^13.4.18",
     "@reduxjs/toolkit": "^1.9.5",
     "@semantic-ui-react/craco-less": "^1.2.3",
     "bootstrap": "5.2.3",

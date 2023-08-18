@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const path = require('path');
 
-module.exports = {
+defaultConfig = {
 	sassOptions: {
 		includePaths: [path.join(__dirname, 'styles')],
 	},
@@ -18,3 +18,12 @@ module.exports = {
 		]
 	},
 };
+
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+	enabled: true,
+	openAnalyzer: true,
+})
+
+module.exports = (phase, defaultConfig) => {
+	return withBundleAnalyzer(defaultConfig)
+}
