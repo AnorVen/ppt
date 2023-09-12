@@ -1,7 +1,7 @@
-export const url = `http://localhost:5000`;
+import {url} from '@/constants';
 
 export const getCoursesRequest = () =>
-	fetch(`${url}/api/course/list`, {
+	fetch(`${url}/api/center/list`, {
 		method: 'POST',
 		body: JSON.stringify({}),
 	})

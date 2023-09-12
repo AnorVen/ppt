@@ -1,5 +1,5 @@
 import { COLUMNS } from '@/app/constants';
-import { bd } from '@/bd';
+import { constants, centers } from '@/constants';
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import saga from '@/components/saga';
@@ -8,7 +8,9 @@ const mainSlice = createSlice({
 	name: 'main',
 	initialState: {
 		courses: [],
-		trainers: bd.trainers,
+		trainers:[],
+		seminars: [],
+		centers: [],
 		isTableDataLoading: false,
 		sorting: {
 			column: 'type',
@@ -30,12 +32,18 @@ const mainSlice = createSlice({
 		isDescriptionPopupShow: false,
 		isFiltersVisible: true,
 		checkboxListOptions: {
-			withCourseType: Object.entries(bd.types).reduce((acc, [key, val]) => {
+			withCourseType: Object.entries(constants.types).reduce((acc, [key, val]) => {
 				acc.push({ key: key, value: key, text: val });
 				return acc;
 			}, []),
 			withCity: [],
-			withModule: [],
+			withModule: Object.entries(constants.base_themes).reduce((acc, [key, val]) => {
+				acc.push({ key: key, value: key, text: val });
+				return acc;
+			}, []).concat(Object.entries(constants.master_themes).reduce((acc, [key, val]) => {
+				acc.push({ key: key, value: key, text: val });
+				return acc;
+			}, [])),
 			withTrainer: [],
 		},
 		checkboxListSearch: {
@@ -105,6 +113,24 @@ const mainSlice = createSlice({
 				descriptionInPopup: action.payload,
 			};
 		},
+		setTrainers: (state, action) => {
+			return {
+				...state,
+				trainers: action.payload,
+			};
+		},
+		setSeminars: (state, action) => {
+			return {
+				...state,
+				seminars: action.payload,
+			};
+		},
+		setCenters: (state, action) => {
+			return {
+				...state,
+				centers: action.payload,
+			};
+		},
 		setCourses: (state, action) => {
 			return {
 				...state,
@@ -131,6 +157,10 @@ export const {
 	setSortingAction,
 	setFilterSearchAction,
 	setCheckboxFiltersAction,
+	setTrainers,
+	setSeminars,
+	setCenters,
+
 
 } = mainSlice.actions;
 

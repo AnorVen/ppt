@@ -5,23 +5,11 @@ defaultConfig = {
 	sassOptions: {
 		includePaths: [path.join(__dirname, 'styles')],
 	},
-	rewrites() {
-		return [
-			{
-				source: '/api/:path*',
-				destination: 'http://localhost:5000/api/:path*',
-			},
-			{
-				source: '/:path*',
-				destination: 'http://localhost:3000/:path*',
-			},
-		]
-	},
 };
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-	enabled: true,
-	openAnalyzer: true,
+	enabled: false,
+	openAnalyzer: false,
 })
 
 module.exports = (phase, defaultConfig) => {

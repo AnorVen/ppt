@@ -1,10 +1,10 @@
-import { bd } from '@/bd';
+import { constants } from '@/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import './style.scss';
 
 const getPeople = (id) => {
-	let people = bd.trainers.find(item => item.id === id);
+	let people = constants.trainers.find(item => item.id === id);
 	console.log('people', people);
 	if (people) {
 		return `${people.surname} ${people.name} ${people.second_name}`;
@@ -14,13 +14,13 @@ const getPeople = (id) => {
 
 const getThem = (type, them) => {
 	if (type === 'basic_course') {
-		return bd.base_thems[them];
+		return constants.base_themes[them];
 	}
-	return bd.master_thems[them]
+	return constants.master_themes[them]
 };
 
 const PeopleInfo = ({ params }) => {
-	const { trainers, courses, seminars } = bd;
+	const { trainers, courses, seminars } = constants;
 	const trainer = trainers.filter(item => item.id === params.id)[0];
 	console.log(trainer);
 	const coursesForTrainer = courses.filter(item => item.main_trainer === params.id);

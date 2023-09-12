@@ -3,11 +3,11 @@ import './style.scss'
 import {
 	trainers,
 	courses,
-	master_thems,
-	base_thems,
+	master_themes,
+	base_themes,
 	centers,
 	seminars
-} from '@/bd'
+} from '@/constants'
 import Link from 'next/link';
 
 export const CalendarPopup = ({onClosePopup, date}) => {

@@ -1,38 +1,5 @@
-export const trainers = [
-	{
-		'password': 'smirnova2001@mail.ru',
-		name: 'Светлана',
-		second_name: 'Викторовна',
-		surname: 'Смирнова',
-		city: 'Санкт-Петербург',
-		email: 'smirnova2001@mail.ru',
-		phone: '+7914-564-66-44',
-		description: '<span>Врач педиатр высшей квалификационной категории, врач психотерапевт, клинический психолог, кандидат психологических наук, доцент Амурского государственного университета и Севастопольского государственного университета. Тренер Международной Академии Позитивной Психотерапии, IAPP (Висбаден, Германия) <a>http://positum.org/training/trainers/</a>, действительный член  Всемирной ассоциации позитивной психотерапии (WAPP). Супервизор Российской психотерапевтической Ассоциации. <a>https://rpa-russia.ru/sovet-supervizorov-rpa/</a></span>',
-		id: '64d0f2bc9e9c802989eefa88',
-	},
-	{
-		name: 'Oksana',
-		second_name: '',
-		surname: 'Nikonova',
-		city: '',
-		email: '',
-		phone: '',
-		description: '',
-		id: '64972d429bd3eac606b8f35e'
-	},
-	{
-		name: 'Ekaterina',
-		second_name: '',
-		surname: 'Dokunova',
-		city: '',
-		email: '',
-		phone: '',
-		description: '',
-		id: '64972d7ca74dcb4dd4eed4ae',
-	},
-];
-
-export const base_thems = {
+export const url = `http://ppt-russia.ru`;
+export const base_themes = {
 	base_them_1: 'Модуль 1: ВВЕДЕНИЕ В ППТ. АКТУАЛЬНЫЙ КОНФЛИКТ И ТЕКУЩАЯ ЖИЗНЕННАЯ СИТУАЦИЯ',
 	base_them_2: 'Модуль 2: ОСНОВНЫЕ КОНЦЕПЦИИ КОНФЛИКТОВ И СЕМЬИ',
 	base_them_3: 'Модуль 3: ПОЗИТИВНАЯ ПСИХОДИНАМИКА',
@@ -40,8 +7,8 @@ export const base_thems = {
 	base_them_5: 'Модуль 5: ТЕРАПЕВТИЧЕСКИЕ ОТНОШЕНИЯ И ВЗАИМОДЕЙСТВИЕ',
 };
 
-export const master_thems = {
-	master_them_1:'Модуль 1: САМОПОЗНАНИЕ/САМОРАСКРЫТИЕ',
+export const master_themes = {
+	master_them_1: 'Модуль 1: САМОПОЗНАНИЕ/САМОРАСКРЫТИЕ',
 	master_them_2: 'Модуль 2: ПСИХОДИНАМИКА в ППТ',
 	master_them_3: 'Модуль 3: ПСИХОДИНАМИЧЕСКИЙ СЕТТИНГ И ВЗАИМООТНОШЕНИЯ в ППТ',
 	master_them_4: 'Модуль 4: САМОПОЗНАНИЕ/САМОРАСКРЫТИЕ',
@@ -87,6 +54,7 @@ export const centers = [
 		phone: '',
 	},
 ];
+
 export const courses = [
 	{
 		type: 'basic_course',
@@ -251,11 +219,45 @@ export const seminars = [
 	},
 ];
 
-export const bd = {
+export const trainers = [
+	{
+		'password': 'smirnova2001@mail.ru',
+		name: 'Светлана',
+		second_name: 'Викторовна',
+		surname: 'Смирнова',
+		city: 'Санкт-Петербург',
+		email: 'smirnova2001@mail.ru',
+		phone: '+7914-564-66-44',
+		description: '<span>Врач педиатр высшей квалификационной категории, врач психотерапевт, клинический психолог, кандидат психологических наук, доцент Амурского государственного университета и Севастопольского государственного университета. Тренер Международной Академии Позитивной Психотерапии, IAPP (Висбаден, Германия) <a>http://positum.org/training/trainers/</a>, действительный член  Всемирной ассоциации позитивной психотерапии (WAPP). Супервизор Российской психотерапевтической Ассоциации. <a>https://rpa-russia.ru/sovet-supervizorov-rpa/</a></span>',
+		id: '64d0f2bc9e9c802989eefa88',
+	},
+	{
+		name: 'Oksana',
+		second_name: '',
+		surname: 'Nikonova',
+		city: '',
+		email: '',
+		phone: '',
+		description: '',
+		id: '64972d429bd3eac606b8f35e'
+	},
+	{
+		name: 'Ekaterina',
+		second_name: '',
+		surname: 'Dokunova',
+		city: '',
+		email: '',
+		phone: '',
+		description: '',
+		id: '64972d7ca74dcb4dd4eed4ae',
+	},
+];
+
+export const constants = {
 	trainers,
 	courses,
-	master_thems,
-	base_thems,
+	master_themes,
+	base_themes,
 	centers,
 	seminars,
 	types

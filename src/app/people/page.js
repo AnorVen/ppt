@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { bd } from '@/bd';
+import { constants } from '@/constants';
 import './style.scss';
 
 const PeoplePage = async ({ params }) => {
-	const { trainers } = bd;
+	const { trainers } = constants;
 	return (
 		<div className="wrapper_text">
 			<div>

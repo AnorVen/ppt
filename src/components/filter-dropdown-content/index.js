@@ -26,9 +26,8 @@ export const FilterDropdownContentWrapper = ({
 	const checkboxFilters = useSelector((state) => state.main.checkboxFilters);
 	const from = useSelector((state) => state.main.from);
 	const to = useSelector((state) => state.main.to);
-
-
 	const checkboxListSearch = useSelector((state) => state.main.checkboxListSearch);
+	const checkboxListOptions = useSelector((state) => state.main.checkboxListOptions)
 	const chosenOptions = useSelector(() => {
 		return Object.keys(checkboxFilters).reduce((result, key) => {
 			result[key] = Object.entries(checkboxFilters[key]).reduce((prev, [key, value]) => {
@@ -40,26 +39,22 @@ export const FilterDropdownContentWrapper = ({
 			return result;
 		}, {});
 	});
-	const options = useSelector((state) =>{
-		const options = {}
-		const checkboxListOptions = state.main.checkboxListOptions
-		console.log('checkboxListSearch', checkboxListSearch);
-		console.log('checkboxListOptions', checkboxListOptions);
-		Object.entries(checkboxListOptions).forEach(([key, val]) => {
-			console.log(checkboxListSearch[key]);
-			console.log(val);
+	console.log('chosenOptions', chosenOptions);
 
-			options[key] = val.reduce((acc, { uuid, text })=>{
+	const options = useSelector((state) => {
+		const options = {}
+		Object.entries(checkboxListOptions).forEach(([key, val]) => {
+			console.log('val', val);
+			options[key] = val.reduce((acc, { value, text })=>{
 				if (text.toLowerCase().includes(checkboxListSearch[key].toLowerCase())) {
-					acc.push({ value: uuid, text: text, key: uuid });
+					acc.push({ value: value, text: text, key: value });
 				}
 				return acc;
 			}, [])
 		})
+		console.log('options', options);
 		return options
 	});
-	console.log(options);
-	console.log(checkboxFilters);
 	const checkedCount = useSelector((state) => {
 		return Object.entries(options).reduce((result, [key]) => {
 			console.log(key);
@@ -81,6 +76,7 @@ export const FilterDropdownContentWrapper = ({
 	};
 
 	const handleCheckboxChange = option => {
+		console.log(option);
 		onSetCheckboxFilters({
 			...checkboxFilters,
 			[columnData.filterName]: {
@@ -128,6 +124,7 @@ export const FilterDropdownContentWrapper = ({
 				checkedCheckboxListLength={checkedCount[columnData.filterName]}
 				onSliderCheckboxChange={handleAllOptionsSelect}
 				onSearchChange={handleCheckboxListSearchChange}
+				width={columnData.id === 'title' ? '530px': '300px'}
 			/>
 		);
 	}

@@ -40,8 +40,8 @@ export  const COLUMNS = [
 		alignLeft: true
 	},
 	{
-		name: 'Тренер',
-		id: 'trainer',
+		name: 'Организатор',
+		id: 'organizer',
 	},
 	{
 		name: 'Описание',

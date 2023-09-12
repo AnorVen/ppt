@@ -1,18 +1,20 @@
 'use client';
-import { bd } from '@/bd';
+import { GET_CITIES, GET_TRAINERS } from '@/components/actions';
+import { constants } from '@/constants';
 import { DescriptionPopup } from '@/components/descripton-popup';
 import { sagaActions } from '@/components/sagaActions';
 import { TableComponent } from '@/semantic-ui/components/table';
 
 import { COLUMNS } from '@/app/constants';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
 
 const getThem = (type, them) => {;
 	if (type === 'basic_course') {
-		return bd.base_thems[them];
+		return constants.base_themes[them];
 	}
-	return bd.master_thems[them]
+	return constants.master_themes[them]
 };
 
 const StudyPage = () => {
@@ -30,7 +32,7 @@ const StudyPage = () => {
 					trainer:  `${trainer?.surname} ${trainer?.name}`,
 					main_trainer: `${main_trainer?.surname} ${main_trainer?.name}`,
 					city: course.city,
-					type:`${bd.types[course.type]} - ${course.title}` ,
+					type:`${constants.types[course.type]} - ${course.title}` ,
 					title: getThem(course.type, module.them),
 					description: course.description,
 					organizer: course.organizer,
@@ -43,11 +45,18 @@ const StudyPage = () => {
 	});
 	const dispatch = useDispatch();
 
+	useEffect(() => {
+		dispatch({ type: sagaActions.GET_COURSES })
+		dispatch({ type: sagaActions.GET_CENTERS })
+		dispatch({ type: sagaActions.GET_SEMINARS })
+		dispatch({ type: sagaActions.GET_TRAINERS })
+		dispatch({ type: sagaActions.GET_CITIES })
+	}, []);
 	const tableData = [];
 	return (
 		<div className="">
 			study pages
-			<button onClick={() => dispatch({ type: sagaActions.GET_COURSES })}> afwawf</button>
+			<button onClick={() => dispatch({ type: sagaActions.GET_COURSE, uuid: '64ecdc804ab935f2de3272f7' })}> afwawf</button>
 
 			{isTableDataLoading && <Loader active={isTableDataLoading} />}
 			<div className="table-content__content">
