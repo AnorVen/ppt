@@ -11,7 +11,7 @@ module.exports = {
 			repo: 'git@github.com:AnorVen/ppt.git',
 			path: '/var/www/client',
 			'pre-deploy-local': '',
-			'post-deploy': 'source ~/.nvm/nvm.sh && npm i -f && npm run build && pm2 reload ecosystem.config.js --env production',
+			'post-deploy': 'source ~/.nvm/nvm.sh && npm i --legacy-peer-deps && npm run build && pm2 reload ecosystem.config.js --env production',
 			'pre-setup': '',
 			'ssh_options': 'ForwardAgent=yes',
 		},
