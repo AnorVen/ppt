@@ -23,7 +23,8 @@ export const CustomFilterWrapper = ({
 	};
 
 	const handleSortColumn = () => {
-		onSetSorting({ column: columnData.id, direction: sorting.direction === 'asc' ? 'desc' : 'asc' });
+		// TODO sorting
+		/*onSetSorting({ column: columnData.id, direction: sorting.direction === 'asc' ? 'desc' : 'asc' });*/
 	};
 
 	const iconColor = useMemo(() => {

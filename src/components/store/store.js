@@ -14,8 +14,9 @@ const mainSlice = createSlice({
 		cities: {},
 		isTableDataLoading: false,
 		sorting: {
-			column: 'type',
-			direction: 'asc',
+			// TODO soting
+	//		column: 'type',
+	//		direction: 'asc',
 		},
 		filterSearch: {
 			withCourseType: '',
