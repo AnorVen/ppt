@@ -13,7 +13,7 @@ export  const COLUMNS = [
 	},
 	{
 		name: 'Модуль',
-		id: 'title',
+		id: 'module',
 		customHeaderComponent: CustomFilter,
 		filterName: 'withModule',
 		alignLeft: false
@@ -42,6 +42,7 @@ export  const COLUMNS = [
 	{
 		name: 'Организатор',
 		id: 'organizer',
+		customComponent: CustomRow,
 	},
 	{
 		name: 'Описание',

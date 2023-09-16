@@ -1,0 +1,13 @@
+.educationTop{
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1150px;
+    &__btn{
+        padding: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        border: 1px solid gray;
+    }
+}

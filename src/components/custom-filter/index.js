@@ -12,7 +12,6 @@ export const CustomFilterWrapper = ({
 	const dispatch = useDispatch()
 	const onSetDropdownOpen = (...params) => dispatch(setOpenedFilterDropdownIdAction(...params))
 	const onSetSorting =(...params) => dispatch(setSortingAction(...params))
-
 	const sorting =  useSelector((state) => state.main.sorting)
 	const openedFilterDropdownId = useSelector((state) => state.main.openedFilterDropdownId)
 	const filterSearch = useSelector((state) => state.main.filterSearch)

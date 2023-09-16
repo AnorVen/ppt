@@ -1,23 +1,19 @@
-import { constants } from '@/constants';
 import { getCourseRequest, getCoursesRequest } from '@/components/requests/courses';
-import { setCourses } from '@/components/store/store';
-import { put, call, takeEvery, select } from 'redux-saga/effects';
-import { change, stopSubmit, touch } from 'redux-form';
-
+import { getTrainersRequest, getTrainerRequest } from '@/components/requests/trainers';
 import {
-	CREATE_COURSE,
-	DELETE_COURSE,
-	GET_COURSE,
-	GET_COURSES,
-	UPDATE_COURSE,
-} from './actions';
-import { } from './selectors';
+	setCheckboxFiltersAction,
+	setCheckboxListOptionsAction,
+	setCourses,
+	setTrainers,
+} from '@/components/store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { put, call, takeEvery, select } from 'redux-saga/effects';
 
-function* createCourseSaga() {
+export function* createCourseSaga() {
 	console.log('createCourseSaga');
 }
 
-function* updateCourseSaga() {
+export function* updateCourseSaga() {
 	console.log('updateCourseSaga');
 }
 
@@ -58,12 +54,4 @@ export function* getCourseSaga({uuid}) {
 
 export function* deleteCourseSaga({uuid}) {
 	console.log('deleteCourseSaga', uuid);
-}
-
-export default function* saga() {
-	yield takeEvery(CREATE_COURSE, createCourseSaga);
-	yield takeEvery(UPDATE_COURSE, updateCourseSaga);
-	yield takeEvery(DELETE_COURSE, deleteCourseSaga);
-	yield takeEvery(GET_COURSES, getCoursesSaga);
-	yield takeEvery(GET_COURSE, getCourseSaga);
 }

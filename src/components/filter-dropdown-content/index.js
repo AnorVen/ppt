@@ -13,9 +13,7 @@ import {
 } from '@/components/store/store';
 import { FilterSearchType, OptionsType } from '../prop-types';
 
-export const FilterDropdownContentWrapper = ({
-	                                             columnData,
-                                             }) => {
+export const FilterDropdownContentWrapper = ({ columnData }) => {
 	const dispatch = useDispatch();
 	const onSetFilterSearch = (...params) => dispatch(setFilterSearchAction(...params));
 	const onSetFrom = (...params) => dispatch(setFrom(...params));
@@ -76,7 +74,6 @@ export const FilterDropdownContentWrapper = ({
 	};
 
 	const handleCheckboxChange = option => {
-		console.log(option);
 		onSetCheckboxFilters({
 			...checkboxFilters,
 			[columnData.filterName]: {

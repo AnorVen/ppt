@@ -1,15 +1,15 @@
 import {url} from '@/constants';
 
-export const getTrainersRequest = () =>
-	fetch(`${url}/api/user/list`, {
+export const getCitiesRequest = () =>
+	fetch(`${url}/api/city/list`, {
 		method: 'POST',
 		body: JSON.stringify({}),
 	})
 	.then(async response => await response.json())
 	.catch(error => error);
 
-export const getTrainerRequest = (payload) =>
-	fetch(`${url}/api/user/get`, {
+export const getCityRequest = (payload, meta) =>
+	fetch(`${url}/api/city/get`, {
 		method: 'POST',
 		body: JSON.stringify(payload),
 	})

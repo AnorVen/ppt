@@ -2,15 +2,16 @@ import { COLUMNS } from '@/app/constants';
 import { constants, centers } from '@/constants';
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
-import saga from '@/components/saga';
+import saga from '@/components/saga/saga';
 
 const mainSlice = createSlice({
 	name: 'main',
 	initialState: {
 		courses: [],
-		trainers:[],
+		trainers: {},
 		seminars: [],
 		centers: [],
+		cities: {},
 		isTableDataLoading: false,
 		sorting: {
 			column: 'type',
@@ -58,6 +59,12 @@ const mainSlice = createSlice({
 	},
 
 	reducers: {
+		setCheckboxListOptionsAction: (state, action) => {
+			return {
+				...state,
+				checkboxListOptions: action.payload,
+			};
+		},
 		setCheckboxListSearchAction: (state, action) => {
 			return {
 				...state,
@@ -137,6 +144,12 @@ const mainSlice = createSlice({
 				courses: action.payload,
 			};
 		},
+		setCities: (state, action) => {
+			return {
+				...state,
+				cities: action.payload,
+			};
+		},
 		setIsTableDataLoading: (state, action) => {
 			return {
 				...state,
@@ -160,7 +173,8 @@ export const {
 	setTrainers,
 	setSeminars,
 	setCenters,
-
+	setCities,
+	setCheckboxListOptionsAction
 
 } = mainSlice.actions;
 
