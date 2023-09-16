@@ -36,7 +36,7 @@ export function* getTrainersSaga() {
 	} catch (error) {
 		console.log(error);
 	} finally {
-		console.log('finally');
+
 	}
 
 }
@@ -55,7 +55,7 @@ export function* getTrainerSaga({uuid}) {
 	} catch (error) {
 		console.log(error);
 	} finally {
-		console.log('finally');
+
 	}
 }
 

@@ -11,10 +11,11 @@ const CustomRowView = ({ description }) => {
 		dispatch(setIsDescriptionPopupShow(true));
 		dispatch(setDescriptionInPopup(description));
 	};
+	const stringWithoutTags = description.replace(/(<([^>]+)>)/gi, '');
 	return (
 		<div className="custom-row" data-testid="custom-row">
 			{description
-				? `${description.substr(0, 50)}... `
+				? `${stringWithoutTags.substr(0, 50)}... `
 				: 'описания нет'}
 			{description && <span
 				className="show-more"

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const DescriptionPopup = () => {
 	const description = useSelector((state) => state.main.descriptionInPopup)
 	const dispatch = useDispatch();
+	const descriptionHtml = { __html: description };
 	return (
 		<div className="popup">
 			<div
@@ -18,7 +19,7 @@ const DescriptionPopup = () => {
 					dispatch(setDescriptionInPopup(null))
 				}}
 			/>
-			{description}
+			<div className="descripton_wrapper" dangerouslySetInnerHTML={descriptionHtml}/>
 		</div>
 	);
 };

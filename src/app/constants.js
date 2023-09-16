@@ -50,3 +50,10 @@ export  const COLUMNS = [
 		customComponent: CustomRow,
 	},
 ];
+
+export const filterNamesToColumns = COLUMNS.reduce((acc, val)=>{
+	if(val.filterName){
+		acc[val.filterName] = val.id
+	}
+	return acc
+}, {})

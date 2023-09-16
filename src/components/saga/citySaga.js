@@ -45,7 +45,7 @@ export function* getCitiesSaga() {
 	} catch (error) {
 		console.log(error);
 	} finally {
-		console.log('finally');
+
 	}
 
 }
@@ -64,7 +64,7 @@ export function* getCitySaga({uuid}) {
 	} catch (error) {
 		console.log(error);
 	} finally {
-		console.log('finally');
+
 	}
 }
 

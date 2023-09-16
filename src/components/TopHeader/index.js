@@ -1,5 +1,6 @@
 'use client'
 import '../../app/education/style.scss';
+import { COLUMNS } from '@/app/constants';
 import { setCheckboxFiltersAction } from '@/components/store/store';
 import { constants } from '@/constants';
 import Link from 'next/link';
@@ -16,23 +17,24 @@ const TopHeader = () => {
 		value: false,
 		text: 'Все курсы',
 	}]);
-	const checkboxFilters = useSelector((state) => state.main.checkboxFilters);
 
 	const setCheckboxFilters = value => {
+		const resetFilters = COLUMNS.reduce((acc, val)=> {
+			if (val.filterName){
+				acc[val.filterName] = {}
+			}
+			return acc
+		},{})
 		if (value){
 			onSetCheckboxFilters({
-				...checkboxFilters,
+				...resetFilters,
 				'withCourseType': {
 					[value]: true
 				},
 			})
 		} else {
-			onSetCheckboxFilters({
-				...checkboxFilters,
-				'withCourseType': {},
-			})
+			onSetCheckboxFilters(resetFilters)
 		}
-
 	}
 	return (
 		<section>

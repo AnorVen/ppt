@@ -37,12 +37,10 @@ export const FilterDropdownContentWrapper = ({ columnData }) => {
 			return result;
 		}, {});
 	});
-	console.log('chosenOptions', chosenOptions);
 
 	const options = useSelector((state) => {
 		const options = {}
 		Object.entries(checkboxListOptions).forEach(([key, val]) => {
-			console.log('val', val);
 			options[key] = val.reduce((acc, { value, text })=>{
 				if (text.toLowerCase().includes(checkboxListSearch[key].toLowerCase())) {
 					acc.push({ value: value, text: text, key: value });
@@ -50,12 +48,10 @@ export const FilterDropdownContentWrapper = ({ columnData }) => {
 				return acc;
 			}, [])
 		})
-		console.log('options', options);
 		return options
 	});
 	const checkedCount = useSelector((state) => {
 		return Object.entries(options).reduce((result, [key]) => {
-			console.log(key);
 			result[key] = Object.values(checkboxFilters[key]).filter(Boolean).length;
 			return result;
 		}, {});

@@ -1,14 +1,36 @@
 'use client';
+import { COLUMNS } from '@/app/constants';
+import { setCheckboxFiltersAction } from '@/components/store/store';
 import Image from 'next/image';
 import './header.scss';
+import { useDispatch } from 'react-redux';
 import Logo from '../../images/logo.svg';
 import LinkWithActive from '@/components/linkWithActive';
 
 const Header = () => {
+	const dispatch = useDispatch();
+	const onSetCheckboxFilters = (...params) => dispatch(setCheckboxFiltersAction(...params));
+	const setCheckboxFilters = value => {
+		const resetFilters = COLUMNS.reduce((acc, val)=> {
+			if (val.filterName){
+				acc[val.filterName] = {}
+			}
+			return acc
+		},{})
+		if (value){
+			onSetCheckboxFilters({
+				...resetFilters,
+				'withCourseType': {
+					[value]: true
+				},
+			})
+		} else {
+			onSetCheckboxFilters(resetFilters)
+		}
+	}
 	return (
 		<nav>
 			<ul className="topmenu">
-
 				<li><LinkWithActive href="/about">О методе<span className="fa fa-angle-down"></span></LinkWithActive>
 					<ul className="submenu">
 						<li><LinkWithActive href="/about">О методе</LinkWithActive></li>
@@ -19,22 +41,27 @@ const Header = () => {
 				<li><LinkWithActive href="/education">Обучение<span className="fa fa-angle-down"></span></LinkWithActive>
 					<ul className="submenu">
 						<li>
-							<LinkWithActive href="/education/course">обучение ППТ<span
+							<LinkWithActive href="/education">обучение ППТ<span
 							className="fa fa-angle-down"></span></LinkWithActive>
 							<ul className="submenu">
-								<li><LinkWithActive href="/education/basic_course">Базовый курс</LinkWithActive></li>
-								<li><LinkWithActive href="/education/master_course">Мастер курс</LinkWithActive></li>
-								<li><LinkWithActive href="/education/master_classes">Мастер-классы</LinkWithActive></li>
+								<li><LinkWithActive href="/education"  onClick={()=>setCheckboxFilters('basic_course')}>Базовый курс</LinkWithActive></li>
+								<li><LinkWithActive href="/education" onClick={()=>setCheckboxFilters('master_course')}>Мастер курс</LinkWithActive></li>
+								<li><LinkWithActive href="/education"  onClick={()=>setCheckboxFilters('master_class')}>Мастер-классы</LinkWithActive></li>
 							</ul>
 						</li>
 						<li>
-							<LinkWithActive href="/education/additional_programs">Дополнительные программы<span
+							<LinkWithActive href="/education" onClick={()=>setCheckboxFilters('additional_program')}>Дополнительные программы<span
 								className="fa fa-angle-down"></span></LinkWithActive>
 							<ul className="submenu">
-								<li><LinkWithActive href="/education/conferences">Конференции</LinkWithActive></li>
+								<li>
+									<LinkWithActive href="/education" onClick={()=>setCheckboxFilters('conference')}>Конференции</LinkWithActive>
+								</li>
+								<li>
+									<LinkWithActive href="/education" onClick={()=>setCheckboxFilters('seminar')}>Семинары</LinkWithActive>
+								</li>
 							</ul>
 						</li>
-						<li><LinkWithActive href="/education">Все курсы</LinkWithActive></li>
+						<li><LinkWithActive href="/education"  onClick={()=>setCheckboxFilters(false)}>Все курсы</LinkWithActive></li>
 					</ul>
 				</li>
 				<li>

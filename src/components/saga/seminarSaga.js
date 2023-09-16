@@ -22,7 +22,7 @@ export function* getSeminarsSaga() {
 	} catch (error) {
 		console.log(error);
 	} finally {
-		console.log('finally');
+
 	}
 
 }
@@ -41,7 +41,7 @@ export function* getSeminarSaga({uuid}) {
 	} catch (error) {
 		console.log(error);
 	} finally {
-		console.log('finally');
+
 	}
 }
 

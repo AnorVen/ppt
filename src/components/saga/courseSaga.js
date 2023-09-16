@@ -29,7 +29,7 @@ export function* getCoursesSaga() {
 	} catch (error) {
 		console.log(error);
 	} finally {
-		console.log('finally');
+
 	}
 
 }
@@ -48,7 +48,7 @@ export function* getCourseSaga({uuid}) {
 	} catch (error) {
 		console.log(error);
 	} finally {
-		console.log('finally');
+
 	}
 }
 

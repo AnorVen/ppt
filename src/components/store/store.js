@@ -27,7 +27,7 @@ const mainSlice = createSlice({
 				acc[val.filterName] = {}
 			}
 			return acc
-		},[]),
+		},{}),
 		openedFilterDropdownId: '',
 		descriptionInPopup: '',
 		isDescriptionPopupShow: false,
@@ -54,8 +54,8 @@ const mainSlice = createSlice({
 			withTrainer: '',
 			withCourseType: '',
 		},
-		from: '',
-		to: ''
+		from: null,
+		to: null,
 	},
 
 	reducers: {
