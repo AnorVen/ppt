@@ -3,7 +3,7 @@ import Image from 'next/image';
 import './style.scss';
 
 const PezeshkianPage = () => {
-	return <div className="wrapper_text">
+	return <div className="wrapper_text long_text">
 		<h1>Нóссрат Пезешкиан</h1>
 		<p>18 июня 1933, Кашан (Иран) — 27 апреля 2010, Висбаден, Германия)</p>
 		<Image src={PezeshkianImg} width={466} height={700} alt={'Нóссрат Пезешкиан'} className='pezishkizn-avatar'/>

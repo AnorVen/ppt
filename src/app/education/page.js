@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
 
 const getThem = (type, them) => {
-	;
 	if (type === 'basic_course') {
 		return constants.base_themes[them];
 	}
@@ -193,7 +192,7 @@ const StudyPage = () => {
 	return (
 		<div className="">
 			<TopHeader />
-			{isTableDataLoading && <Loader active={isTableDataLoading} />}
+			<Loader active={isTableDataLoading} />
 			<div className="table-content__content">
 				<TableComponent
 					columns={COLUMNS}

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 
 const MagazinPage = () => {
-	return <div className="wrapper_text">
+	return <div className="wrapper_text long_text">
 		<h1>Журнал «Global psychotherapist»</h1>
 		<h2>О Журнале</h2>
 		<p>The Global Psychotherapist (JGP) — междисциплинарный электронный журнал, посвященный позитивной психотерапии

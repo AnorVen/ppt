@@ -1,5 +1,10 @@
 import { getTrainersRequest, getTrainerRequest } from '@/components/requests/trainers';
-import { setCheckboxFiltersAction, setCheckboxListOptionsAction, setTrainers } from '@/components/store/store';
+import {
+	setCheckboxFiltersAction,
+	setCheckboxListOptionsAction,
+	setTrainer,
+	setTrainers,
+} from '@/components/store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 
@@ -26,7 +31,7 @@ export function* getTrainersSaga() {
 				}, [])
 			}))
 
-			yield put(setTrainers(payload.reduce((acc, val) =>{
+			yield put(setTrainers(payload.reduce((acc, val) => {
 				acc[val._id] = val
 				return acc
 			}, {})))
@@ -41,14 +46,14 @@ export function* getTrainersSaga() {
 
 }
 
-export function* getTrainerSaga({uuid}) {
-	console.log('getTrainerSaga', uuid);
+export function* getTrainerSaga({id}) {
+	console.log('getTrainerSaga', id);
 	try {
-		const { success, payload, errors, headers } = yield call(getTrainerRequest,{
-			id: uuid
+		const { success, payload, errors, headers } = yield call(getTrainerRequest, {
+			id
 		} );
 		if (success) {
-			console.log(payload)
+			yield put(setTrainer({ [payload._id] : payload}))
 		} else {
 			console.log('errors', errors);
 		}

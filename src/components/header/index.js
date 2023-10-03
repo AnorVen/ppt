@@ -1,8 +1,9 @@
 'use client';
 import { COLUMNS } from '@/app/constants';
-import { setCheckboxFiltersAction } from '@/components/store/store';
+import { setCheckboxFiltersAction, setIsMobileAction } from '@/components/store/store';
 import Image from 'next/image';
 import './header.scss';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Logo from '../../images/logo.svg';
 import LinkWithActive from '@/components/linkWithActive';
@@ -10,6 +11,13 @@ import LinkWithActive from '@/components/linkWithActive';
 const Header = () => {
 	const dispatch = useDispatch();
 	const onSetCheckboxFilters = (...params) => dispatch(setCheckboxFiltersAction(...params));
+
+	useEffect(()=>{
+		if (window.innerWidth < 960){
+			dispatch(setIsMobileAction(true))
+		}
+	}, [])
+
 	const setCheckboxFilters = value => {
 		const resetFilters = COLUMNS.reduce((acc, val)=> {
 			if (val.filterName){

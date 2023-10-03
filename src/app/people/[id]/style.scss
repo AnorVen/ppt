@@ -2,9 +2,29 @@
   display: flex;
   padding-top: 10px;
   padding-bottom: 20px;
+  margin: 0 10px;
   .avatar{
     margin-right: 30px;
     width: 200px;
     height: auto;
   }
+}
+.course{
+  &-list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 10px;
+  }
+  &-item{
+    width: 310px;
+    padding: 0 10px;
+    margin-bottom: 10px;
+    border: 1px solid #413f3c;
+    border-radius: 3px;
+  }
+  &-hideContent{
+    display: none;
+  }
+
 }

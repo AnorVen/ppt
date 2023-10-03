@@ -16,19 +16,21 @@ body {
   flex-direction: column;
   height: 100%;
 }
-.content {
+.wrapper-content {
   overflow: auto;
   min-height: calc(100vh - 205px);
 }
 
 .wrapper_text{
-  margin: 0 auto;
+  margin: 0 auto 20px;
   max-width: 1024px;
-  margin-bottom: 20px;
-  p {
-    text-indent: 25px;
-    margin-bottom: 10px;
+  &.long_text{
+    p {
+      text-indent: 25px;
+      margin-bottom: 10px;
+    }
   }
+
   h1, h2, h3,h4{
     text-indent:25px;
     padding-top: 20px;

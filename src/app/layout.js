@@ -5,6 +5,8 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 
 import './main.scss';
+import 'semantic-ui-css/semantic.min.css'
+
 
 const inter = Inter({
 	subsets: ['latin'],
@@ -16,15 +18,13 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-	console.log(123123);
 	return (
 		<html lang="ru">
-
 		<body className={inter.className}>
 		<ProviderWrapper>
 			<div className="wrapper">
 				<Header />
-				<div className="content">
+				<div className="wrapper-content">
 					{children}
 				</div>
 				<Footer />

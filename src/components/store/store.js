@@ -57,6 +57,7 @@ const mainSlice = createSlice({
 		},
 		from: null,
 		to: null,
+		isMobile: false,
 	},
 
 	reducers: {
@@ -127,6 +128,15 @@ const mainSlice = createSlice({
 				trainers: action.payload,
 			};
 		},
+		setTrainer: (state, action) => {
+			return {
+				...state,
+				trainers: {
+					...state.trainers,
+					...action.payload
+				},
+			};
+		},
 		setSeminars: (state, action) => {
 			return {
 				...state,
@@ -157,6 +167,12 @@ const mainSlice = createSlice({
 				isTableDataLoading: action.payload,
 			};
 		},
+		setIsMobileAction: (state, action) => {
+			return {
+				...state,
+				isMobile: action.payload,
+			};
+		},
 	},
 });
 export const {
@@ -172,11 +188,12 @@ export const {
 	setFilterSearchAction,
 	setCheckboxFiltersAction,
 	setTrainers,
+	setTrainer,
 	setSeminars,
 	setCenters,
 	setCities,
-	setCheckboxListOptionsAction
-
+	setCheckboxListOptionsAction,
+	setIsMobileAction,
 } = mainSlice.actions;
 
 let sagaMiddleware = createSagaMiddleware();
