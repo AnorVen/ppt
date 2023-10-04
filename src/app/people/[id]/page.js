@@ -4,7 +4,7 @@ import { constants, types } from '@/constants';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Accordion, Grid, Icon } from 'semantic-ui-react';
+import { Accordion } from 'semantic-ui-react';
 import './style.scss';
 
 
@@ -52,7 +52,7 @@ const PeopleInfo = ({ params }) => {
 	};
 	const coursesForTrainer = courses.filter(item => item.main_trainer === params.id);
 	const seminarsForTrainer = seminars.filter(item => item.trainer === params.id);
-
+	const renderCourses = seminarsForTrainer.concat(coursesForTrainer);
 	const [activeIndex, setActiveIndex] = useState(-1);
 
 	const handleClick = (e, titleProps) => {
@@ -62,7 +62,7 @@ const PeopleInfo = ({ params }) => {
 		setActiveIndex(newIndex);
 	};
 
-	return (<div>
+	return (<div className='wrapper_text'>
 			{trainer && <>
 				<div className="description">
 					<div className="avatar">
@@ -76,215 +76,55 @@ const PeopleInfo = ({ params }) => {
 							href={`mailto:${trainer.email}`}>{trainer.email}</a></div>
 					</div>
 				</div>
-				{coursesForTrainer.length && <>
+				{renderCourses.length && <>
 					<div className="description">Курсы и мероприятия тренера</div>
-					<div className="course-list">
-						<Accordion>
-							<div>
-								<Accordion.Title
-									active={activeIndex === 0}
-									index={0}
-									onClick={handleClick}
-								>
-									<Icon name="dropdown" />
-									What is a dog?
-								</Accordion.Title>
-								<Accordion.Content active={activeIndex === 0}>
-									<p>
-										A dog is a type of domesticated animal. Known for its loyalty and
-										faithfulness, it can be found as a welcome guest in many households
-										across the world.
-									</p>
-								</Accordion.Content>
-							</div>
-									<div>
-									<Accordion.Title
-										active={activeIndex === 1}
-										index={1}
-										onClick={handleClick}
-									>
-										<Icon name="dropdown" />
-										What is a dog?
-									</Accordion.Title>
-									<Accordion.Content active={activeIndex === 1}>
-										<p>
-											A dog is a type of domesticated animal. Known for its loyalty and
-											faithfulness, it can be found as a welcome guest in many households
-											across the world.
-										</p>
-									</Accordion.Content>
-									</div>
-							<div>
-									<Accordion.Title
-										active={activeIndex === 2}
-										index={2}
-										onClick={handleClick}
-									>
-										<Icon name="dropdown" />
-										What is a dog?
-									</Accordion.Title>
-									<Accordion.Content active={activeIndex === 2}>
-										<p>
-											A dog is a type of domesticated animal. Known for its loyalty and
-											faithfulness, it can be found as a welcome guest in many households
-											across the world.
-										</p>
-									</Accordion.Content>
-							</div>
-							<div>
-									<Accordion.Title
-										active={activeIndex === 3}
-										index={3}
-										onClick={handleClick}
-									>
-										<Icon name="dropdown" />
-										What is a dog?
-									</Accordion.Title>
-									<Accordion.Content active={activeIndex === 3}>
-										<p>
-											A dog is a type of domesticated animal. Known for its loyalty and
-											faithfulness, it can be found as a welcome guest in many households
-											across the world.
-										</p>
-									</Accordion.Content>
-							</div>
-							<div>
-									<Accordion.Title
-										active={activeIndex === 4}
-										index={4}
-										onClick={handleClick}
-									>
-										<Icon name="dropdown" />
-										What is a dog?
-									</Accordion.Title>
-									<Accordion.Content active={activeIndex === 4}>
-										<p>
-											A dog is a type of domesticated animal. Known for its loyalty and
-											faithfulness, it can be found as a welcome guest in many households
-											across the world.
-										</p>
-									</Accordion.Content>
-							</div>
-							<div>
-									<Accordion.Title
-										active={activeIndex === 5}
-										index={5}
-										onClick={handleClick}
-									>
-										<Icon name="dropdown" />
-										What is a dog?
-									</Accordion.Title>
-									<Accordion.Content active={activeIndex === 5}>
-										<p>
-											A dog is a type of domesticated animal. Known for its loyalty and
-											faithfulness, it can be found as a welcome guest in many households
-											across the world.
-										</p>
-									</Accordion.Content>
-							</div>
-							<div>
-									<Accordion.Title
-										active={activeIndex === 6}
-										index={6}
-										onClick={handleClick}
-									>
-										<Icon name="dropdown" />
-										What is a dog?
-									</Accordion.Title>
-									<Accordion.Content active={activeIndex === 6}>
-										<p>
-											A dog is a type of domesticated animal. Known for its loyalty and
-											faithfulness, it can be found as a welcome guest in many households
-											across the world.
-										</p>
-									</Accordion.Content>
-							</div>
-							<div>
-									<Accordion.Title
-										active={activeIndex === 7}
-										index={7}
-										onClick={handleClick}
-									>
-										<Icon name="dropdown" />
-										What is a dog?
-									</Accordion.Title>
-									<Accordion.Content active={activeIndex === 7}>
-										<p>
-											A dog is a type of domesticated animal. Known for its loyalty and
-											faithfulness, it can be found as a welcome guest in many households
-											across the world.
-										</p>
-									</Accordion.Content>
-							</div>
-							<div>
-									<Accordion.Title
-										active={activeIndex === 8}
-										index={8}
-										onClick={handleClick}
-									>
-										<Icon name="dropdown" />
-										What is a dog?
-									</Accordion.Title>
-									<Accordion.Content active={activeIndex === 8}>
-										<p>
-											A dog is a type of domesticated animal. Known for its loyalty and
-											faithfulness, it can be found as a welcome guest in many households
-											across the world.
-										</p>
-									</Accordion.Content>
-							</div>
-						</Accordion>
-						{seminarsForTrainer.length && seminarsForTrainer.map((seminar, index) => {
-							return <div key={seminar._id} className="course-item">
-								<Accordion.Title
-									active={activeIndex === index}
-									index={index}
-									onClick={handleClick}
-								>
-									<div className="course-title">Семинар</div>
-									<div className="course-title">{seminar.title}</div>
-									<div>{seminar.type}</div>
-									<div>Продолжительность: {seminar.count}</div>
-									<div>Даты: {seminar.dates.join(', ')}</div>
-								</Accordion.Title>
-								<Accordion.Content active={activeIndex === index}>
-									<div className="course-desc"
-									     dangerouslySetInnerHTML={{ __html: seminar.description }} />
-								</Accordion.Content>
-							</div>;
-						})}
-						{coursesForTrainer.concat(coursesForTrainer, coursesForTrainer, coursesForTrainer)
-						.map(course => {
-							return <div className="course-item" key={course._id}>
-								<div className="course-title">{types[course.type]}</div>
-								<div className="course-title">{course.title}</div>
-								<div className="course-title">{cities[course.city]}</div>
-								<div>Организатор: {getTrainer(course.organizer)}</div>
-								<div>Контакты: {course.organizer_contacts}</div>
-								<div className="course-hideContent">
-									<div className="course-desc"
-									     dangerouslySetInnerHTML={{ __html: course.description }}
-									/>
-									<div>
-										Даты модулей:
-										<div>{
-											course.modules.map(module => {
-												return <div key={module._id}>
-													<div>№ модуля: {module.module_number}</div>
-													<div>{getThem(course.type, module.them)}</div>
-													<div>Даты: {module.dates.join(', ')}</div>
-													<div>Тренер: {getTrainer(module.trainer)}</div>
-												</div>;
-											})
-										}</div>
-									</div>
-								</div>
+					<Accordion>
+						<div className="course-list">
+							{renderCourses.concat(coursesForTrainer, coursesForTrainer, coursesForTrainer)
+							.map((course, index) => {
+								const isSeminar = course.type === 'seminar';
+								const titleDates = isSeminar
+									? [course.dates[0], course.dates.at(-1)].join(' по ')
+									: [course.modules[0].dates[0], course.modules.at(-1).dates.at(-1)].join(' по ');
 
+								return <div className="course-item" key={course._id}>
+									<Accordion.Title
+										active={activeIndex === index}
+										index={index}
+										onClick={handleClick}
+									>
+										<div className="course-title">{types[course.type]}</div>
+										<div className="course-title">{course.title} - с {titleDates}</div>
+										{isSeminar && <div>Тип: {course.type_of_work}</div>}
+										{isSeminar && <div>Продолжительность: {course.count}</div>}
+										<div className="course-title">{cities[course.city]}</div>
+										<div>Организатор: {getTrainer(course.organizer)}</div>
+										<div>Контакты: {course.organizer_contacts}</div>
+									</Accordion.Title>
+									<Accordion.Content active={activeIndex === index}>
+										<div className="course-desc"
+										     dangerouslySetInnerHTML={{ __html: course.description }}
+										/>
+										{course?.modules && course?.modules?.length && <div>
+											Даты модулей:
+											<div>{
+												course.modules.map(module => {
+													return <div key={module._id} className='course-module'>
+														<div>№ модуля: {module.module_number}</div>
+														<div>{getThem(course.type, module.them)}</div>
+														<div>Даты: {module.dates.join(', ')}</div>
+														<div>Тренер: {getTrainer(module.trainer)}</div>
+													</div>;
+												})
+											}</div>
+										</div>}
 
-							</div>;
-						})}
+									</Accordion.Content>
+								</div>;
+							})}
 
-					</div>
+						</div>
+					</Accordion>
 				</>}
 			</>
 			}
