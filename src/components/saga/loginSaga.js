@@ -1,5 +1,6 @@
 import { checkAuthRequest, loginRequest, logoutRequest, registrationRequest } from '@/components/requests/login';
 import { setIsAuthAction, setIsAuthLoadingAction, setUserAction } from '@/components/store/store';
+import { redirect } from 'next/navigation';
 import { call, put } from 'redux-saga/effects';
 
 export function* loginSaga({payload: {email, password}}) {

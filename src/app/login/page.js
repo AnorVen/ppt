@@ -1,28 +1,38 @@
 'use client'
-import { CHECK_AUTH } from '@/components/actions';
 import { sagaActions } from '@/components/sagaActions';
-import { Router } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { redirect } from 'next/navigation'
 
 const Login = ({ params }) => {
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.main.user);
+	const isAuth = useSelector(state => state.main.isAuth);
+	const redirectToProfile =  () => redirect('/profile')
 	useEffect(() => {
-		if (localStorage.getItem('token') && !user._id){
+		console.log(localStorage.getItem('token'));
+		console.log(user);
+		if (localStorage.getItem('token') && !user.id){
 			dispatch({ type: sagaActions.CHECK_AUTH });
 		} else {
-			Router.push('/profile');
+			redirectToProfile()
 			return null
 		}
 	}, []);
+
+	useEffect(()=>{
+		if (isAuth && localStorage.getItem('token') && user.id){
+			redirectToProfile()
+		}
+	}, [isAuth])
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const handleLogin = () =>{
 		if (email && password){
 			dispatch({ type: sagaActions.LOGIN, payload: {
-					email, password
+					email,
+					password,
 				}
 			});
 		}
