@@ -95,6 +95,11 @@ const Header = () => {
 						</li>
 						<li><LinkWithActive href="/ethical_committee">этический комитет</LinkWithActive></li>
 						<li><LinkWithActive href="https://www.positum.org/" target="_blank">Всемирная Ассоциация ППТ</LinkWithActive></li>
+						<li>
+							<LinkWithActive href="/login">
+								Тренерам
+							</LinkWithActive>
+						</li>
 					</ul>
 				</li>
 				<li><LinkWithActive href="/regulations">Регламенты<span className="fa fa-angle-down"></span></LinkWithActive>

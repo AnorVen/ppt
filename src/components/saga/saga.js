@@ -6,6 +6,7 @@ import {
 	getCoursesSaga,
 	updateCourseSaga,
 } from '@/components/saga/courseSaga';
+import { checkAuthSaga, loginSaga, logoutSaga, registrationSaga } from '@/components/saga/loginSaga';
 import {
 	createSeminarSaga,
 	deleteSeminarSaga, getSeminarSaga,
@@ -28,7 +29,7 @@ import {
 	DELETE_COURSE, DELETE_SEMINAR, DELETE_TRAINER, GET_CITIES, GET_CITY,
 	GET_COURSE,
 	GET_COURSES, GET_SEMINAR, GET_SEMINARS, GET_TRAINER, GET_TRAINERS, UPDATE_CITY,
-	UPDATE_COURSE, UPDATE_SEMINAR, UPDATE_TRAINER,
+	UPDATE_COURSE, UPDATE_SEMINAR, UPDATE_TRAINER, LOGIN, LOGOUT, CHECK_AUTH, REGISTRATION,
 } from '../actions';
 
 
@@ -56,4 +57,11 @@ export default function* saga() {
 	yield takeEvery(DELETE_SEMINAR, deleteSeminarSaga);
 	yield takeEvery(GET_SEMINARS, getSeminarsSaga);
 	yield takeEvery(GET_SEMINAR, getSeminarSaga);
+
+	yield takeEvery(LOGIN, loginSaga);
+	yield takeEvery(LOGOUT, logoutSaga);
+	yield takeEvery(CHECK_AUTH, checkAuthSaga);
+	yield takeEvery(REGISTRATION, registrationSaga);
+
+
 }

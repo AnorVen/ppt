@@ -58,6 +58,9 @@ const mainSlice = createSlice({
 		from: null,
 		to: null,
 		isMobile: false,
+		isAuth: false,
+		user: {},
+		isAuthLoading: false,
 	},
 
 	reducers: {
@@ -173,9 +176,30 @@ const mainSlice = createSlice({
 				isMobile: action.payload,
 			};
 		},
+		setIsAuthAction: (state, action) => {
+			return {
+				...state,
+				isAuth: action.payload,
+			};
+		},
+		setUserAction: (state, action) => {
+			return {
+				...state,
+				user: action.payload,
+			};
+		},
+		setIsAuthLoadingAction: (state, action) => {
+			return {
+				...state,
+				isAuthLoading: action.payload,
+			};
+		},
 	},
 });
 export const {
+	setIsAuthAction,
+	setUserAction,
+	setIsAuthLoadingAction,
 	setCheckboxListSearchAction,
 	setTo,
 	setFrom,

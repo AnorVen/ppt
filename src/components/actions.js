@@ -27,6 +27,12 @@ export const DELETE_CITY = 'DELETE_CITY';
 export const UPDATE_CITY = 'UPDATE_CITY';
 export const GET_CITIES = 'GET_CITIES';
 export const GET_CITY = 'GET_CITY';
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT'
+export const CHECK_AUTH = 'CHECK_AUTH'
+export const REGISTRATION = 'REGISTRATION'
+
+
 
 
 

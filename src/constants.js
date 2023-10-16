@@ -1,4 +1,6 @@
-export const url = `https://ppt-russia.ru`;
+//export const url = `https://ppt-russia.ru`;
+export const url = `http://localhost:5000`;
+
 export const base_themes = {
 	base_them_1: 'Модуль 1: ВВЕДЕНИЕ В ППТ. АКТУАЛЬНЫЙ КОНФЛИКТ И ТЕКУЩАЯ ЖИЗНЕННАЯ СИТУАЦИЯ',
 	base_them_2: 'Модуль 2: ОСНОВНЫЕ КОНЦЕПЦИИ КОНФЛИКТОВ И СЕМЬИ',
