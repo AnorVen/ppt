@@ -141,7 +141,7 @@ Seminars = connect(
 	state => ({
 		initialValues: {
 			type: 'seminar',
-			main_trainer: '64ec819c4ab935f2de3272b9',
+			main_trainer: state?.main?.user?.id || '',
 		}, // pull initial values from account reducer
 	}),
 	{ load: true }, // bind account loading action creator
