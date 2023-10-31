@@ -1,10 +1,14 @@
 'use client';
 import AboutTab from '@/components/about-tab';
 import { CoursesTab } from '@/components/courses-tab';
+import { sagaActions } from '@/components/sagaActions';
+import { redirect } from 'next/navigation';
 import { useState } from 'react';
 import './style.scss';
+import { useDispatch } from 'react-redux';
 
 const Profile = () => {
+	const dispatch = useDispatch();
 	const [tabName, setTabName] = useState('about');
 	const handleChangeTab = (e) => {
 		setTabName(e.target.dataset.id);
@@ -19,6 +23,10 @@ const Profile = () => {
 			text: 'Мероприятия',
 		}];
 
+	const handleLogout = () =>{
+		dispatch({ type: sagaActions.LOGOUT });
+		window.location.assign('/')
+	}
 	return (
 		<div className="profile">
 			<div className="container">
@@ -30,6 +38,8 @@ const Profile = () => {
 							     data-id={item.id}>{item.text}</div>
 						);
 					})}
+					<div className={`nav-item`}
+					     onClick={handleLogout}>Выход</div>
 				</div>
 				<div className="tab">
 					{tabName === 'about' && <AboutTab />}

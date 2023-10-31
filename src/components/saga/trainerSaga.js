@@ -1,5 +1,6 @@
 import { getTrainersRequest, getTrainerRequest, updateTrainerRequest } from '@/components/requests/trainers';
 import {
+	setAboutText,
 	setCheckboxFiltersAction,
 	setCheckboxListOptionsAction,
 	setTrainer,
@@ -21,6 +22,8 @@ export function* updateTrainerSaga() {
 		const { success, payload, errors, headers } = yield call(updateTrainerRequest, user);
 		if (success) {
 			yield put(setUserAction(payload))
+			yield put(setAboutText(payload.description))
+
 			yield call(getTrainersSaga)
 		}
 	} catch (error) {

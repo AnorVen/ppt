@@ -1,5 +1,5 @@
 import { checkAuthRequest, loginRequest, logoutRequest, registrationRequest } from '@/components/requests/login';
-import { setIsAuthAction, setIsAuthLoadingAction, setUserAction } from '@/components/store/store';
+import { setAboutText, setIsAuthAction, setIsAuthLoadingAction, setUserAction } from '@/components/store/store';
 import { redirect } from 'next/navigation';
 import { call, put } from 'redux-saga/effects';
 
@@ -14,6 +14,7 @@ export function* loginSaga({payload: {email, password}}) {
 			localStorage.setItem('token', payload.accessToken);
 			yield put(setUserAction(payload.user))
 			yield put(setIsAuthAction(true))
+			yield put(setAboutText(payload.user.description))
 			console.log(payload)
 		} else {
 			console.log('errors', errors);
