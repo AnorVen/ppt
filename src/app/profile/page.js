@@ -1,21 +1,42 @@
 'use client';
-import { sagaActions } from '@/components/sagaActions';
-import Image from 'next/image';
-import Link from 'next/link';
-import './style.scss';
-import { useEffect } from 'react';
+import AboutTab from '@/components/about-tab';
+import { CoursesTab } from '@/components/courses-tab';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import './style.scss';
 
 const Profile = () => {
-	const dispatch = useDispatch();
-	const trainers = useSelector(state => state.main.trainers);
-
+	const [tabName, setTabName] = useState('about');
+	const handleChangeTab = (e) => {
+		setTabName(e.target.dataset.id);
+	};
+	const tabs = [{
+		id: 'about',
+		text: 'О себе',
+		},
+		{
+			id: 'courses',
+			text: 'Мероприятия',
+		}];
 
 	return (
-		<div className="wrapper_text">
-			<div className="trainers-list">
-				Profile
+		<div className="profile">
+			<div className="container">
+				<div className="nav">
+					{tabs.map(item => {
+						return (
+							<div key={item.id} className={`nav-item${tabName === item.id ? ' active' : ''}`}
+							     onClick={handleChangeTab}
+							     data-id={item.id}>{item.text}</div>
+						);
+					})}
+				</div>
+				<div className="tab">
+					{tabName === 'about' && <AboutTab />}
+					{tabName === 'courses' && <CoursesTab />}
+				</div>
 			</div>
+
 		</div>
 	);
 };

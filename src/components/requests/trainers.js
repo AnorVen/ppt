@@ -22,3 +22,12 @@ export const getTrainerRequest = (payload) => fetch(`${url}/api/user/get`, {
 .then(async response => await response.json())
 .catch(error => error);
 
+export const updateTrainerRequest = (payload) => fetch(`${url}/api/user/update`, {
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/json',
+	},
+	body: JSON.stringify(payload),
+})
+.then(async response => await response.json())
+.catch(error => error);

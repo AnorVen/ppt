@@ -1,5 +1,5 @@
-//export const url = `https://ppt-russia.ru`;
-export const url = `http://localhost:5000`;
+export const url = `https://ppt-russia.ru`;
+//export const url = `http://localhost:5000`;
 
 export const base_themes = {
 	base_them_1: 'Модуль 1: ВВЕДЕНИЕ В ППТ. АКТУАЛЬНЫЙ КОНФЛИКТ И ТЕКУЩАЯ ЖИЗНЕННАЯ СИТУАЦИЯ',
@@ -32,8 +32,8 @@ export const master_themes = {
 
 export const types = {
 	basic_course: 'Базовый курс',
-	seminar: 'Семинар',
 	master_course: 'Мастер курс',
+	seminar: 'Семинар',
 	master_class: 'Мастер-класс',
 	conference: 'Конференция',
 	additional_program: 'Дополнительная программа'

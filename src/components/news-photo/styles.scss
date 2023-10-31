@@ -1,0 +1,83 @@
+@import '../../semantic-ui/variables.scss';
+
+.news {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: $TableHoverBackgroundColor;
+  text-align: center;
+  line-height: 240px;
+  position: relative;
+  &__image {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    position: relative;
+    &--remove{
+      display: block;
+      position: absolute;
+      z-index: 100;
+      width: 36px;
+      height: 36px;
+      border-radius: 36px;
+      background: $PaginationBackGroundColor;
+      cursor: pointer;
+      top: 15px;
+      left: 15px;
+      &:before{
+        width: 14px;
+        height: 14px;
+        margin: -7px 0 0 -7px;
+        content: "X";
+        color: $InputBackgroundColorLight;
+        position: absolute;
+        top: -95px;
+        left: 18px;
+        display: block;
+        font-weight: 900;
+        font-size: 24px;
+      }
+    }
+  }
+  .image.icon {
+    font-size: 10em;
+    color: $roleEditorLabelColor;
+  }
+  .ui.input {
+    position: absolute;
+    bottom: 15px;
+    right: 22px;
+    z-index: 2;
+    overflow: hidden;
+    height: 36px;
+    opacity: 0;
+  }
+  .ui.input input[type="file"] {
+    padding: 0;
+    width: 36px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    top: -25px;
+  }
+
+  &__icon-wrapper {
+    position: absolute;
+    bottom: 15px;
+    right: 22px;
+    background: $PaginationBackGroundColor;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    line-height: 20px;
+  }
+  &__icon:before {
+    height: 15px;
+    width: 15px;
+    color: $InputBackgroundColorLight;
+    position: absolute;
+    top: 8px;
+    left: 11px;
+  }
+}

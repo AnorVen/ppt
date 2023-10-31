@@ -1,6 +1,5 @@
 import { getTrainersRequest, getTrainerRequest } from '@/components/requests/trainers';
 import { setCheckboxFiltersAction, setCheckboxListOptionsAction, setTrainers } from '@/components/store/store';
-import { useDispatch, useSelector } from 'react-redux';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 
 import store from '@/components/store/store'

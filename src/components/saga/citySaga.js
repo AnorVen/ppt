@@ -1,12 +1,25 @@
-import { getCitiesRequest } from '@/components/requests/cities';
+import { createCityRequest, getCitiesRequest } from '@/components/requests/cities';
 import { setCheckboxFiltersAction, setCheckboxListOptionsAction, setCities } from '@/components/store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 
 import store from '@/components/store/store'
 
-export function* createCitySaga() {
-	console.log('createCitySaga');
+export function* createCitySaga({ newCity }) {
+	console.log('createCitySaga', newCity);
+	try {
+		const { success, payload, errors, headers } = yield call(createCityRequest, {
+			name: newCity });
+		if (success) {
+			yield call(getCitiesSaga)
+		} else {
+			console.log('errors', errors);
+		}
+	} catch (error) {
+		console.log(error);
+	} finally {
+
+	}
 }
 
 export function* updateCitySaga() {

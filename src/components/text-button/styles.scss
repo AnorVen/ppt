@@ -1,0 +1,29 @@
+@import "../../semantic-ui/variables.scss";
+
+.text-button {
+  color: $PaginationBackGroundColor;
+  text-align: center;
+  outline: none;
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  &:disabled {
+    opacity: .5;
+  }
+
+  &:hover:not(:disabled) {
+    cursor: pointer;
+    filter: brightness(.7);
+  }
+
+  &__icon {
+    width: 20px;
+    position: relative;
+  }
+}

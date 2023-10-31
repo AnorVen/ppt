@@ -32,9 +32,7 @@ export const LOGOUT = 'LOGOUT'
 export const CHECK_AUTH = 'CHECK_AUTH'
 export const REGISTRATION = 'REGISTRATION'
 
-
-
-
+export const UPLOAD_FILE = 'UPLOAD_FILE'
 
 
 export const SET_CHECKBOX_FILTERS = 'SET_CHECKBOX_FILTERS';

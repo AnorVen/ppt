@@ -8,22 +8,23 @@ const Login = ({ params }) => {
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.main.user);
 	const isAuth = useSelector(state => state.main.isAuth);
-	const redirectToProfile =  () => redirect('/profile')
+	const redirectToProfile =  () => {
+		if (localStorage.getItem('token') && user.id && isAuth){
+			redirect('/profile')
+		}
+	}
 	useEffect(() => {
 		console.log(localStorage.getItem('token'));
 		console.log(user);
-		if (localStorage.getItem('token') && !user.id){
+		if (localStorage.getItem('token') && (!user.id || !isAuth) ){
 			dispatch({ type: sagaActions.CHECK_AUTH });
 		} else {
 			redirectToProfile()
-			return null
 		}
 	}, []);
 
 	useEffect(()=>{
-		if (isAuth && localStorage.getItem('token') && user.id){
 			redirectToProfile()
-		}
 	}, [isAuth])
 
 	const [email, setEmail] = useState('');

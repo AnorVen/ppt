@@ -1,10 +1,11 @@
-import { getTrainersRequest, getTrainerRequest } from '@/components/requests/trainers';
+import { getTrainersRequest, getTrainerRequest, updateTrainerRequest } from '@/components/requests/trainers';
 import {
 	setCheckboxFiltersAction,
 	setCheckboxListOptionsAction,
 	setTrainer,
-	setTrainers,
+	setTrainers, setUserAction,
 } from '@/components/store/store';
+import { setUser } from '@/utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 
@@ -15,7 +16,18 @@ export function* createTrainerSaga() {
 }
 
 export function* updateTrainerSaga() {
-	console.log('updateTrainerSaga');
+	try {
+		const user = store.getState().form.about.values
+		const { success, payload, errors, headers } = yield call(updateTrainerRequest, user);
+		if (success) {
+			yield put(setUserAction(payload))
+			yield call(getTrainersSaga)
+		}
+	} catch (error) {
+		console.log(error);
+	} finally {
+
+	}
 }
 
 export function* getTrainersSaga() {
@@ -26,15 +38,17 @@ export function* getTrainersSaga() {
 			yield put(setCheckboxListOptionsAction({...checkboxListOptions,
 				withTrainer: payload.reduce((acc, trainer) => {
 					const name = `${trainer?.surname} ${trainer?.name}`
-					acc.push({ key: trainer._id, value: trainer._id, text: name });
+					acc.push({ key: trainer.id, value: trainer.id, text: name });
 					return acc;
 				}, [])
 			}))
 
-			yield put(setTrainers(payload.reduce((acc, val) => {
-				acc[val._id] = val
+			yield put(setTrainers(
+				payload.reduce((acc, val) => {
+				acc[val.id] = val
 				return acc
-			}, {})))
+			}, {})
+			))
 		} else {
 			console.log('errors', errors);
 		}
@@ -53,7 +67,7 @@ export function* getTrainerSaga({id}) {
 			id
 		} );
 		if (success) {
-			yield put(setTrainer({ [payload._id] : payload}))
+			yield put(setTrainer({ [payload.id] : payload}))
 		} else {
 			console.log('errors', errors);
 		}

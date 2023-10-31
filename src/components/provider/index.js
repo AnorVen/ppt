@@ -1,5 +1,4 @@
 'use client'
-
 import store from '@/components/store/store';
 import { Provider } from 'react-redux';
 

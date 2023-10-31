@@ -3,6 +3,7 @@ import { constants, centers } from '@/constants';
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import saga from '@/components/saga/saga';
+import { reducer as formReducer } from 'redux-form'
 
 const mainSlice = createSlice({
 	name: 'main',
@@ -59,11 +60,45 @@ const mainSlice = createSlice({
 		to: null,
 		isMobile: false,
 		isAuth: false,
-		user: {},
+		user: {
+			"id": "64fc702ff2a33710dc44ba6d",
+			"email": "efremovgs@gmail.com",
+			"phone": "+1111111",
+			"name": "Георгий",
+			"second_name": "Георгий",
+			"surname": "Георгий",
+			"city": "64f6278716e2f16288748521",
+			"description": "123123",
+			"master": false,
+			"superUser": true,
+		},
 		isAuthLoading: false,
+		mainAboutText: "<p>Врач педиатр высшей квалификационной категории, врач психотерапевт, клинический психолог, кандидат психологических наук, доцент Амурского государственного университета и Севастопольского государственного университета. Тренер Международной Академии Позитивной Психотерапии, IAPP (Висбаден, Германия) <a>http://positum.org/training/trainers/</a>, действительный член  Всемирной ассоциации позитивной психотерапии (WAPP). Супервизор Российской психотерапевтической Ассоциации. <a>https://rpa-russia.ru/sovet-supervizorov-rpa/</a></p>",
+		descriptionNewCourses: '',
+		activeCourse: {},
+
+
 	},
 
 	reducers: {
+		setActiveCourse: (state,  action) => {
+			return {
+				...state,
+				activeCourse: action.payload,
+			};
+		},
+		setDescriptionNewCourses: (state,  action) => {
+			return {
+				...state,
+				descriptionNewCourses: action.payload,
+			};
+		},
+		setAboutText: (state, action) => {
+			return {
+				...state,
+				mainAboutText: action.payload,
+			};
+		},
 		setCheckboxListOptionsAction: (state, action) => {
 			return {
 				...state,
@@ -218,6 +253,8 @@ export const {
 	setCities,
 	setCheckboxListOptionsAction,
 	setIsMobileAction,
+	setAboutText ,
+	setDescriptionNewCourses ,
 } = mainSlice.actions;
 
 let sagaMiddleware = createSagaMiddleware();
@@ -231,6 +268,7 @@ const logger = store => next => action => {
 const store = configureStore({
 	reducer: {
 		main: mainSlice.reducer,
+		form: formReducer
 	},
 	middleware: [sagaMiddleware, logger],
 

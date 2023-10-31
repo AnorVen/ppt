@@ -28,6 +28,7 @@ const FormDataPickerFieldWithLimit = ({
 				disabled={disabled}
 				loading={loading}
 				autoComplete={autoComplete}
+				type="range"
 			/>
 			{error && touched && <span className="validation_error">{error}</span>}
 		</div>

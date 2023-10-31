@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewsPhoto snapshot test NewsPhoto 1`] = `
+<div
+  className="news"
+  data-testid="news-image-block"
+>
+  <i
+    aria-hidden="true"
+    className="image outline massive icon"
+    data-testid="news-no-image"
+    onClick={[Function]}
+  />
+  <div
+    className="ui input"
+    data-testid="news-image-input"
+  >
+    <input
+      id="input__file"
+      onChange={[Function]}
+      type="file"
+    />
+  </div>
+  <div
+    className="news__icon-wrapper"
+  >
+    <i
+      aria-hidden="true"
+      className="pencil alternate icon news__icon"
+      onClick={[Function]}
+    />
+  </div>
+</div>
+`;
+
+exports[`NewsPhoto snapshot test NewsPhoto with photo 1`] = `
+<div
+  className="news"
+  data-testid="news-image-block"
+>
+  <img
+    alt="news"
+    className="news__image"
+    data-testid="news-image"
+    src="value"
+  />
+  <div
+    className="ui input"
+    data-testid="news-image-input"
+  >
+    <input
+      id="input__file"
+      onChange={[Function]}
+      type="file"
+    />
+  </div>
+  <span
+    className="news__image--remove"
+    data-testid="news__image--remove"
+    onClick={[MockFunction]}
+  />
+  <div
+    className="news__icon-wrapper"
+  >
+    <i
+      aria-hidden="true"
+      className="pencil alternate icon news__icon"
+      onClick={[Function]}
+    />
+  </div>
+</div>
+`;

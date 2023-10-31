@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextEditorWrapper snapshot test TextEditorWrapper 1`] = `
+<div
+  data-testid="react-quill"
+  onClick={[Function]}
+>
+  components
+</div>
+`;

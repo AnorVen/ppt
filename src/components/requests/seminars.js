@@ -19,3 +19,23 @@ export const getSeminarRequest = (payload, meta) =>
 	})
 	.then(async response => await response.json())
 	.catch(error => error);
+
+export const addSeminarRequest = (payload, meta) =>
+	fetch(`${url}/api/seminar/add`, {
+		method: 'POST', headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(payload),
+	})
+	.then(async response => await response.json())
+	.catch(error => error);
+
+export const updateSeminarRequest = (payload, meta) =>
+	fetch(`${url}/api/seminar/update`, {
+		method: 'POST', headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(payload),
+	})
+	.then(async response => await response.json())
+	.catch(error => error);

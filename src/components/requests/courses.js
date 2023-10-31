@@ -20,3 +20,26 @@ export const getCourseRequest = (payload, meta) =>
 	})
 	.then(async response => await response.json())
 	.catch(error => error);
+
+
+export const createCourseRequest = (payload, meta) =>
+	fetch(`${url}/api/course/add`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(payload),
+	})
+	.then(async response => await response.json())
+	.catch(error => error);
+
+export const updateCourseRequest = (payload, meta) =>
+	fetch(`${url}/api/course/update`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(payload),
+	})
+	.then(async response => await response.json())
+	.catch(error => error);
