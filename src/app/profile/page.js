@@ -2,7 +2,6 @@
 import AboutTab from '@/components/about-tab';
 import { CoursesTab } from '@/components/courses-tab';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import './style.scss';
 
 const Profile = () => {
@@ -10,9 +9,10 @@ const Profile = () => {
 	const handleChangeTab = (e) => {
 		setTabName(e.target.dataset.id);
 	};
-	const tabs = [{
-		id: 'about',
-		text: 'О себе',
+	const tabs = [
+		{
+			id: 'about',
+			text: 'О себе',
 		},
 		{
 			id: 'courses',

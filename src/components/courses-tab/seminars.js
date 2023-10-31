@@ -1,6 +1,5 @@
 import DayPickerView from '@/components/courses-tab/day-picker';
 import { sagaActions } from '@/components/sagaActions';
-import { additionalProgramMoules, getInitialValuesAdditionalProgramSelector } from '@/components/selectors';
 import { setDescriptionNewCourses } from '@/components/store/store';
 import { TextEditor } from '@/components/text-editor';
 import { FormInputField } from '@/semantic-ui/components/form-input-field';
@@ -8,7 +7,6 @@ import { FormSelectField } from '@/semantic-ui/components/form-select-field';
 import React, { useEffect, useState } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { change, Field, FieldArray, reduxForm } from 'redux-form';
-import { createStructuredSelector } from 'reselect';
 import { Form, Grid, Segment } from 'semantic-ui-react';
 
 let Seminars = () => {
@@ -139,19 +137,14 @@ Seminars = reduxForm({
 	form: 'seminar',
 })(Seminars);
 
-const mapStateToProps = createStructuredSelector({
-	modules: additionalProgramMoules(),
-	initialValues: getInitialValuesAdditionalProgramSelector(),
-});
-
 Seminars = connect(
 	state => ({
 		initialValues: {
 			type: 'seminar',
-			main_trainer: state?.main?.user?.id || '',
+			main_trainer: '64ec819c4ab935f2de3272b9',
 		}, // pull initial values from account reducer
 	}),
-	{ }, // bind account loading action creator
+	{ load: true }, // bind account loading action creator
 )(Seminars);
 
 export default Seminars;
