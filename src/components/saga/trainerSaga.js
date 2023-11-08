@@ -1,4 +1,5 @@
 import { getTrainersRequest, getTrainerRequest, updateTrainerRequest } from '@/components/requests/trainers';
+import { checkAuthSaga } from '@/components/saga/loginSaga';
 import {
 	setAboutText,
 	setCheckboxFiltersAction,
@@ -8,6 +9,7 @@ import {
 } from '@/components/store/store';
 import { setUser } from '@/utils';
 import { useDispatch, useSelector } from 'react-redux';
+import { initialize, reset } from 'redux-form';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 
 import store from '@/components/store/store'
@@ -23,7 +25,10 @@ export function* updateTrainerSaga() {
 		if (success) {
 			yield put(setUserAction(payload))
 			yield put(setAboutText(payload.description))
-
+			yield put(initialize('about', payload, false, {
+				updateUnregisteredFields: true,
+				keepValues: false,
+			}))
 			yield call(getTrainersSaga)
 		}
 	} catch (error) {

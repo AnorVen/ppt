@@ -38,7 +38,7 @@ let AboutTab = () => {
 	const [newCity, setNewCity] = useState('');
 
 	const handleDeleteFile = () => {
-		change('about', 'image', '');
+		change('about', 'avatar', '');
 	};
 	const handleSaveChanges = () => {
 		dispatch({ type: sagaActions.UPDATE_TRAINER });
@@ -71,7 +71,7 @@ let AboutTab = () => {
 					<Grid.Row>
 						<Grid.Column mobile={16} tablet={8} computer={4}>
 							<Field
-								name="image"
+								name="avatar"
 								type="file"
 								component={NewsPhoto}
 								onSetPhotoChange={handleNewsPhotoChange}
@@ -198,7 +198,7 @@ let AboutTab = () => {
 					</Grid.Row>
 					<Grid.Row>
 						<Grid.Column>
-							<Field component={TextEditor} name="text" label="О себе" textEditorValue={textEditorValue} handleChangeText={handleChangeText}/>
+							<Field component={TextEditor} name="description" label="О себе" textEditorValue={textEditorValue} handleChangeText={handleChangeText}/>
 						</Grid.Column>
 					</Grid.Row>
 				</Grid>
@@ -216,7 +216,7 @@ AboutTab = connect(
 	state => ({
 		initialValues: state.main.user, // pull initial values from account reducer
 	}),
-	{ load: true }, // bind account loading action creator
+	{},
 )(AboutTab);
 
 export default AboutTab;

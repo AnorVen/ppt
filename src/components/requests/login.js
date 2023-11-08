@@ -44,3 +44,14 @@ export const registrationRequest = (payload) =>
 	})
 	.then(async response => await response.json())
 	.catch(error => error);
+
+export const uploadRequest = (body) =>
+	fetch(`${url}/api/upload`, {
+		method: 'POST',
+		headers: {
+			Authorization: `${localStorage.getItem('token')}`,
+		},
+		body,
+	})
+	.then(async response => await response.json())
+	.catch(error => error);

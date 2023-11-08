@@ -1,9 +1,11 @@
 'use client';
 import AboutTab from '@/components/about-tab';
+import { GET_TRAINER } from '@/components/actions';
 import { CoursesTab } from '@/components/courses-tab';
+import { getTrainerSaga } from '@/components/saga/trainerSaga';
 import { sagaActions } from '@/components/sagaActions';
 import { redirect } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './style.scss';
 import { useDispatch } from 'react-redux';
 

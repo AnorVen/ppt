@@ -20,12 +20,12 @@ const PeoplePage = () => {
 	return (
 		<div className="wrapper_text">
 			<div className="trainers-list">
-				{trainersArr.concat(trainersArr, trainersArr,trainersArr ,trainersArr,trainersArr ,trainersArr,trainersArr).map(trainer => {
+				{trainersArr.concat(trainersArr, trainersArr, trainersArr ,trainersArr,trainersArr ,trainersArr,trainersArr).map(trainer => {
 					return (
 						<div key={trainer.id} className="trainers-item">
 							<div className="avatar">
 								<Link href={`/people/${trainer.id}`}>
-									<Image src={`/images/avatars/noAva.png`} width={200} height={200}
+									<Image src={trainer.avatar} width={200} height={200}
 									       alt={`${trainer?.surname} ${trainer?.surname} ${trainer?.second_name}`} />
 								</Link>
 							</div>

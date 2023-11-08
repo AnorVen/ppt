@@ -60,13 +60,11 @@ const mainSlice = createSlice({
 		to: null,
 		isMobile: false,
 		isAuth: false,
-		user: {},
+		user: {id: '6540d66c914cdf450fb447f5'},
 		isAuthLoading: false,
 		mainAboutText: "",
 		descriptionNewCourses: '',
 		activeCourse: {},
-
-
 	},
 
 	reducers: {

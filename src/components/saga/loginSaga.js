@@ -1,6 +1,13 @@
-import { checkAuthRequest, loginRequest, logoutRequest, registrationRequest } from '@/components/requests/login';
-import { setAboutText, setIsAuthAction, setIsAuthLoadingAction, setUserAction } from '@/components/store/store';
+import {
+	checkAuthRequest,
+	loginRequest,
+	logoutRequest,
+	registrationRequest,
+	uploadRequest,
+} from '@/components/requests/login';
+import store, { setAboutText, setIsAuthAction, setIsAuthLoadingAction, setUserAction } from '@/components/store/store';
 import { redirect } from 'next/navigation';
+import { change } from 'redux-form';
 import { call, put } from 'redux-saga/effects';
 
 export function* loginSaga({payload: {email, password}}) {
@@ -65,6 +72,24 @@ export function* logoutSaga() {
 		localStorage.removeItem('token');
 		yield put(setUserAction({}))
 		yield put(setIsAuthAction(false))
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+export function* uploadSaga({file}) {
+	console.log('uploadSaga', file);
+	const user = store.getState().main.user
+	console.log(user);
+	const formData = new FormData();
+	formData.append('file', file, file.name);
+	formData.append('user', user.id);
+	try {
+		const { success, payload, errors } = yield call(uploadRequest, formData);
+		if (success){
+			yield put(change('about', 'avatar', payload))
+		}
+
 	} catch (error) {
 		console.log(error);
 	}

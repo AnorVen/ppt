@@ -11,7 +11,9 @@ export const NewsPhoto = ({ onSetPhotoChange, input, onDeleteFile }) => {
 			) : (
 				<Icon size="massive" name="image outline" data-testid="news-no-image" />
 			)}
-			<Input onChange={onSetPhotoChange} type="file" id="input__file" data-testid="news-image-input" />
+			<Input onChange={onSetPhotoChange} type="file" id="input__file"
+			       accept="image/*, image/jpeg"
+				data-testid="news-image-input" />
 			{input.value && (
 				<span className="news__image--remove" onClick={onDeleteFile} data-testid="news__image--remove" />
 			)}
