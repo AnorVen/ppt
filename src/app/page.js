@@ -8,12 +8,12 @@ import NewsBlock from '../components/newsBlock';
 export default function Home() {
 	return (
 		<main className={'main'}>
-			<Swiper />
-			<MainText />
 			<div className="content-block">
+				<MainText />
 				<NewsBlock />
-				<CalendarBlock />
+
 			</div>
+			<CalendarBlock />
 		</main>
 	);
 }
