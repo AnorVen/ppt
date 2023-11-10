@@ -15,10 +15,6 @@ const Profile = () => {
 	useEffect(() => {
 		if (localStorage.getItem('token') && (!user.id || !isAuth) ){
 			dispatch({ type: sagaActions.CHECK_AUTH });
-		} else {
-			if (localStorage.getItem('token') && user.id && isAuth){
-				redirect('/profile')
-			}
 		}
 	}, []);
 	const dispatch = useDispatch();
