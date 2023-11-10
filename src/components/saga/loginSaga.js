@@ -87,7 +87,7 @@ export function* uploadSaga({file}) {
 	try {
 		const { success, payload, errors } = yield call(uploadRequest, formData);
 		if (success){
-			yield put(change('about', 'avatar', payload))
+			yield put(change('about', 'avatar', payload, true))
 		}
 
 	} catch (error) {

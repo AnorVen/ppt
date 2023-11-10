@@ -12,7 +12,6 @@ import { Button, Form, Grid, Segment } from 'semantic-ui-react';
 import './style.scss';
 
 
-
 let AboutTab = () => {
 	const dispatch = useDispatch();
 	const cities = useSelector(state => Object.entries(state.main.cities).map(
@@ -38,7 +37,7 @@ let AboutTab = () => {
 	const [newCity, setNewCity] = useState('');
 
 	const handleDeleteFile = () => {
-		change('about', 'avatar', '');
+		change('about', 'avatar', '', true,{});
 	};
 	const handleSaveChanges = () => {
 		dispatch({ type: sagaActions.UPDATE_TRAINER });

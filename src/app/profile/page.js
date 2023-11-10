@@ -7,9 +7,20 @@ import { sagaActions } from '@/components/sagaActions';
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import './style.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Profile = () => {
+	const user = useSelector(state => state.main.user);
+	const isAuth = useSelector(state => state.main.isAuth);
+	useEffect(() => {
+		if (localStorage.getItem('token') && (!user.id || !isAuth) ){
+			dispatch({ type: sagaActions.CHECK_AUTH });
+		} else {
+			if (localStorage.getItem('token') && user.id && isAuth){
+				redirect('/profile')
+			}
+		}
+	}, []);
 	const dispatch = useDispatch();
 	const [tabName, setTabName] = useState('about');
 	const handleChangeTab = (e) => {
