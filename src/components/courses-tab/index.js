@@ -27,7 +27,7 @@ export const CoursesTab = () => {
 		master_course: <MasterCourse/>,
 		master_class: <Seminars />,
 		conference: <Seminars />,
-		additional_program: <AdditionalProgram />,
+		additional_program: <Seminars />,
 	};
 
 	const saveVariants = {
