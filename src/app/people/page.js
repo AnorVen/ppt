@@ -1,6 +1,5 @@
 'use client';
 import { sagaActions } from '@/components/sagaActions';
-import Image from 'next/image';
 import Link from 'next/link';
 import './style.scss';
 import { useEffect } from 'react';
@@ -25,7 +24,7 @@ const PeoplePage = () => {
 						<div key={trainer.id} className="trainers-item">
 							<div className="avatar">
 								<Link href={`/people/${trainer.id}`}>
-									<Image src={trainer.avatar} width={200} height={200}
+									<img src={trainer.avatar} width={200} height={200}
 									       alt={`${trainer?.surname} ${trainer?.surname} ${trainer?.second_name}`} />
 								</Link>
 							</div>

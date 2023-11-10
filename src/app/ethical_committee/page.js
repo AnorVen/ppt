@@ -7,15 +7,15 @@ const EthicalCommitete = ({ params }) => {
 		<>
 			<div className="faces">
 				<div>
-					<Image src={`/images/avatars/noAva.png`} width={200} height={200}
+					<img src={`/images/avatars/noAva.png`} width={200} height={200}
 					       alt={`Галина Скрябина`} />
 					<p>Галина Скрябина</p></div>
 				<div>
-					<Image src={`/images/avatars/noAva.png`} width={200} height={200}
+					<img src={`/images/avatars/noAva.png`} width={200} height={200}
 					       alt={`Максим Чекмарев`} />
 					<p>Максим Чекмарев</p></div>
 				<div>
-					<Image src={`/images/avatars/noAva.png`} width={200} height={200}
+					<img src={`/images/avatars/noAva.png`} width={200} height={200}
 					       alt={`Павел Фролов`} />
 					<p>Павел Фролов</p></div>
 			</div>

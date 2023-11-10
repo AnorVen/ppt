@@ -31,13 +31,6 @@ const AdditionalProgramWrap = ({ modules }) => {
 			setNewCity('');
 		}
 	};
-	useEffect(() => {
-		dispatch({ type: sagaActions.GET_COURSES });
-		dispatch({ type: sagaActions.GET_CENTERS });
-		dispatch({ type: sagaActions.GET_SEMINARS });
-		dispatch({ type: sagaActions.GET_TRAINERS });
-		dispatch({ type: sagaActions.GET_CITIES });
-	}, []);
 	const cities = useSelector(state => Object.entries(state.main.cities).map(
 		([id, city]) => {
 			return {
