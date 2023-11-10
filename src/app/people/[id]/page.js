@@ -4,16 +4,7 @@ import { constants, types } from '@/constants';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Accordion } from 'semantic-ui-react';
 import './style.scss';
-
-
-const getThem = (type, them) => {
-	if (type === 'basic_course') {
-		return constants.base_themes[them];
-	}
-	return constants.master_themes[them];
-};
 
 const PeopleInfo = ({ params }) => {
 	const dispatch = useDispatch();
@@ -28,7 +19,7 @@ const PeopleInfo = ({ params }) => {
 			{trainer && <>
 				<div className="description">
 					<div className="avatar">
-						<Image src={`/images/avatars/noAva.png`} width={200} height={200}
+						<Image src={trainer.avatar} width={200} height={200}
 						       alt={`${trainer?.surname} ${trainer?.name} ${trainer?.second_name}`} />
 					</div>
 					<div className="text-block">

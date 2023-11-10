@@ -11,7 +11,6 @@ export default function Home() {
 			<div className="content-block">
 				<MainText />
 				<NewsBlock />
-
 			</div>
 			<CalendarBlock />
 		</main>
