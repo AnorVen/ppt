@@ -103,9 +103,9 @@ const Header = () => {
 								люди<span className="fa fa-angle-down"></span>
 							</LinkWithActive>
 							<ul className="submenu">
-								<li><LinkWithActive href="/people">российские тренеры
+								<li><LinkWithActive href="/people/russian_ppt_trainers">российские тренеры
 									ППТ</LinkWithActive></li>
-								<li><LinkWithActive href="/people">сертифицированные терапевты
+								<li><LinkWithActive href="/people/certified_therapists">сертифицированные терапевты
 									ППТ</LinkWithActive></li>
 							</ul>
 						</li>
