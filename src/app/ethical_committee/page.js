@@ -13,29 +13,27 @@ const EthicalCommitete = ({ params }) => {
 	return (
 		<div className="wrapper_text">
 			<div className="faces">
-				<div>
 					<Link href="/people/654ea25d93dff5ed47343439">
-						<img src={`/images/654ea25d93dff5ed47343439/avatar.jpg`} width={200} height={200}
+						<img src={`/static/images/654ea25d93dff5ed47343439/avatar.jpg`}
+						     width={200} height={200}
 						     alt={`Галина Скрябина`} />
 						<p>Галина Скрябина</p>
 					</Link>
-				</div>
-				<div>
+
 					<Link href="/people/654ee7596ee3674c024861bd">
-						<img src={`/images/noAva.jpg`} width={200} height={200}
+						<img src={`/static/images/noAva.jpg`} width={200} height={200}
 						     alt={`Максим Чекмарев`} />
 						<p>Максим Чекмарев</p>
 					</Link>
-				</div>
-				<div>
+
 					<Link href="/people/654eedbe6ee3674c024863c3">
-						<img src={`/images/noAva.jpg`} width={200} height={200}
+						<img src={`/static/images/noAva.jpg`} width={200} height={200}
 						     alt={`Павел Фролов`} />
 						<p>Павел Фролов</p>
 					</Link>
-				</div>
 
 			</div>
+			<p className="email">Для обращения к Этическому комитету писать на почту <a href="mailto:ethics@ppt-russia.ru">ethics@ppt-russia.ru</a></p>
 			<h3>Заключения</h3>
 			<div>
 
