@@ -1,22 +1,23 @@
-import React, { useMemo } from 'react';
-import { createStructuredSelector } from 'reselect';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { setOpenedFilterDropdownIdAction, setSortingAction } from '@/components/store/store';
 import PropTypes from 'prop-types';
-import { CustomFilterView } from './custom-filter-view';
-import { setFilterSearchAction, setOpenedFilterDropdownIdAction, setSortingAction } from '@/components/store/store';
+import React, { useMemo } from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import { FilterSearchType } from '../prop-types';
+import { CustomFilterView } from './custom-filter-view';
 
 export const CustomFilterWrapper = ({
-	columnData,
-}) => {
-	const dispatch = useDispatch()
-	const onSetDropdownOpen = (...params) => dispatch(setOpenedFilterDropdownIdAction(...params))
-	const onSetSorting =(...params) => dispatch(setSortingAction(...params))
-	const sorting =  useSelector((state) => state.main.sorting)
-	const openedFilterDropdownId = useSelector((state) => state.main.openedFilterDropdownId)
-	const filterSearch = useSelector((state) => state.main.filterSearch)
-	const isFiltersVisible = useSelector((state) => state.main.isFiltersVisible)
-	const checkboxFilters = useSelector((state) => state.main.checkboxFilters)
+	                                    columnData,
+                                    }) => {
+
+	const dispatch = useDispatch();
+	const onSetDropdownOpen = (...params) => dispatch(setOpenedFilterDropdownIdAction(...params));
+	const onSetSorting = (...params) => dispatch(setSortingAction(...params));
+	const sorting = useSelector((state) => state.main.sorting);
+	const openedFilterDropdownId = useSelector((state) => state.main.openedFilterDropdownId);
+	const filterSearch = useSelector((state) => state.main.filterSearch);
+	const isFiltersVisible = useSelector((state) => state.main.isFiltersVisible);
+	const checkboxFilters = useSelector((state) => state.main.checkboxFilters);
 
 	const handleSetDropdown = () => {
 		onSetDropdownOpen(openedFilterDropdownId === columnData.id ? '' : columnData.id);
@@ -36,7 +37,7 @@ export const CustomFilterWrapper = ({
 
 		const isCheckboxOptionCheck = Boolean(
 			checkboxFilters[columnData.filterName] &&
-				Object.values(checkboxFilters[columnData.filterName]).filter(item => item).length,
+			Object.values(checkboxFilters[columnData.filterName]).filter(item => item).length,
 		);
 
 		if (isLineFilled || isDropdownOpen || isCheckboxOptionCheck) {
@@ -68,13 +69,9 @@ export const CustomFilterWrapper = ({
 	);
 };
 
-const mapStateToProps = createStructuredSelector({
+const mapStateToProps = createStructuredSelector({});
 
-});
-
-const mapDispatchToProps = {
-
-};
+const mapDispatchToProps = {};
 
 const CustomFilter = connect(mapStateToProps, mapDispatchToProps)(CustomFilterWrapper);
 

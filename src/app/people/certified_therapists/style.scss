@@ -1,0 +1,20 @@
+.trainers{
+  &-list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+  }
+  &-item{
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    width: 200px;
+    flex-direction: column;
+    .avatar{
+      margin-right: 30px;
+      width: 200px;
+      height: auto;
+    }
+  }
+}

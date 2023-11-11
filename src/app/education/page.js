@@ -170,8 +170,6 @@ const StudyPage = () => {
 			if ((fromFilter || toFilter) && !timeInFilter) {
 				temp = false;
 			}
-			console.log(timeInFilter);
-			console.log(temp);
 			if (temp) {
 				acc.push(item);
 			}

@@ -25,7 +25,22 @@ export const FilterDropdownContentWrapper = ({ columnData }) => {
 	const from = useSelector((state) => state.main.from);
 	const to = useSelector((state) => state.main.to);
 	const checkboxListSearch = useSelector((state) => state.main.checkboxListSearch);
-	const checkboxListOptions = useSelector((state) => state.main.checkboxListOptions)
+	const checkboxListOptionsWithoutFiltersCity = useSelector((state) => state.main.checkboxListOptions)
+
+	console.log(checkboxListOptionsWithoutFiltersCity);
+	const courses = useSelector((state) => state.main.courses);
+	const seminars = useSelector((state) => state.main.seminars);
+	const filterArr = courses.concat(seminars).map(item => item.city);
+	const checkboxListOptions = {
+		...checkboxListOptionsWithoutFiltersCity,
+		withCity: checkboxListOptionsWithoutFiltersCity?.withCity?.filter(item => filterArr.includes(item.value)) || [],
+	};
+
+	console.log(checkboxListOptions);
+
+
+
+
 	const chosenOptions = useSelector(() => {
 		return Object.keys(checkboxFilters).reduce((result, key) => {
 			result[key] = Object.entries(checkboxFilters[key]).reduce((prev, [key, value]) => {
