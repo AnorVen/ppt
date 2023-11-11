@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const PeoplePage = () => {
 	const dispatch = useDispatch();
 	const trainers = useSelector(state => state.main.trainers);
-	const trainersArr = Object.values(trainers);
+	const trainersArr = Object.values(trainers).filter(item => item.type === 'trainer');
 	useEffect(() => {
 		if (!trainersArr.length) {
 			dispatch({ type: sagaActions.GET_TRAINERS });
@@ -19,7 +19,7 @@ const PeoplePage = () => {
 	return (
 		<div className="wrapper_text">
 			<div className="trainers-list">
-				{trainersArr.concat(trainersArr, trainersArr, trainersArr ,trainersArr,trainersArr ,trainersArr,trainersArr).map(trainer => {
+				{trainersArr.map(trainer => {
 					return (
 						<div key={trainer.id} className="trainers-item">
 							<div className="avatar">
