@@ -25,12 +25,12 @@ const PeoplePage = () => {
 							<div className="avatar">
 								<Link href={`/people/${trainer.id}`}>
 									<img src={trainer.avatar} width={200} height={200}
-									       alt={`${trainer?.surname} ${trainer?.surname} ${trainer?.second_name}`} />
+									       alt={`${trainer?.surname} ${trainer?.name} ${trainer?.second_name}`} />
 								</Link>
 							</div>
 							<div className="text-block">
 								<div><Link
-									href={`/people/${trainer.id}`}>{trainer.surname} {trainer.surname} {trainer.second_name}</Link>
+									href={`/people/${trainer.id}`}>{trainer.surname} {trainer.name} {trainer.second_name}</Link>
 								</div>
 								<div>Контакты:
 									{
