@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const PeoplePage = () => {
 	const dispatch = useDispatch();
-	const trainers = useSelector(state => state.main.trainers).filter(item => item.type === 'trainer');
-	const trainersArr = Object.values(trainers);
+	const trainers = useSelector(state => state.main.trainers);
+	const trainersArr = Object.values(trainers).filter(item => item?.type === 'trainer');
 	useEffect(() => {
 		if (!trainersArr.length) {
 			dispatch({ type: sagaActions.GET_TRAINERS });
