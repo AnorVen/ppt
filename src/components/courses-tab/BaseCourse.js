@@ -131,14 +131,14 @@ let BaseCourse = () => {
 
 
 BaseCourse = reduxForm({
-	form: 'course',
+	form: 'basic_course',
 })(BaseCourse);
 
 BaseCourse = connect(
 	state => ({
 		initialValues: {
 			type: 'basic_course',
-			main_trainer: '64ec819c4ab935f2de3272b9',
+			main_trainer: state.main.user.id,
 			modules: basic_course.map(item => {
 				return {
 					...item,

@@ -7,9 +7,9 @@ import { reset } from 'redux-form';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 import store from '@/components/store/store'
 
-export function* createSeminarSaga() {
+export function* createSeminarSaga({variant}) {
 	try {
-		const data = yield select(seminarForm())
+		const data = yield select(seminarForm(variant))
 		if (data._id){
 			yield call(updateSeminarSaga)
 			return

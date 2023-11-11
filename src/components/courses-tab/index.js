@@ -39,7 +39,7 @@ export const CoursesTab = () => {
 		additional_program: 'CREATE_SEMINAR',
 	};
 	const handleSaveChanges = () => {
-		dispatch({ type: sagaActions[saveVariants[type]] });
+		dispatch({ type: sagaActions[saveVariants[type]], variant: type });
 	};
 	return <div>
 		<h3>Добавить новое мероприятие</h3>

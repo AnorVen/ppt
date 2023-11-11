@@ -11,14 +11,14 @@ export const additionalProgramMoules = () =>
 		console.log('formValues', formValues);
 		return formValues?.modules || [];
 	});
-export const courseForm = () =>
-	createSelector(getFormValues('course'), formValues => {
+export const courseForm = (type) =>
+	createSelector(getFormValues(type), formValues => {
 		console.log('formValues', formValues);
 		return formValues || {};
 	});
 
-export const seminarForm = () =>
-	createSelector(getFormValues('seminar'), formValues => {
+export const seminarForm = (variant) =>
+	createSelector(getFormValues(variant), formValues => {
 		console.log('formValues', formValues);
 		return formValues || {};
 	});

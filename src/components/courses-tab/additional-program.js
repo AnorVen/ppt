@@ -136,7 +136,7 @@ const AdditionalProgramWrap = ({ modules }) => {
 
 
 const AdditionalProgramForm = reduxForm({
-	form: 'seminar',
+	form: 'additional_program',
 	enableReinitialize: true,
 })(AdditionalProgramWrap);
 

@@ -131,7 +131,7 @@ let MasterCourse = () => {
 
 
 MasterCourse = reduxForm({
-	form: 'course',
+	form: 'master_course',
 })(MasterCourse);
 
 MasterCourse = connect(

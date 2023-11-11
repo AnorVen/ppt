@@ -16,9 +16,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { change, reset } from 'redux-form';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 
-export function* createCourseSaga() {
+export function* createCourseSaga({variants}) {
 	try {
-		const data = yield select(courseForm())
+		const data = yield select(courseForm(variants))
 		console.log('data', data);
 		if (data._id){
 			yield call(updateCourseSaga)
