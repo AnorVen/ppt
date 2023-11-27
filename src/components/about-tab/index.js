@@ -57,7 +57,6 @@ let AboutTab = () => {
 		return form?.values?.password === form.values?.password_repeat ? undefined : 'Пароль не совпадает';
 	}
 
-
 	const handleChangeText = value => {
 		dispatch(setAboutText(value))
 	};

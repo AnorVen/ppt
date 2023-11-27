@@ -5,7 +5,6 @@ import { Accordion, Icon } from 'semantic-ui-react';
 import './style.scss';
 
 const EthicalCommitete = ({ params }) => {
-	console.log('ethical', params);
 	const [activeIndex, setActiveIndex] = useState(-1);
 	const handleClick = (e, { index }) => {
 		setActiveIndex(activeIndex === index ? -1 : index);
@@ -21,13 +20,13 @@ const EthicalCommitete = ({ params }) => {
 					</Link>
 
 					<Link href="/people/654ee7596ee3674c024861bd">
-						<img src={`/static/images/noAva.jpg`} width={200} height={200}
+						<img src={`/static/images/654ee7596ee3674c024861bd/avatar.jpg`} width={200} height={200}
 						     alt={`Максим Чекмарев`} />
 						<p>Максим Чекмарев</p>
 					</Link>
 
 					<Link href="/people/654eedbe6ee3674c024863c3">
-						<img src={`/static/images/noAva.jpg`} width={200} height={200}
+						<img src={`/static/images/654eedbe6ee3674c024863c3/avatar.jpg`} width={200} height={200}
 						     alt={`Павел Фролов`} />
 						<p>Павел Фролов</p>
 					</Link>

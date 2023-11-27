@@ -11,6 +11,7 @@ export const additionalProgramMoules = () =>
 		console.log('formValues', formValues);
 		return formValues?.modules || [];
 	});
+
 export const courseForm = (type) =>
 	createSelector(getFormValues(type), formValues => {
 		console.log('formValues', formValues);
@@ -25,11 +26,8 @@ export const seminarForm = (variant) =>
 
 
 export const getInitialValuesAdditionalProgramSelector = () =>
-	createSelector(mainState, seminarForm, ({ user }, form) => {
-		if (Object.keys(form).length){
-			return form
-		}
-		return {
+	createSelector(mainState, getFormValues('additional_program'), ({ user }, formValues) => {
+		return formValues || {
 			main_trainer: user.id,
 			type: 'seminar',
 			modules: [{

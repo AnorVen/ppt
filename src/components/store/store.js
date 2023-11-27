@@ -60,7 +60,7 @@ const mainSlice = createSlice({
 		to: null,
 		isMobile: false,
 		isAuth: false,
-		user: {id: '6540d66c914cdf450fb447f5'},
+		user: {},
 		isAuthLoading: false,
 		mainAboutText: "",
 		descriptionNewCourses: '',

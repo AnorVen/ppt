@@ -19,7 +19,7 @@ const PeopleInfo = ({ params }) => {
 			{trainer && <>
 				<div className="description">
 					<div className="avatar">
-						<Image src={trainer.avatar} width={200} height={200}
+						<img src={trainer.avatar} width={200} height={200}
 						       alt={`${trainer?.surname} ${trainer?.name} ${trainer?.second_name}`} />
 					</div>
 					<div className="text-block">
@@ -35,3 +35,5 @@ const PeopleInfo = ({ params }) => {
 	);
 };
 export default PeopleInfo;
+
+

@@ -23,7 +23,6 @@ const ReactQuillBase = dynamic(
 
 export function TextEditor({ label, textEditorValue, handleChangeText, height = 200 }) {
 	const quillRef = useRef(null);
-	console.log(quillRef.current?.getEditor());
 	return (
 		<>
 			<h3>{label}</h3>

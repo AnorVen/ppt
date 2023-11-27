@@ -23,10 +23,10 @@ export const logoutRequest = () =>
 
 export const checkAuthRequest = () =>
 	fetch(`${url}/api/refresh`, {
-		method: 'POST',
+		method: 'GET',
+		credentials: 'include',
 		headers: {
 			'Content-Type': 'application/json',
-			Authorization: `Bearer ${localStorage.getItem('token')}`
 		},
 		body: JSON.stringify({}),
 	})

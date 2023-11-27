@@ -9,11 +9,17 @@ import { useEffect, useState } from 'react';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 
+
 const Profile = () => {
 	const user = useSelector(state => state.main.user);
 	const isAuth = useSelector(state => state.main.isAuth);
+	console.log('user', user);
 	useEffect(() => {
-		if (localStorage.getItem('token') && (!user.id || !isAuth) ){
+		console.log(!Object.keys(user).length);
+		console.log(localStorage.getItem('token'));
+		console.log(isAuth);
+		console.log(user);
+		if (localStorage.getItem('token') && !Object.keys(user).length  ){
 			dispatch({ type: sagaActions.CHECK_AUTH });
 		}
 	}, []);

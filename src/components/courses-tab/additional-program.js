@@ -14,7 +14,7 @@ import { Field, FieldArray, getFormValues, reduxForm } from 'redux-form';
 import { createSelector, createStructuredSelector } from 'reselect';
 import { Form, Grid, Segment } from 'semantic-ui-react';
 
-const AdditionalProgramWrap = ({ modules }) => {
+const AdditionalProgramWrap = () => {
 	const dispatch = useDispatch();
 	const trainers = useSelector(state => Object.values(state.main.trainers).map(
 		(trainer) => {
@@ -43,7 +43,6 @@ const AdditionalProgramWrap = ({ modules }) => {
 	const handleChangeText = description => {
 		dispatch(setDescriptionNewCourses(description));
 	};
-	console.log('modules', modules);
 	return <div>
 		<Form className="general" data-testid="general-editor">
 			<Grid>
@@ -141,10 +140,22 @@ const AdditionalProgramForm = reduxForm({
 })(AdditionalProgramWrap);
 
 
-const mapStateToProps = createStructuredSelector({
-	modules: additionalProgramMoules(),
-	initialValues: getInitialValuesAdditionalProgramSelector(),
-});
+const mapStateToProps = state => ({
+	initialValues: {
+		main_trainer: state?.main?.user?.id || '',
+		type: 'seminar',
+		modules: [{
+			module_number: 1,
+			trainer: '',
+			dates: [],
+			count: 0,
+			them: '',
+			description: '',
+			city: '',
+		}],
+	}, // pull initial values from account reducer
+})
+
 const AdditionalProgram = connect(mapStateToProps,
 	{},
 )(AdditionalProgramForm);

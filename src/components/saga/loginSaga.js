@@ -6,7 +6,7 @@ import {
 	uploadRequest,
 } from '@/components/requests/login';
 import store, { setAboutText, setIsAuthAction, setIsAuthLoadingAction, setUserAction } from '@/components/store/store';
-import { redirect } from 'next/navigation';
+
 import { change } from 'redux-form';
 import { call, put } from 'redux-saga/effects';
 
@@ -19,6 +19,7 @@ export function* loginSaga({payload: {email, password}}) {
 		});
 		if (success) {
 			localStorage.setItem('token', payload.accessToken);
+			localStorage.setItem('user_id', payload.user.id);
 			yield put(setUserAction(payload.user))
 			yield put(setIsAuthAction(true))
 			yield put(setAboutText(payload.user.description))
@@ -34,6 +35,7 @@ export function* loginSaga({payload: {email, password}}) {
 }
 
 export function* checkAuthSaga() {
+	console.log('checkAuthSaga');
 	try {
 		yield put(setIsAuthLoadingAction(true))
 		const { success, payload, errors } = yield call(checkAuthRequest);
