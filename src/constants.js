@@ -57,6 +57,11 @@ export const centers = [
 	},
 ];
 
+export const typeToThem = {
+	basic_course: base_themes,
+	master_course: master_themes,
+}
+
 export const courses = [
 	{
 		type: 'basic_course',

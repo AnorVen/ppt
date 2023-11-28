@@ -11,7 +11,7 @@ export function* createSeminarSaga({variant}) {
 	try {
 		const data = yield select(seminarForm(variant))
 		if (data._id){
-			yield call(updateSeminarSaga)
+			yield call(updateSeminarSaga, {variant: variant})
 			return
 		}
 		const { success, payload, errors, headers } = yield call(addSeminarRequest, data);
@@ -21,11 +21,11 @@ export function* createSeminarSaga({variant}) {
 	} catch (e){
 		console.log(e);
 	} finally {
-		yield put(reset('course'))
+		yield put(reset(variant))
 	}
 }
 
-export function* updateSeminarSaga() {
+export function* updateSeminarSaga({variant}) {
 	try {
 		const data = yield select(seminarForm())
 		if (!data._id){
@@ -40,7 +40,7 @@ export function* updateSeminarSaga() {
 
 		console.log(e);
 	} finally {
-		yield put(reset('course'))
+		yield put(reset(variant))
 	}
 }
 

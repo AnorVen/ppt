@@ -16,6 +16,8 @@
   display: flex;
   flex-direction: column;
   margin-right: 15px;
+  width: 170px;
+  flex-shrink: 0;
   &-item {
     border-bottom: 1px solid #dee2e6;
     margin-bottom: 1rem;

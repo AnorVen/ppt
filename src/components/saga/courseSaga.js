@@ -16,28 +16,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { change, reset } from 'redux-form';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 
-export function* createCourseSaga({variants}) {
+export function* createCourseSaga({variant}) {
+	console.log('variant', variant);
 	try {
-		const data = yield select(courseForm(variants))
+		const data = yield select(courseForm(variant))
 		console.log('data', data);
 		if (data._id){
-			yield call(updateCourseSaga)
+			yield call(updateCourseSaga, {variant: variant})
 			return
 		}
 		const { success, payload, errors, headers } = yield call(createCourseRequest, data);
 		if (success){
 			yield call(getCoursesSaga)
-			console.log(yield select(courseForm()));
 		}
 	} catch (e){
 
 	console.log(e);
 	} finally {
-		yield put(reset('course'))
+		yield put(reset(variant))
 	}
 }
 
-export function* updateCourseSaga() {
+export function* updateCourseSaga({variant}) {
 	try {
 		const data = yield select(courseForm())
 		if (!data._id){
@@ -52,7 +52,7 @@ export function* updateCourseSaga() {
 
 		console.log(e);
 	} finally {
-		yield put(reset('course'))
+		yield put(reset(variant))
 	}
 }
 
