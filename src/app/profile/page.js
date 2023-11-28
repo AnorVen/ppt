@@ -1,6 +1,7 @@
 'use client';
 import AboutTab from '@/components/about-tab';
 import { GET_TRAINER } from '@/components/actions';
+import { CoursesListTab } from '@/components/courses-list-tab';
 import { CoursesTab } from '@/components/courses-tab';
 import { getTrainerSaga } from '@/components/saga/trainerSaga';
 import { sagaActions } from '@/components/sagaActions';
@@ -11,17 +12,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 const Profile = () => {
-	const user = useSelector(state => state.main.user);
-	const isAuth = useSelector(state => state.main.isAuth);
-	console.log('user', user);
 	useEffect(() => {
-		console.log(!Object.keys(user).length);
-		console.log(localStorage.getItem('token'));
-		console.log(isAuth);
-		console.log(user);
-		if (localStorage.getItem('token') && !Object.keys(user).length  ){
-			dispatch({ type: sagaActions.CHECK_AUTH });
-		}
+		dispatch({ type: sagaActions.CHECK_AUTH });
+		dispatch({ type: sagaActions.GET_COURSES });
+		dispatch({ type: sagaActions.GET_CENTERS });
+		dispatch({ type: sagaActions.GET_SEMINARS });
+		dispatch({ type: sagaActions.GET_TRAINERS });
+		dispatch({ type: sagaActions.GET_CITIES });
 	}, []);
 	const dispatch = useDispatch();
 	const [tabName, setTabName] = useState('about');
@@ -35,8 +32,13 @@ const Profile = () => {
 		},
 		{
 			id: 'courses',
-			text: 'Мероприятия',
-		}];
+			text: 'Добавить мероприятие',
+		},
+		{
+			id: 'coursesList',
+			text: 'Мои мероприятия',
+		},
+	];
 
 	const handleLogout = () =>{
 		dispatch({ type: sagaActions.LOGOUT });
@@ -59,6 +61,7 @@ const Profile = () => {
 				<div className="tab">
 					{tabName === 'about' && <AboutTab />}
 					{tabName === 'courses' && <CoursesTab />}
+					{tabName === 'coursesList' && <CoursesListTab />}
 				</div>
 			</div>
 

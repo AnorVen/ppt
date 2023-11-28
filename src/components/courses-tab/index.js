@@ -13,13 +13,6 @@ import './style.scss';
 
 export const CoursesTab = () => {
 	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch({ type: sagaActions.GET_COURSES });
-		dispatch({ type: sagaActions.GET_CENTERS });
-		dispatch({ type: sagaActions.GET_SEMINARS });
-		dispatch({ type: sagaActions.GET_TRAINERS });
-		dispatch({ type: sagaActions.GET_CITIES });
-	}, []);
 	const [type, setType] = useState('basic_course');
 	const variants = {
 		basic_course: <BaseCourse/>,
