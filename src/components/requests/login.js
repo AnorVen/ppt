@@ -25,10 +25,7 @@ export const checkAuthRequest = () =>
 	fetch(`${url}/api/refresh`, {
 		method: 'GET',
 		credentials: 'include',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({}),
+		withCredentials: true
 	})
 	.then(async response => await response.json())
 	.catch(error => error);

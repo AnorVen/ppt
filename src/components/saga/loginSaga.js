@@ -39,6 +39,8 @@ export function* checkAuthSaga() {
 	try {
 		yield put(setIsAuthLoadingAction(true))
 		const { success, payload, errors } = yield call(checkAuthRequest);
+		console.log(success);
+		console.log(payload);
 		if (success) {
 			localStorage.setItem('token', payload.accessToken);
 			yield put(setUserAction(payload.user))
