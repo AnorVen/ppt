@@ -3,26 +3,29 @@
 import { sagaActions } from '@/components/sagaActions';
 import { setActiveCourse } from '@/components/store/store';
 import { types, typeToThem } from '@/constants';
+import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { initialize } from 'redux-form';
 import { Button } from 'semantic-ui-react';
 import './style.scss';
 
 export const CoursesListTab = ({
 	                               handleChangeTab,
-	                               setCourseType
+	                               setCourseType,
                                }) => {
 	const dispatch = useDispatch();
-	const myCourses = useSelector(state => {
-		const id = state.main.user.id;
-		const courses = state.main.courses;
-		const seminars = state.main.seminars;
+	const id = useSelector(state => state.main.user.id);
+	const courses = useSelector(state => state.main.courses);
+	const seminars = useSelector(state => state.main.seminars);
+	const trainers = useSelector(state => state.main.trainers);
+	const cities = useSelector(state => state.main.cities);
+
+	const myCourses = useMemo(() => {
 		let temp = courses.concat(seminars);
 		console.log(id, temp);
 		return temp.filter(item => item.main_trainer === id);
-	});
-	const trainers = useSelector(state => state.main.trainers);
-	const cities = useSelector(state => state.main.cities);
+	}, [id, courses, seminars]);
+
+
 	console.log('myCourses', myCourses);
 
 	const handleEdit = (course) => {
@@ -33,8 +36,8 @@ export const CoursesListTab = ({
 				},
 			},
 		});
-		setCourseType(course.type)
-		dispatch(setActiveCourse(course))
+		setCourseType(course.type);
+		dispatch(setActiveCourse(course));
 	};
 	const handleDelete = (id, type) => {
 		if (type === 'basic_course' || type === 'master_course') {
@@ -46,17 +49,17 @@ export const CoursesListTab = ({
 
 	const getTitle = (course) => {
 		let title = course.title || '';
-		if (course.modules){
+		if (course.modules) {
 			let firstData = course.modules?.at(0)?.dates?.at(0) || '';
 			let lastData = course.modules?.at(-1)?.dates?.at(-1) || '';
 			title = `${title} ${firstData} - ${lastData}`;
-		}else {
+		} else {
 			let firstData = course.dates?.at(0) || '';
 			let lastData = course.dates?.at(-1) || '';
 			title = `${title} ${firstData} - ${lastData}`;
 		}
 
-		return title
+		return title;
 	};
 	const getName = (main_trainer) => {
 		const trainer = trainers[main_trainer];
@@ -80,7 +83,9 @@ export const CoursesListTab = ({
 							{course.organizer_contacts && <div>{course.organizer_contacts}</div>}
 						</div>
 						<div className="module_items">
-							{course.modules?.map(module => {
+							{
+								(course.type === 'basic_course' || course.type === 'master_course')
+								&& course.modules?.map(module => {
 								return <div key={module._id} className="module_item">
 									<div>Номер модуля {module.module_number}</div>
 									<div>Тема: {typeToThem[course.type][module.them]}</div>

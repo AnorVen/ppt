@@ -1,5 +1,5 @@
 import {
-	createCourseRequest,
+	createCourseRequest, deleteCourseRequest,
 	getCourseRequest,
 	getCoursesRequest,
 	updateCourseRequest,
@@ -101,8 +101,8 @@ export function* getCourseSaga({ uuid }) {
 export function* deleteCourseSaga({ id }) {
 	console.log('deleteCourseSaga', id);
 	try {
-		const { success, payload, errors, headers } = yield call(deleteSeminarRequest,{
-			id: id
+		const { success, payload, errors, headers } = yield call(deleteCourseRequest,{
+			_id: id
 		} );
 		if (success) {
 			yield call(getCoursesSaga)

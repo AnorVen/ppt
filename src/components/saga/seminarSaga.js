@@ -7,7 +7,7 @@ import {
 } from '@/components/requests/seminars';
 import { getCoursesSaga, updateCourseSaga } from '@/components/saga/courseSaga';
 import { courseForm, seminarForm } from '@/components/selectors';
-import { setCheckboxListOptionsAction, setSeminars } from '@/components/store/store';
+import { setActiveCourse, setCheckboxListOptionsAction, setSeminars } from '@/components/store/store';
 import { reset } from 'redux-form';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 import store from '@/components/store/store'
@@ -25,8 +25,9 @@ export function* createSeminarSaga({variant}) {
 
 		const { success, payload, errors, headers } = yield call(addSeminarRequest, data);
 		if (success){
-			yield call(getCoursesSaga)
-			yield put(reset(variant))
+			yield put(setActiveCourse(undefined))
+			yield call(getSeminarsSaga)
+			yield put(reset(formName))
 		}
 	} catch (e){
 		console.log(e);
@@ -45,8 +46,9 @@ export function* updateSeminarSaga({variant}) {
 		}
 		const { success, payload, errors, headers } = yield call(updateSeminarRequest, data);
 		if (success){
+			yield put(setActiveCourse(undefined))
 			yield call(getSeminarsSaga)
-			yield put(reset(variant))
+			yield put(reset(formName))
 		}
 	} catch (e){
 
@@ -93,7 +95,7 @@ export function* deleteSeminarSaga({id}) {
 	console.log('deleteSeminarSaga', id);
 	try {
 		const { success, payload, errors, headers } = yield call(deleteSeminarRequest,{
-			id: id
+			_id: id
 		} );
 		if (success) {
 			yield call(getSeminarsSaga)

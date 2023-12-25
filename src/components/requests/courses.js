@@ -43,3 +43,13 @@ export const updateCourseRequest = (payload, meta) =>
 	})
 	.then(async response => await response.json())
 	.catch(error => error);
+
+export const deleteCourseRequest = (payload, meta) =>
+	fetch(`${url}/api/course/delete`, {
+		method: 'POST', headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(payload),
+	})
+	.then(async response => await response.json())
+	.catch(error => error);

@@ -41,7 +41,7 @@ const AdditionalProgramView = ({ fields, cities, trainers }) => {
 										type="text"
 										component={FormInputField}
 										dark
-										label="Тема модуля"
+										label="Описание модуля"
 										autoComplete="off"
 										placeholder=""
 									/>
