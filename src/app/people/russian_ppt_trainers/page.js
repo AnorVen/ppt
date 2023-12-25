@@ -8,7 +8,13 @@ import { useDispatch, useSelector } from 'react-redux';
 const PeoplePage = () => {
 	const dispatch = useDispatch();
 	const trainers = useSelector(state => state.main.trainers);
-	const trainersArr = Object.values(trainers).filter(item => item?.type === 'trainer');
+	const trainersArr = Object.values(trainers).filter(item => item?.type === 'trainer').sort((a, b) =>{
+		if (a.avatar === '/static/images/noAva.jpg' && b.avatar !== '/static/images/noAva.jpg') return 1
+		if (a.avatar !== '/static/images/noAva.jpg' && b.avatar === '/static/images/noAva.jpg') return -1
+		return 0
+
+	});
+
 	useEffect(() => {
 		if (!trainersArr.length) {
 			dispatch({ type: sagaActions.GET_TRAINERS });
