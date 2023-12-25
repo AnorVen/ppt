@@ -1,15 +1,12 @@
 'use client';
 import AboutTab from '@/components/about-tab';
-import { GET_TRAINER } from '@/components/actions';
 import { CoursesListTab } from '@/components/courses-list-tab';
 import { CoursesTab } from '@/components/courses-tab';
-import { getTrainerSaga } from '@/components/saga/trainerSaga';
 import { sagaActions } from '@/components/sagaActions';
-import { redirect } from 'next/navigation';
+import { setActiveCourse } from '@/components/store/store';
 import { useEffect, useState } from 'react';
-import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
-
+import './style.scss';
 
 const Profile = () => {
 	useEffect(() => {
@@ -21,9 +18,22 @@ const Profile = () => {
 		dispatch({ type: sagaActions.GET_CITIES });
 	}, []);
 	const dispatch = useDispatch();
+	const activeCourse = useSelector(state => state.main.activeCourse);
 	const [tabName, setTabName] = useState('about');
-	const handleChangeTab = (e) => {
-		setTabName(e.target.dataset.id);
+	const [courseType, setCourseType] = useState(null);
+
+	const handleChangeTab = ({
+		                         target: {
+			                         dataset: {
+				                         id,
+			                         },
+		                         },
+	                         }) => {
+
+		setTabName(id);
+		if (activeCourse){
+			dispatch(setActiveCourse(undefined))
+		}
 	};
 	const tabs = [
 		{
@@ -40,10 +50,10 @@ const Profile = () => {
 		},
 	];
 
-	const handleLogout = () =>{
+	const handleLogout = () => {
 		dispatch({ type: sagaActions.LOGOUT });
-		window.location.assign('/')
-	}
+		window.location.assign('/');
+	};
 	return (
 		<div className="profile">
 			<div className="container">
@@ -56,12 +66,13 @@ const Profile = () => {
 						);
 					})}
 					<div className={`nav-item`}
-					     onClick={handleLogout}>Выход</div>
+					     onClick={handleLogout}>Выход
+					</div>
 				</div>
 				<div className="tab">
 					{tabName === 'about' && <AboutTab />}
-					{tabName === 'courses' && <CoursesTab />}
-					{tabName === 'coursesList' && <CoursesListTab />}
+					{tabName === 'courses' && <CoursesTab courseType={courseType} />}
+					{tabName === 'coursesList' && <CoursesListTab handleChangeTab={handleChangeTab} setCourseType={setCourseType} />}
 				</div>
 			</div>
 

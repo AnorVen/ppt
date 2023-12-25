@@ -10,6 +10,23 @@ import { change, Field, FieldArray, reduxForm } from 'redux-form';
 import { Form, Grid, Segment } from 'semantic-ui-react';
 
 let Seminars = () => {
+	const types_of_work = [
+		{
+			text: 'Групповая',
+			value: 'group',
+			key: 'group',
+		},
+		{
+			text: 'Индивидуальный',
+			value:'individual',
+			key: 'individual',
+		},
+		{
+			text: 'Другое',
+			value: 'other',
+			key: 'other',
+		}
+	]
 	const dispatch = useDispatch();
 	const trainers = useSelector(state => Object.values(state.main.trainers).map(
 		(trainer) => {
@@ -114,6 +131,7 @@ let Seminars = () => {
 					</Grid.Column>
 				</Grid.Row>
 				<Grid.Row>
+					<Grid.Column mobile={16} tablet={8} computer={8}>
 					<div className='seminars_datapicker'>
 						Даты мероприятия
 						<Field
@@ -125,7 +143,18 @@ let Seminars = () => {
 							autoComplete="off"
 						/>
 					</div>
-
+					</Grid.Column>
+					<Grid.Column mobile={16} tablet={8} computer={8}>
+					<Field
+						name="type_of_work"
+						type="text"
+						component={FormSelectField}
+						dark
+						label="Тип семинара"
+						placeholder="Тип семинара"
+						options={types_of_work}
+					/>
+					</Grid.Column>
 				</Grid.Row>
 			</Grid>
 		</Form>
@@ -139,9 +168,9 @@ Seminars = reduxForm({
 
 Seminars = connect(
 	state => ({
-		initialValues: {
-			type: 'seminar',
+		initialValues: state.main.activeCourse || {
 			main_trainer: state?.main?.user?.id || '',
+			type_of_work: 'group',
 		}, // pull initial values from account reducer
 	}),
 	{ load: true }, // bind account loading action creator

@@ -4,55 +4,58 @@ import {
 	getCoursesRequest,
 	updateCourseRequest,
 } from '@/components/requests/courses';
-import { getTrainersRequest, getTrainerRequest } from '@/components/requests/trainers';
+import { deleteSeminarRequest } from '@/components/requests/seminars';
 import { courseForm } from '@/components/selectors';
-import {
-	setCheckboxFiltersAction,
-	setCheckboxListOptionsAction,
-	setCourses,
-	setTrainers,
-} from '@/components/store/store';
-import { useDispatch, useSelector } from 'react-redux';
-import { change, reset } from 'redux-form';
-import { put, call, takeEvery, select } from 'redux-saga/effects';
+import { setActiveCourse, setCourses } from '@/components/store/store';
+import { reset } from 'redux-form';
+import { call, put, select } from 'redux-saga/effects';
 
-export function* createCourseSaga({variant}) {
+export function* createCourseSaga({ variant }) {
 	console.log('variant', variant);
 	try {
-		const data = yield select(courseForm(variant))
+		const data = yield select(courseForm(variant));
 		console.log('data', data);
-		if (data._id){
-			yield call(updateCourseSaga, {variant: variant})
-			return
+		if (data._id) {
+			yield call(updateCourseSaga, {variant});
+			return;
 		}
 		const { success, payload, errors, headers } = yield call(createCourseRequest, data);
-		if (success){
-			yield call(getCoursesSaga)
+		if (success) {
+			yield put(setActiveCourse(undefined));
+			yield put(reset(variant));
+			yield call(getCoursesSaga);
 		}
-	} catch (e){
+	}
+	catch (e) {
 
-	console.log(e);
-	} finally {
-		yield put(reset(variant))
+		console.log(e);
+	}
+	finally {
+
 	}
 }
 
-export function* updateCourseSaga({variant}) {
+export function* updateCourseSaga({ variant }) {
+	console.log('variant', variant);
 	try {
-		const data = yield select(courseForm())
-		if (!data._id){
-			yield call(updateCourseSaga)
-			return
+		const data = yield select(courseForm(variant));
+		if (!data._id) {
+			return;
 		}
 		const { success, payload, errors, headers } = yield call(updateCourseRequest, data);
-		if (success){
-			yield call(getCoursesSaga)
+		if (success) {
+			yield put(setActiveCourse(undefined));
+			yield put(reset(variant));
+			yield call(getCoursesSaga);
+
 		}
-	} catch (e){
+	}
+	catch (e) {
 
 		console.log(e);
-	} finally {
-		yield put(reset(variant))
+	}
+	finally {
+
 	}
 }
 
@@ -61,26 +64,48 @@ export function* getCoursesSaga() {
 	try {
 		const { success, payload, errors, headers } = yield call(getCoursesRequest);
 		if (success) {
-			yield put(setCourses(payload))
+			yield put(setCourses(payload));
 		} else {
 			console.log('errors', errors);
 		}
-	} catch (error) {
+	}
+	catch (error) {
 		console.log(error);
-	} finally {
+	}
+	finally {
 
 	}
 
 }
 
-export function* getCourseSaga({uuid}) {
+export function* getCourseSaga({ uuid }) {
 	console.log('getCourseSaga', uuid);
 	try {
-		const { success, payload, errors, headers } = yield call(getCourseRequest,{
-			id: uuid
+		const { success, payload, errors, headers } = yield call(getCourseRequest, {
+			id: uuid,
+		});
+		if (success) {
+			console.log(payload);
+		} else {
+			console.log('errors', errors);
+		}
+	}
+	catch (error) {
+		console.log(error);
+	}
+	finally {
+
+	}
+}
+
+export function* deleteCourseSaga({ id }) {
+	console.log('deleteCourseSaga', id);
+	try {
+		const { success, payload, errors, headers } = yield call(deleteSeminarRequest,{
+			id: id
 		} );
 		if (success) {
-			console.log(payload)
+			yield call(getCoursesSaga)
 		} else {
 			console.log('errors', errors);
 		}
@@ -89,8 +114,4 @@ export function* getCourseSaga({uuid}) {
 	} finally {
 
 	}
-}
-
-export function* deleteCourseSaga({uuid}) {
-	console.log('deleteCourseSaga', uuid);
 }

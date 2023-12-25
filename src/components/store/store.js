@@ -60,11 +60,24 @@ const mainSlice = createSlice({
 		to: null,
 		isMobile: false,
 		isAuth: false,
-		user: {},
+		user: {
+			"email": "efremovgs@gmail.com",
+			"id": "64fc702ff2a33710dc44ba6d",
+			"phone": "+1111111",
+			"name": "Георгий",
+			"second_name": "Георгий",
+			"surname": "Георгий",
+			"city": "64f6278716e2f16288748521",
+			"description": "123123",
+			"master": false,
+			"superUser": true,
+			"type": "manager",
+			"avatar": ""
+		},
 		isAuthLoading: false,
 		mainAboutText: "",
 		descriptionNewCourses: '',
-		activeCourse: {},
+		activeCourse: undefined,
 	},
 
 	reducers: {
@@ -242,6 +255,7 @@ export const {
 	setIsMobileAction,
 	setAboutText ,
 	setDescriptionNewCourses ,
+	setActiveCourse,
 } = mainSlice.actions;
 
 let sagaMiddleware = createSagaMiddleware();

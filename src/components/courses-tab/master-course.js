@@ -136,7 +136,7 @@ MasterCourse = reduxForm({
 
 MasterCourse = connect(
 	state => ({
-		initialValues: {
+		initialValues: state.main.activeCourse || {
 			type: 'master_course',
 			main_trainer: state.main.user.id,
 			modules: master_course.map(item => {

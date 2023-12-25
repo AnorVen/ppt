@@ -141,9 +141,10 @@ const AdditionalProgramForm = reduxForm({
 
 
 const mapStateToProps = state => ({
-	initialValues: {
+	initialValues: state.main.activeCourse || {
 		main_trainer: state?.main?.user?.id || '',
-		type: 'seminar',
+		type: 'additional_program',
+		type_of_work: 'group',
 		modules: [{
 			module_number: 1,
 			trainer: '',

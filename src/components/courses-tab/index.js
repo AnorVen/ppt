@@ -5,19 +5,20 @@ import BaseCourse from '@/components/courses-tab/BaseCourse';
 import MasterCourse from '@/components/courses-tab/master-course';
 import Seminars from '@/components/courses-tab/seminars';
 import { sagaActions } from '@/components/sagaActions';
+import { setActiveCourse } from '@/components/store/store';
 import { types } from '@/constants';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Button } from 'semantic-ui-react';
 import './style.scss';
 
-export const CoursesTab = () => {
+export const CoursesTab = ({ courseType }) => {
 	const dispatch = useDispatch();
-	const [type, setType] = useState('basic_course');
+	const [type, setType] = useState(courseType || 'basic_course');
 	const variants = {
-		basic_course: <BaseCourse/>,
+		basic_course: <BaseCourse />,
+		master_course: <MasterCourse />,
 		seminar: <Seminars />,
-		master_course: <MasterCourse/>,
 		master_class: <Seminars />,
 		conference: <Seminars />,
 		additional_program: <AdditionalProgram />,
@@ -27,17 +28,27 @@ export const CoursesTab = () => {
 		basic_course: 'CREATE_COURSE',
 		seminar: 'CREATE_SEMINAR',
 		master_course: 'CREATE_COURSE',
-		master_class:'CREATE_SEMINAR',
+		master_class: 'CREATE_SEMINAR',
 		conference: 'CREATE_SEMINAR',
 		additional_program: 'CREATE_SEMINAR',
 	};
 	const handleSaveChanges = () => {
 		dispatch({ type: sagaActions[saveVariants[type]], variant: type });
 	};
+
+	const handleChangeTab = ({
+		                         target: {
+			                         value,
+		                         },
+	                         }) => {
+		setType(value);
+		dispatch(setActiveCourse(undefined));
+	};
+
 	return <div>
 		<h3>Добавить новое мероприятие</h3>
 		<div className="courses-header">
-			<select name="type" onChange={(e) => setType(e.target.value)} value={type}>
+			<select name="type" onChange={handleChangeTab} value={type}>
 				{Object.entries(types).map(([key, val]) => <option key={key} value={key}>{val}</option>)}
 			</select>
 			<Button onClick={handleSaveChanges}>сохранить изменения</Button>
