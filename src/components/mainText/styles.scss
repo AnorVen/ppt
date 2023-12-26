@@ -4,4 +4,10 @@
   p {
     text-align: justify;
   }
+  @media screen and (max-width: 900px) {
+    flex: 1 1 0;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+
 }

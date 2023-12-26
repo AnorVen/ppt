@@ -3,18 +3,20 @@ import { COLUMNS } from '@/app/constants';
 import LinkWithActive from '@/components/linkWithActive';
 import { setCheckboxFiltersAction, setIsMobileAction } from '@/components/store/store';
 import Image from 'next/image';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Logo from '../../images/logo.svg';
 import './header.scss';
 
 const Header = () => {
+	const [isMobile, setIsMobile] = useState(false);
 	const dispatch = useDispatch();
 	const onSetCheckboxFilters = (...params) => dispatch(setCheckboxFiltersAction(...params));
 
 	useEffect(() => {
 		if (window.innerWidth < 960) {
 			dispatch(setIsMobileAction(true));
+			setIsMobile(true);
 		}
 	}, []);
 
@@ -36,10 +38,16 @@ const Header = () => {
 			onSetCheckboxFilters(resetFilters);
 		}
 	};
+
 	return (
 		<nav>
+			<input id="menu__toggle" type="checkbox" />
+			<label className="menu__btn" htmlFor="menu__toggle">
+				<span></span>
+			</label>
 			<ul className="topmenu">
-				<li><LinkWithActive href="/about">О методе<span className="fa fa-angle-down"></span></LinkWithActive>
+				<li>
+					<LinkWithActive href="/about">О методе<span className="fa fa-angle-down"></span></LinkWithActive>
 					<ul className="submenu">
 						<li><LinkWithActive href="/about">О методе</LinkWithActive></li>
 						<li><LinkWithActive href="/about/magazin">Журнал «Global psychotherapist»</LinkWithActive></li>
@@ -79,19 +87,21 @@ const Header = () => {
 								</li>
 							</ul>
 						</li>
-						<li><LinkWithActive href="/education" onClick={() => setCheckboxFilters(false)}>Все
-							курсы</LinkWithActive></li>
+						<li>
+							<LinkWithActive href="/education" onClick={() => setCheckboxFilters(false)}>Все
+								курсы</LinkWithActive></li>
 					</ul>
 				</li>
-				<li>
+				<li className="logoBlock">
 					<LinkWithActive href="/">
 						<Image className="logo" src={Logo} alt="Picture of the author" />
+						<p className="logoText">Главная</p>
 					</LinkWithActive>
 				</li>
 				<li>
 					<LinkWithActive href="/people">Сообщество<span
-					className="fa fa-angle-down"></span>
-				</LinkWithActive>
+						className="fa fa-angle-down"></span>
+					</LinkWithActive>
 					<ul className="submenu">
 						<li>
 							<LinkWithActive href="/centers">

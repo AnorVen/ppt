@@ -19,10 +19,16 @@ body {
 .wrapper-content {
   overflow: auto;
   min-height: calc(100vh - 205px);
+  @media screen and (max-width: 900px) {
+    min-height: calc(100vh - 130px);
+  }
 }
 
 .wrapper_text{
   margin: 0 auto 20px;
+  @media screen and (max-width: 900px) {
+    margin: 0 10px;
+  }
   max-width: 1024px;
   &.long_text{
     p {
@@ -39,6 +45,11 @@ body {
   ul, li{
     padding-left: 30px;
     margin-bottom: 10px;
+    @media screen and (max-width: 900px) {
+      padding-left: 10px;
+      margin-bottom: 5px;
+
+    }
   }
   a{
     color: #1b84eb;

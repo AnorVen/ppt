@@ -12,7 +12,7 @@ export default function Home() {
 				<MainText />
 				<NewsBlock />
 			</div>
-			<CalendarBlock />
+			{/*<CalendarBlock />*/}
 		</main>
 	);
 }

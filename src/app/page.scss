@@ -5,7 +5,15 @@
   align-items: center;
   padding: 6rem;
   font-family: 'verdana', sans-serif;
+  @media screen and (max-width: 900px) {
+    padding: 10px;
+
+  }
   .content-block{
     display: flex;
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+
+    }
   }
 }
