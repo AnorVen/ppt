@@ -10,6 +10,7 @@ import './header.scss';
 
 const Header = () => {
 	const [isMobile, setIsMobile] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const dispatch = useDispatch();
 	const onSetCheckboxFilters = (...params) => dispatch(setCheckboxFiltersAction(...params));
 
@@ -20,6 +21,11 @@ const Header = () => {
 		}
 	}, []);
 
+	const toggleMenu = () =>{
+		if (isMobile){
+			setIsMenuOpen(!isMenuOpen)
+		}
+	}
 	const setCheckboxFilters = value => {
 		const resetFilters = COLUMNS.reduce((acc, val) => {
 			if (val.filterName) {
@@ -37,31 +43,33 @@ const Header = () => {
 		} else {
 			onSetCheckboxFilters(resetFilters);
 		}
+		toggleMenu()
 	};
+
 
 	return (
 		<nav>
-			<input id="menu__toggle" type="checkbox" />
-			<label className="menu__btn" htmlFor="menu__toggle">
+			<input id="menu__toggle" type="checkbox" checked={isMenuOpen} />
+			<label className="menu__btn" htmlFor="menu__toggle" onClick={toggleMenu}>
 				<span></span>
 			</label>
 			<ul className="topmenu">
 				<li>
-					<LinkWithActive href="/about">О методе<span className="fa fa-angle-down"></span></LinkWithActive>
+					<LinkWithActive  onClick={toggleMenu} href="/about">О методе<span className="fa fa-angle-down"></span></LinkWithActive>
 					<ul className="submenu">
-						<li><LinkWithActive href="/about">О методе</LinkWithActive></li>
-						<li><LinkWithActive href="/about/magazin">Журнал «Global psychotherapist»</LinkWithActive></li>
-						<li><LinkWithActive href="/about/pezeshkian">Н. Пезешкиан</LinkWithActive></li>
+						<li><LinkWithActive  onClick={toggleMenu} href="/about">О методе</LinkWithActive></li>
+						<li><LinkWithActive  onClick={toggleMenu} href="/about/magazin">Журнал «Global psychotherapist»</LinkWithActive></li>
+						<li><LinkWithActive  onClick={toggleMenu} href="/about/pezeshkian">Н. Пезешкиан</LinkWithActive></li>
 					</ul>
 				</li>
-				<li><LinkWithActive href="/education">Обучение<span
+				<li><LinkWithActive  onClick={toggleMenu} href="/education">Обучение<span
 					className="fa fa-angle-down"></span></LinkWithActive>
 					<ul className="submenu">
 						<li>
-							<LinkWithActive href="/education">обучение ППТ<span
+							<LinkWithActive  onClick={toggleMenu} href="/education">обучение ППТ<span
 								className="fa fa-angle-down"></span></LinkWithActive>
 							<ul className="submenu">
-								<li><LinkWithActive href="/education"
+								<li><LinkWithActive  onClick={toggleMenu} href="/education"
 								                    onClick={() => setCheckboxFilters('basic_course')}>Базовый
 									курс</LinkWithActive></li>
 								<li><LinkWithActive href="/education"
@@ -93,48 +101,48 @@ const Header = () => {
 					</ul>
 				</li>
 				<li className="logoBlock">
-					<LinkWithActive href="/">
+					<LinkWithActive  onClick={toggleMenu} href="/">
 						<Image className="logo" src={Logo} alt="Picture of the author" />
 						<p className="logoText">Главная</p>
 					</LinkWithActive>
 				</li>
 				<li>
-					<LinkWithActive href="/people">Сообщество<span
+					<LinkWithActive  onClick={toggleMenu} href="/people">Сообщество<span
 						className="fa fa-angle-down"></span>
 					</LinkWithActive>
 					<ul className="submenu">
 						<li>
-							<LinkWithActive href="/centers">
+							<LinkWithActive  onClick={toggleMenu} href="/centers">
 								центры
 							</LinkWithActive>
 						</li>
 						<li>
-							<LinkWithActive href="/people">
+							<LinkWithActive  onClick={toggleMenu} href="/people">
 								люди<span className="fa fa-angle-down"></span>
 							</LinkWithActive>
 							<ul className="submenu">
-								<li><LinkWithActive href="/people/russian_ppt_trainers">российские тренеры
+								<li><LinkWithActive  onClick={toggleMenu} href="/people/russian_ppt_trainers">российские тренеры
 									ППТ</LinkWithActive></li>
-								<li><LinkWithActive href="/people/certified_therapists">сертифицированные терапевты
+								<li><LinkWithActive  onClick={toggleMenu} href="/people/certified_therapists">сертифицированные терапевты
 									ППТ</LinkWithActive></li>
 							</ul>
 						</li>
-						<li><LinkWithActive href="/ethical_committee">этический комитет</LinkWithActive></li>
-						<li><LinkWithActive href="https://www.positum.org/" target="_blank">Всемирная Ассоциация
+						<li><LinkWithActive  onClick={toggleMenu} href="/ethical_committee">этический комитет</LinkWithActive></li>
+						<li><LinkWithActive  onClick={toggleMenu} href="https://www.positum.org/" target="_blank">Всемирная Ассоциация
 							ППТ</LinkWithActive></li>
 						<li>
-							<LinkWithActive href="/login">
+							<LinkWithActive  onClick={toggleMenu} href="/login">
 								Тренерам
 							</LinkWithActive>
 						</li>
 					</ul>
 				</li>
-				<li><LinkWithActive href="/regulations">Регламенты<span
+				<li><LinkWithActive  onClick={toggleMenu} href="/regulations">Регламенты<span
 					className="fa fa-angle-down"></span></LinkWithActive>
 					<ul className="submenu">
-						<li><LinkWithActive href="/standards">стандарты обучения</LinkWithActive></li>
-						<li><LinkWithActive href="/code_of_ethics">этический кодекс</LinkWithActive></li>
-						<li><LinkWithActive href="/faq">FAQ</LinkWithActive></li>
+						<li><LinkWithActive  onClick={toggleMenu} href="/standards">стандарты обучения</LinkWithActive></li>
+						<li><LinkWithActive  onClick={toggleMenu} href="/code_of_ethics">этический кодекс</LinkWithActive></li>
+						<li><LinkWithActive  onClick={toggleMenu} href="/faq">FAQ</LinkWithActive></li>
 					</ul>
 				</li>
 			</ul>

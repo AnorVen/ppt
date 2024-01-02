@@ -20,7 +20,8 @@ body {
   overflow: auto;
   min-height: calc(100vh - 205px);
   @media screen and (max-width: 900px) {
-    min-height: calc(100vh - 130px);
+    min-height: calc(100vh - 180px);
+    margin-top: 50px;
   }
 }
 
