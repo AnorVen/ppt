@@ -4,6 +4,7 @@ import { CoursesListTab } from '@/components/courses-list-tab';
 import { CoursesTab } from '@/components/courses-tab';
 import { sagaActions } from '@/components/sagaActions';
 import { setActiveCourse } from '@/components/store/store';
+import UserTab from '@/components/user-tab';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './style.scss';
@@ -48,6 +49,14 @@ const Profile = () => {
 			id: 'coursesList',
 			text: 'Мои мероприятия',
 		},
+		{
+			id: 'centers',
+			text: 'Добавить или изменить центры',
+		},
+		{
+			id: 'user',
+			text: 'Добавить или поменять пользователей',
+		},
 	];
 
 	const handleLogout = () => {
@@ -73,6 +82,9 @@ const Profile = () => {
 					{tabName === 'about' && <AboutTab />}
 					{tabName === 'courses' && <CoursesTab courseType={courseType} />}
 					{tabName === 'coursesList' && <CoursesListTab handleChangeTab={handleChangeTab} setCourseType={setCourseType} />}
+					{/*{tabName === 'centers' && <AboutTab />}
+					{tabName === 'user' && <UserTab />}*/}
+
 				</div>
 			</div>
 

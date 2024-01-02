@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 export const NewsPhoto = ({ onSetPhotoChange, input, onDeleteFile }) => {
+	console.log(input);
 	return (
 		<div className="news" data-testid="news-image-block">
 			{input.value ? (
