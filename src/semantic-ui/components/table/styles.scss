@@ -80,6 +80,9 @@
         border-bottom: 1px solid rgba(34,36,38,.1);
     }
 }
+#tableHeader{
+    padding-right: 17px !important;
+}
 
 .table-body {
     height: calc(100% - 340px);
