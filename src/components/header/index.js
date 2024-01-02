@@ -69,7 +69,7 @@ const Header = () => {
 							<LinkWithActive  onClick={toggleMenu} href="/education">обучение ППТ<span
 								className="fa fa-angle-down"></span></LinkWithActive>
 							<ul className="submenu">
-								<li><LinkWithActive  onClick={toggleMenu} href="/education"
+								<li><LinkWithActive href="/education"
 								                    onClick={() => setCheckboxFilters('basic_course')}>Базовый
 									курс</LinkWithActive></li>
 								<li><LinkWithActive href="/education"
