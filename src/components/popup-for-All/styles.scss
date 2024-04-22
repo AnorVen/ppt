@@ -1,0 +1,44 @@
+.modals {
+  &__content {
+    padding: 15px;
+  }
+
+  &__table-wrapper {
+    border-top: 1px solid gray;
+  }
+
+  &__content-block:first-child {
+    padding-bottom: 20px;
+  }
+
+  &__block-items {
+    display: flex;
+    gap: 25px;
+  }
+
+  &__block-item {
+    display: flex;
+    gap: 5px
+  }
+
+  &__block-title {
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
+
+  &__block-item-content {
+    font-weight: bold;
+  }
+
+}
+.modal-footer-buttons {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  &__button:first-child {
+    margin-right: 15px;
+  }
+}
+

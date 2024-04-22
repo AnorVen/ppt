@@ -5,13 +5,18 @@ import {
 	registrationRequest,
 	uploadRequest,
 } from '@/components/requests/login';
-import store, { setAboutText, setIsAuthAction, setIsAuthLoadingAction, setUserAction } from '@/components/store/store';
+import store, {
+	setAboutText,
+	setIsAuthAction,
+	setIsAuthLoadingAction,
+	setIsShowPopup, setIsShowPopupText,
+	setUserAction,
+} from '@/components/store/store';
 
 import { change } from 'redux-form';
 import { call, put } from 'redux-saga/effects';
 
 export function* loginSaga({payload: {email, password}}) {
-	console.log('loginSaga', email, password);
 	try {
 		yield put(setIsAuthLoadingAction(true))
 		const { success, payload, errors } = yield call(loginRequest, {
@@ -26,6 +31,8 @@ export function* loginSaga({payload: {email, password}}) {
 			console.log(payload)
 		} else {
 			console.log('errors', errors);
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Неверный логин или пароль`))
 		}
 	} catch (error) {
 		console.log(error);
@@ -50,6 +57,8 @@ export function* checkAuthSaga() {
 		}
 	} catch (error) {
 		console.log(error);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText(`Требуется перезайти`))
 	} finally {
 		yield put(setIsAuthLoadingAction(false))
 	}
@@ -65,6 +74,8 @@ export function* registrationSaga({newUser}) {
 		yield put(setIsAuthAction(false))
 	} catch (error) {
 		console.log(error);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText(`Что-то пошло не так`))
 	}
 }
 

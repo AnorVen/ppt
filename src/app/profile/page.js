@@ -82,8 +82,8 @@ const Profile = () => {
 					{tabName === 'about' && <AboutTab />}
 					{tabName === 'courses' && <CoursesTab courseType={courseType} />}
 					{tabName === 'coursesList' && <CoursesListTab handleChangeTab={handleChangeTab} setCourseType={setCourseType} />}
-					{/*{tabName === 'centers' && <AboutTab />}
-					{tabName === 'user' && <UserTab />}*/}
+					{tabName === 'centers' && <AboutTab />}
+					{tabName === 'user' && <UserTab />}
 
 				</div>
 			</div>

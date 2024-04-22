@@ -31,3 +31,24 @@ export const updateTrainerRequest = (payload) => fetch(`${url}/api/user/update`,
 })
 .then(async response => await response.json())
 .catch(error => error);
+
+
+export const createTrainerRequest = (payload) => fetch(`${url}/api/user/add`, {
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/json',
+	},
+	body: JSON.stringify(payload),
+})
+.then(async response => await response.json())
+.catch(error => error);
+
+export const deleteTrainerRequest = (payload) => fetch(`${url}/api/user/delete`, {
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/json',
+	},
+	body: JSON.stringify(payload),
+})
+.then(async response => await response.json())
+.catch(error => error);

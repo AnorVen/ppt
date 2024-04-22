@@ -1,13 +1,14 @@
 'use client';
 import { NewsPhoto } from '@/components/news-photo';
 import { sagaActions } from '@/components/sagaActions';
-import { setAboutText } from '@/components/store/store';
+import { setAboutText, setEditableUser } from '@/components/store/store';
 import { TextEditor } from '@/components/text-editor';
 import { FormInputField } from '@/semantic-ui/components/form-input-field';
 import { FormSelectField } from '@/semantic-ui/components/form-select-field';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
-import { change, Field, reduxForm } from 'redux-form';
+import { change, Field, reduxForm, reset } from 'redux-form';
+import { put } from 'redux-saga/effects';
 import { Button, Form, Grid, Segment } from 'semantic-ui-react';
 import './style.scss';
 
@@ -25,6 +26,7 @@ let UserTab = () => {
 	const form = useSelector(state => state.form.user)
 
 	const textEditorValue = useSelector(state => state.main.mainAboutText);
+
 	useEffect(() => {
 		if (!cities.length){
 			dispatch({ type: sagaActions.GET_CITIES });
@@ -38,10 +40,13 @@ let UserTab = () => {
 	const [newCity, setNewCity] = useState('');
 
 	const handleDeleteFile = () => {
-		change('about', 'avatar', '', true,{});
+		change('about', 'avatar', '', true, {});
 	};
 	const handleSaveChanges = () => {
 		dispatch({ type: sagaActions.UPDATE_TRAINER });
+	};
+	const handleDelete = () => {
+		dispatch({ type: sagaActions.DELETE_TRAINER });
 	};
 
 	const handleAddNewCity = () =>{
@@ -49,7 +54,6 @@ let UserTab = () => {
 			dispatch({ type: sagaActions.CREATE_CITY, newCity: newCity });
 			setNewCity('')
 		}
-
 	}
 	const matchInput = () =>{
 		if (!form?.values?.password || !form?.values?.password_repeat){
@@ -62,21 +66,46 @@ let UserTab = () => {
 		dispatch(setAboutText(value))
 	};
 
+	const trainersFromState = useSelector(state => state.main.trainers);
+	console.log(trainersFromState);
+	const trainers = useMemo(() => {
+		return Object.values(trainersFromState).map(trainer =>({
+			id: trainer.id,
+			name: `${trainer.surname} ${trainer.name} ${trainer.second_name}`
+		}))
+	}, [trainersFromState] );
 
+	const handleSelectUser = (e) => {
+		console.log(e.target.value);
+		change('user', 'name', 123, true)
+		if (trainersFromState[e.target.value]){
+			Object.entries(trainersFromState[e.target.value]).forEach(([key, val]) =>{
+				console.log(key);
+				console.log(val);
+				dispatch(change('user', key, val, true))
+				if(key=== 'description'){
+					dispatch(setAboutText(val))
+				}
+			})
+		} else {
+			dispatch(reset('user'))
+			dispatch(setAboutText(''))
+		}
+
+
+	}
 	return (
 		<div>
 			<Form className="general" data-testid="general-editor">
 				<Grid>
 					<Grid.Row>
 						<Grid.Column mobile={16} tablet={8} computer={4}>
-							<Field
-								name="avatar"
-								type="file"
-								component={NewsPhoto}
-								onSetPhotoChange={handleNewsPhotoChange}
-								onDeleteFile={handleDeleteFile}
-							/>
-
+							<select onChange={handleSelectUser}>
+								<option key={'new'} value={''}>Новый тренер</option>
+								{trainers.map(trainer =>{
+									return <option key={trainer.id} value={trainer.id}>{trainer.name}</option>
+								})}
+							</select>
 						</Grid.Column>
 
 						<Grid.Column mobile={16} tablet={8} computer={4}>
@@ -191,6 +220,16 @@ let UserTab = () => {
 									data-testid="new-news-tag__btn"
 								>
 									Сохранить изменения
+								</Button>
+							</Segment>
+							<Segment>
+								<Button
+									onClick={handleDelete}
+									className="new-news-tag__btn"
+									primary
+									data-testid="new-news-tag__btn"
+								>
+									Удалить пользователя
 								</Button>
 							</Segment>
 						</Grid.Column>

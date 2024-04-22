@@ -6,7 +6,7 @@ import {
 } from '@/components/requests/courses';
 import { deleteSeminarRequest } from '@/components/requests/seminars';
 import { courseForm } from '@/components/selectors';
-import { setActiveCourse, setCourses } from '@/components/store/store';
+import { setActiveCourse, setCourses, setIsShowPopup, setIsShowPopupText } from '@/components/store/store';
 import { reset } from 'redux-form';
 import { call, put, select } from 'redux-saga/effects';
 
@@ -24,11 +24,15 @@ export function* createCourseSaga({ variant }) {
 			yield put(setActiveCourse(undefined));
 			yield put(reset(variant));
 			yield call(getCoursesSaga);
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Курс создан`))
 		}
 	}
 	catch (e) {
 
 		console.log(e);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText(`Что-то пошло не так`))
 	}
 	finally {
 
@@ -47,12 +51,15 @@ export function* updateCourseSaga({ variant }) {
 			yield put(setActiveCourse(undefined));
 			yield put(reset(variant));
 			yield call(getCoursesSaga);
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Курс обновлен`))
 
 		}
 	}
 	catch (e) {
-
 		console.log(e);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText(`Что-то пошло не так`))
 	}
 	finally {
 
@@ -106,7 +113,11 @@ export function* deleteCourseSaga({ id }) {
 		} );
 		if (success) {
 			yield call(getCoursesSaga)
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Курс удален`))
 		} else {
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Что-то пошло не так`))
 			console.log('errors', errors);
 		}
 	} catch (error) {

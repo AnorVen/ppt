@@ -7,7 +7,13 @@ import {
 } from '@/components/requests/seminars';
 import { getCoursesSaga, updateCourseSaga } from '@/components/saga/courseSaga';
 import { courseForm, seminarForm } from '@/components/selectors';
-import { setActiveCourse, setCheckboxListOptionsAction, setSeminars } from '@/components/store/store';
+import {
+	setActiveCourse,
+	setCheckboxListOptionsAction,
+	setIsShowPopup,
+	setIsShowPopupText,
+	setSeminars,
+} from '@/components/store/store';
 import { reset } from 'redux-form';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 import store from '@/components/store/store'
@@ -28,6 +34,11 @@ export function* createSeminarSaga({variant}) {
 			yield put(setActiveCourse(undefined))
 			yield call(getSeminarsSaga)
 			yield put(reset(formName))
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText('Данные о семинаре добавлены'))
+		}else {
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${errors}`))
 		}
 	} catch (e){
 		console.log(e);
@@ -49,9 +60,13 @@ export function* updateSeminarSaga({variant}) {
 			yield put(setActiveCourse(undefined))
 			yield call(getSeminarsSaga)
 			yield put(reset(formName))
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText('Данные о семинаре обновлены'))
+		} else {
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${errors}`))
 		}
 	} catch (e){
-
 		console.log(e);
 	} finally {
 
@@ -99,8 +114,12 @@ export function* deleteSeminarSaga({id}) {
 		} );
 		if (success) {
 			yield call(getSeminarsSaga)
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText('Данные о семинаре удалены'))
 		} else {
 			console.log('errors', errors);
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText('Проблема с удалением'))
 		}
 	} catch (error) {
 		console.log(error);

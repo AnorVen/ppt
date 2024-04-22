@@ -1,4 +1,5 @@
 import './globals.css';
+import PopupForAll from '@/components/popup-for-All';
 import { ProviderWrapper } from '@/components/provider';
 import { Inter } from 'next/font/google';
 import Header from '@/components/header';
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
 					{children}
 				</div>
 				<Footer />
+				<PopupForAll />
 			</div>
 		</ProviderWrapper>
 		</body>

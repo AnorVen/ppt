@@ -8,6 +8,8 @@ import { reducer as formReducer } from 'redux-form'
 const mainSlice = createSlice({
 	name: 'main',
 	initialState: {
+		isShowPopup: false,
+		isShowPopupText: '',
 		courses: [],
 		trainers: {},
 		seminars: [],
@@ -50,13 +52,12 @@ const mainSlice = createSlice({
 			withTrainer: [],
 		},
 		checkboxListSearch: {
-			// Строки поиска в фильтрах с checkbox
 			withCity: '',
 			withModule: '',
 			withTrainer: '',
 			withCourseType: '',
 		},
-		from: null,
+		from: new Date().toISOString().split('T')[0],
 		to: null,
 		isMobile: false,
 		isAuth: false,
@@ -78,9 +79,29 @@ const mainSlice = createSlice({
 		mainAboutText: "",
 		descriptionNewCourses: '',
 		activeCourse: undefined,
+		editableUser: undefined,
 	},
 
 	reducers: {
+		setIsShowPopup: (state,  action) => {
+			return {
+				...state,
+				isShowPopup: action.payload,
+			};
+		},
+		setIsShowPopupText: (state,  action) => {
+			return {
+				...state,
+				isShowPopupText: action.payload,
+			};
+		},
+
+		setEditableUser: (state,  action) => {
+			return {
+				...state,
+				editableUser: action.payload,
+			};
+		},
 		setActiveCourse: (state,  action) => {
 			return {
 				...state,
@@ -256,6 +277,9 @@ export const {
 	setAboutText ,
 	setDescriptionNewCourses ,
 	setActiveCourse,
+	setEditableUser,
+	setIsShowPopup,
+	setIsShowPopupText
 } = mainSlice.actions;
 
 let sagaMiddleware = createSagaMiddleware();
