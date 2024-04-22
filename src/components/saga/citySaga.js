@@ -1,5 +1,10 @@
 import { createCityRequest, getCitiesRequest } from '@/components/requests/cities';
-import { setCheckboxFiltersAction, setCheckboxListOptionsAction, setCities } from '@/components/store/store';
+import {
+	setCheckboxFiltersAction,
+	setCheckboxListOptionsAction,
+	setCities,
+	setIsShowPopup, setIsShowPopupText,
+} from '@/components/store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 
@@ -12,11 +17,15 @@ export function* createCitySaga({ newCity }) {
 			name: newCity });
 		if (success) {
 			yield call(getCitiesSaga)
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Город добавлен`))
 		} else {
 			console.log('errors', errors);
 		}
 	} catch (error) {
 		console.log(error);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
 
 	}
