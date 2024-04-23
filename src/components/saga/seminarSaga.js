@@ -42,6 +42,8 @@ export function* createSeminarSaga({variant}) {
 		}
 	} catch (e){
 		console.log(e);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${e}`))
 	} finally {
 
 	}
@@ -68,6 +70,8 @@ export function* updateSeminarSaga({variant}) {
 		}
 	} catch (e){
 		console.log(e);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${e}`))
 	} finally {
 
 	}
@@ -123,6 +127,8 @@ export function* deleteSeminarSaga({id}) {
 		}
 	} catch (error) {
 		console.log(error);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText('Проблема с удалением'))
 	} finally {
 
 	}

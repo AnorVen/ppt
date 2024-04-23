@@ -26,6 +26,10 @@ export function* createCourseSaga({ variant }) {
 			yield call(getCoursesSaga);
 			yield put(setIsShowPopup(true))
 			yield put(setIsShowPopupText(`Курс создан`))
+		}else {
+			console.log(errors);
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Что-то пошло не так`))
 		}
 	}
 	catch (e) {
@@ -54,6 +58,9 @@ export function* updateCourseSaga({ variant }) {
 			yield put(setIsShowPopup(true))
 			yield put(setIsShowPopupText(`Курс обновлен`))
 
+		}else {
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Что-то пошло не так`))
 		}
 	}
 	catch (e) {
@@ -122,6 +129,8 @@ export function* deleteCourseSaga({ id }) {
 		}
 	} catch (error) {
 		console.log(error);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText(`Что-то пошло не так`))
 	} finally {
 
 	}

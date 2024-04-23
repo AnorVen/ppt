@@ -40,6 +40,8 @@ export function* createTrainerSaga() {
 		}
 	} catch (error) {
 		console.log(error);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
 
 	}
@@ -64,7 +66,8 @@ export function* updateTrainerSaga() {
 			yield put(setIsShowPopupText('Данные о тренере обновлены'))
 		}
 		else {
-
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${errors}`))
 		}
 	} catch (error) {
 		console.log(error);
@@ -141,6 +144,8 @@ export function* deleteTrainerSaga() {
 		}
 	} catch (error) {
 		console.log(error);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText(`Удаление прошло неудачно - ${error}`))
 	} finally {
 
 	}

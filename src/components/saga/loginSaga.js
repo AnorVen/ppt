@@ -54,6 +54,8 @@ export function* checkAuthSaga() {
 			yield put(setIsAuthAction(true))
 		} else {
 			console.log('errors', errors);
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Требуется перезайти`))
 		}
 	} catch (error) {
 		console.log(error);

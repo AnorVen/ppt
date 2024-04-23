@@ -1,4 +1,4 @@
-import { createCityRequest, getCitiesRequest } from '@/components/requests/cities';
+import { createCityRequest, getCitiesRequest, getCityRequest, updateCityRequest } from '@/components/requests/cities';
 import {
 	setCheckboxFiltersAction,
 	setCheckboxListOptionsAction,
@@ -21,6 +21,9 @@ export function* createCitySaga({ newCity }) {
 			yield put(setIsShowPopupText(`Город добавлен`))
 		} else {
 			console.log('errors', errors);
+			console.log(error);
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 		}
 	} catch (error) {
 		console.log(error);
@@ -31,8 +34,51 @@ export function* createCitySaga({ newCity }) {
 	}
 }
 
-export function* updateCitySaga() {
-	console.log('updateCitySaga');
+export function* updateCitySaga(city) {
+	console.log('updateCitySaga', city);
+	try {
+		const { success, payload, errors, headers } = yield call(updateCityRequest, {
+			city });
+		if (success) {
+			yield call(getCitiesSaga)
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Город обновлен`))
+		} else {
+			console.log('errors', errors);
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${errors}`))
+		}
+	} catch (error) {
+		console.log(error);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
+	} finally {
+
+	}
+}
+
+
+export function* deleteCitySaga({id}) {
+	console.log('deleteCitySaga', id);
+	try {
+		const { success, payload, errors, headers } = yield call(deleteCityRequest, {
+			id: id });
+		if (success) {
+			yield call(getCitiesSaga)
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Город удален`))
+		} else {
+			console.log('errors', errors);
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${errors}`))
+		}
+	} catch (error) {
+		console.log(error);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
+	} finally {
+
+	}
 }
 
 export function* getCitiesSaga() {
@@ -88,8 +134,4 @@ export function* getCitySaga({uuid}) {
 	} finally {
 
 	}
-}
-
-export function* deleteCitySaga({uuid}) {
-	console.log('deleteCitySaga', uuid);
 }

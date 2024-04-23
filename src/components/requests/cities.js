@@ -33,4 +33,27 @@ export const createCityRequest = (payload, meta) =>{
 	.then(async response => await response.json())
 	.catch(error => error);
 }
-
+export const updateCityRequest = (payload, meta) =>{
+	console.log(payload);
+	return fetch(`${url}/api/city/update`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(payload),
+	})
+	.then(async response => await response.json())
+	.catch(error => error);
+}
+export const deleteCityRequest = (payload, meta) =>{
+	console.log(payload);
+	return fetch(`${url}/api/city/delete`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(payload),
+	})
+	.then(async response => await response.json())
+	.catch(error => error);
+}

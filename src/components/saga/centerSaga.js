@@ -1,31 +1,105 @@
-import { getTrainersRequest, getTrainerRequest } from '@/components/requests/trainers';
-import { setCheckboxFiltersAction, setCheckboxListOptionsAction, setTrainers } from '@/components/store/store';
+
+import {
+	createCenterRequest,
+	deleteCenterRequest, getCenterRequest,
+	getCentersRequest,
+	updateCenterRequest,
+} from '@/components/requests/centers';
+import { getCitiesSaga } from '@/components/saga/citySaga';
+import {
+	setCheckboxListOptionsAction,
+	setIsShowPopup, setIsShowPopupText,
+	setCenters,
+} from '@/components/store/store';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 
 import store from '@/components/store/store'
 
-export function* createTrainerSaga() {
-	console.log('createTrainerSaga');
-}
 
-export function* updateTrainerSaga() {
-	console.log('updateTrainerSaga');
-}
-
-export function* getTrainersSaga() {
+export function* createCenterSaga({ newCenter }) {
+	console.log('createCenterSaga', newCenter);
 	try {
-		const { success, payload, errors, headers } = yield call(getTrainersRequest);
+		const { success, payload, errors, headers } = yield call(createCenterRequest, {
+			...newCenter });
+		if (success) {
+			yield call(getCitiesSaga)
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Центр добавлен`))
+		} else {
+			console.log('errors', errors);
+			console.log(error);
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
+		}
+	} catch (error) {
+		console.log(error);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
+	} finally {
+
+	}
+}
+
+export function* updateCenterSaga(city) {
+	console.log('updateCenterSaga', city);
+	try {
+		const { success, payload, errors, headers } = yield call(updateCenterRequest, {
+			city });
+		if (success) {
+			yield call(getCitiesSaga)
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Центр обновлен`))
+		} else {
+			console.log('errors', errors);
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${errors}`))
+		}
+	} catch (error) {
+		console.log(error);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
+	} finally {
+
+	}
+}
+
+
+export function* deleteCenterSaga({id}) {
+	console.log('deleteCenterSaga', id);
+	try {
+		const { success, payload, errors, headers } = yield call(deleteCenterRequest, {
+			id: id });
+		if (success) {
+			yield call(getCitiesSaga)
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Центр удален`))
+		} else {
+			console.log('errors', errors);
+			yield put(setIsShowPopup(true))
+			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${errors}`))
+		}
+	} catch (error) {
+		console.log(error);
+		yield put(setIsShowPopup(true))
+		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
+	} finally {
+
+	}
+}
+export function* getCentersSaga() {
+	try {
+		const { success, payload, errors, headers } = yield call(getCentersRequest);
 		if (success) {
 			const checkboxListOptions = store.getState().main.checkboxListOptions
 			yield put(setCheckboxListOptionsAction({...checkboxListOptions,
-				withTrainer: payload.reduce((acc, trainer) => {
+				withCenter: payload.reduce((acc, trainer) => {
 					const name = `${trainer?.surname} ${trainer?.name}`
 					acc.push({ key: trainer._id, value: trainer._id, text: name });
 					return acc;
 				}, [])
 			}))
 
-			yield put(setTrainers(payload.reduce((acc, val) =>{
+			yield put(setCenters(payload.reduce((acc, val) =>{
 				acc[val._id] = val
 				return acc
 			}, {})))
@@ -40,10 +114,10 @@ export function* getTrainersSaga() {
 
 }
 
-export function* getTrainerSaga({uuid}) {
-	console.log('getTrainerSaga', uuid);
+export function* getCenterSaga({uuid}) {
+	console.log('getCenterSaga', uuid);
 	try {
-		const { success, payload, errors, headers } = yield call(getTrainerRequest,{
+		const { success, payload, errors, headers } = yield call(getCenterRequest,{
 			id: uuid
 		} );
 		if (success) {
@@ -58,6 +132,3 @@ export function* getTrainerSaga({uuid}) {
 	}
 }
 
-export function* deleteTrainerSaga({uuid}) {
-	console.log('deleteTrainerSaga', uuid);
-}
