@@ -49,7 +49,7 @@ const Header = () => {
 
 	return (
 		<nav>
-			<input id="menu__toggle" type="checkbox" checked={isMenuOpen} />
+			<input id="menu__toggle" type="checkbox" checked={isMenuOpen} onChange={()=>{}}/>
 			<label className="menu__btn" htmlFor="menu__toggle" onClick={toggleMenu}>
 				<span></span>
 			</label>

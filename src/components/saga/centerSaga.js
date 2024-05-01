@@ -11,11 +11,8 @@ import {
 	setIsShowPopup, setIsShowPopupText,
 	setCenters,
 } from '@/components/store/store';
-import { revalidatePath } from 'next/cache';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
-
 import store from '@/components/store/store'
-
 
 export function* createCenterSaga(newCenter) {
 	console.log('createCenterSaga', newCenter);
@@ -37,7 +34,7 @@ export function* createCenterSaga(newCenter) {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
-		revalidatePath('/centers', 'page')
+
 	}
 }
 
@@ -62,7 +59,7 @@ export function* updateCenterSaga() {
 			yield put(setIsShowPopup(true))
 			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 		} finally {
-			revalidatePath('/centers')
+
 		}
 	}
 	else {
@@ -76,7 +73,10 @@ export function* deleteCenterSaga() {
 	const data = yield select(centerForm());
 	console.log('deleteCenterSaga', data._id);
 	try {
-		const { success, payload, errors, headers } = yield call(deleteCenterRequest, { _id: data._id });
+		const { success, payload, errors, headers } = yield call(deleteCenterRequest, {
+			_id: data._id,
+			title: data.title
+		});
 		if (success) {
 			yield call(getCentersSaga)
 			yield put(setIsShowPopup(true))
@@ -91,7 +91,6 @@ export function* deleteCenterSaga() {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
-		revalidatePath('/centers')
 	}
 }
 export function* getCentersSaga() {

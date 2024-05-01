@@ -2,6 +2,8 @@
 import { sagaActions } from '@/components/sagaActions';
 import { FormInputField } from '@/semantic-ui/components/form-input-field';
 import { FormSelectField } from '@/semantic-ui/components/form-select-field';
+import { revalidateCenters } from '@/utils/serverUtils';
+import { revalidatePath } from 'next/cache';
 import React, { useMemo, useState } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { change, Field, reduxForm, reset } from 'redux-form';
@@ -12,7 +14,6 @@ import './style.scss';
 let CenterTab = () => {
 	const dispatch = useDispatch();
 	const cities = useSelector(state => state.main.cities);
-	console.log(cities);
 	const citiesOptions = Object.entries(cities).map(
 		([_id, title]) => {
 			return {
@@ -21,11 +22,8 @@ let CenterTab = () => {
 				key: _id,
 			};
 		});
-	const form = useSelector(state => state.form.center);
 	const centersFromState = useSelector(state => state.main.centers);
-	console.log('centersFromState', centersFromState);
 	const centersOption = useMemo(()=> {
-
 		return [{
 			text: 'Новый центр',
 			value: 'new',
@@ -38,17 +36,21 @@ let CenterTab = () => {
 			};
 		}).sort((a, b)=> a.text - b.text));
 	}, [centersFromState])
-	console.log('centersOption', centersOption);
 	const [newCity, setNewCity] = useState('');
 
 	const handleSaveChanges = () => {
 		dispatch({ type: sagaActions.UPDATE_CENTER });
 		dispatch(reset('center'));
+		dispatch(change('center', 'center', 'new', true));
+		revalidateCenters()
 	};
 
 	const handleDeleteCenter = () => {
 		dispatch({ type: sagaActions.DELETE_CENTER });
 		dispatch(reset('center'));
+		dispatch(change('center', 'center', 'new', true));
+		revalidateCenters()
+
 	};
 
 	const handleAddNewCity = () => {
@@ -58,14 +60,13 @@ let CenterTab = () => {
 		}
 	};
 	const handleSelectCenter = (value) => {
-		console.log(centersFromState);
-		console.log(value);
 		if (centersFromState[value]) {
 			Object.entries(centersFromState[value]).forEach(([key, val]) => {
 				dispatch(change('center', key, val, true));
 			});
 		} else {
 			dispatch(reset('center'));
+			dispatch(change('center', 'center', 'new', true));
 		}
 	};
 
@@ -187,7 +188,9 @@ CenterTab = reduxForm({
 
 CenterTab = connect(
 	state => ({
-		initialValues: {center: 'new'}, // pull initial values from account reducer
+		initialValues: {
+			center: 'new'
+		}, // pull initial values from account reducer
 	}),
 	{},
 )(CenterTab);

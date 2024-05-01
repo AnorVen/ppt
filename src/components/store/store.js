@@ -1,9 +1,8 @@
-import { COLUMNS } from '@/app/constants';
-import { constants, centers } from '@/constants';
-import { configureStore, createSlice } from '@reduxjs/toolkit';
-import createSagaMiddleware from 'redux-saga';
 import saga from '@/components/saga/saga';
-import { reducer as formReducer } from 'redux-form'
+import { constants } from '@/constants';
+import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { reducer as formReducer } from 'redux-form';
+import createSagaMiddleware from 'redux-saga';
 
 const mainSlice = createSlice({
 	name: 'main',
@@ -18,20 +17,21 @@ const mainSlice = createSlice({
 		isTableDataLoading: false,
 		sorting: {
 			// TODO soting
-	//		column: 'type',
-	//		direction: 'asc',
+			//		column: 'type',
+			//		direction: 'asc',
 		},
 		filterSearch: {
 			withCourseType: '',
 			withModule: '',
-			withTrainer: ''
+			withTrainer: '',
 		},
-		checkboxFilters: COLUMNS.reduce((acc, val)=> {
-			if (val.filterName){
-				acc[val.filterName] = {}
-			}
-			return acc
-		},{}),
+		checkboxFilters: {
+			'withCourseType': {},
+			'withTrainer': {},
+			'withModule': {},
+			'withCity': {},
+			'withDates': {},
+		},
 		openedFilterDropdownId: '',
 		descriptionInPopup: '',
 		isDescriptionPopupShow: false,
@@ -62,53 +62,53 @@ const mainSlice = createSlice({
 		isMobile: false,
 		isAuth: false,
 		user: {
-			"email": "efremovgs@gmail.com",
-			"id": "64fc702ff2a33710dc44ba6d",
-			"phone": "+1111111",
-			"name": "Георгий",
-			"second_name": "Георгий",
-			"surname": "Георгий",
-			"city": "64f6278716e2f16288748521",
-			"description": "123123",
-			"master": false,
-			"superUser": true,
-			"type": "manager",
-			"avatar": ""
+			'email': 'efremovgs@gmail.com',
+			'id': '64fc702ff2a33710dc44ba6d',
+			'phone': '+1111111',
+			'name': 'Георгий',
+			'second_name': 'Георгий',
+			'surname': 'Георгий',
+			'city': '64f6278716e2f16288748521',
+			'description': '123123',
+			'master': false,
+			'superUser': true,
+			'type': 'manager',
+			'avatar': '',
 		},
 		isAuthLoading: false,
-		mainAboutText: "",
+		mainAboutText: '',
 		descriptionNewCourses: '',
 		activeCourse: undefined,
 		editableUser: undefined,
 	},
 
 	reducers: {
-		setIsShowPopup: (state,  action) => {
+		setIsShowPopup: (state, action) => {
 			return {
 				...state,
 				isShowPopup: action.payload,
 			};
 		},
-		setIsShowPopupText: (state,  action) => {
+		setIsShowPopupText: (state, action) => {
 			return {
 				...state,
 				isShowPopupText: action.payload,
 			};
 		},
 
-		setEditableUser: (state,  action) => {
+		setEditableUser: (state, action) => {
 			return {
 				...state,
 				editableUser: action.payload,
 			};
 		},
-		setActiveCourse: (state,  action) => {
+		setActiveCourse: (state, action) => {
 			return {
 				...state,
 				activeCourse: action.payload,
 			};
 		},
-		setDescriptionNewCourses: (state,  action) => {
+		setDescriptionNewCourses: (state, action) => {
 			return {
 				...state,
 				descriptionNewCourses: action.payload,
@@ -192,7 +192,7 @@ const mainSlice = createSlice({
 				...state,
 				trainers: {
 					...state.trainers,
-					...action.payload
+					...action.payload,
 				},
 			};
 		},
@@ -274,12 +274,12 @@ export const {
 	setCities,
 	setCheckboxListOptionsAction,
 	setIsMobileAction,
-	setAboutText ,
-	setDescriptionNewCourses ,
+	setAboutText,
+	setDescriptionNewCourses,
 	setActiveCourse,
 	setEditableUser,
 	setIsShowPopup,
-	setIsShowPopupText
+	setIsShowPopupText,
 } = mainSlice.actions;
 
 let sagaMiddleware = createSagaMiddleware();
@@ -293,7 +293,7 @@ const logger = store => next => action => {
 const store = configureStore({
 	reducer: {
 		main: mainSlice.reducer,
-		form: formReducer
+		form: formReducer,
 	},
 	middleware: [sagaMiddleware, logger],
 

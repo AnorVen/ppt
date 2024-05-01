@@ -57,7 +57,7 @@ import {
 	REGISTRATION,
 	UPLOAD_FILE,
 	GET_CENTERS,
-	CREATE_CENTER, UPDATE_CENTER, DELETE_CENTER,
+	CREATE_CENTER, UPDATE_CENTER, DELETE_CENTER, GET_CENTER,
 } from '../actions';
 
 
@@ -72,7 +72,7 @@ export default function* saga() {
 	yield takeEvery(UPDATE_CENTER, updateCenterSaga);
 	yield takeEvery(DELETE_CENTER, deleteCenterSaga);
 	yield takeEvery(GET_CENTERS, getCentersSaga);
-	yield takeEvery(GET_CENTERS, getCenterSaga);
+	yield takeEvery(GET_CENTER, getCenterSaga);
 
 	yield takeEvery(CREATE_CITY, createCitySaga);
 	yield takeEvery(UPDATE_CITY, updateCitySaga);
