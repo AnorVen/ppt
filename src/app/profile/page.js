@@ -1,5 +1,6 @@
 'use client';
 import AboutTab from '@/components/about-tab';
+import CenterTab from '@/components/center-tab';
 import { CoursesListTab } from '@/components/courses-list-tab';
 import { CoursesTab } from '@/components/courses-tab';
 import { sagaActions } from '@/components/sagaActions';
@@ -82,7 +83,7 @@ const Profile = () => {
 					{tabName === 'about' && <AboutTab />}
 					{tabName === 'courses' && <CoursesTab courseType={courseType} />}
 					{tabName === 'coursesList' && <CoursesListTab handleChangeTab={handleChangeTab} setCourseType={setCourseType} />}
-					{tabName === 'centers' && <AboutTab />}
+					{tabName === 'centers' && <CenterTab />}
 					{tabName === 'user' && <UserTab />}
 
 				</div>

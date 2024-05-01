@@ -5,24 +5,25 @@ import {
 	getCentersRequest,
 	updateCenterRequest,
 } from '@/components/requests/centers';
-import { getCitiesSaga } from '@/components/saga/citySaga';
+import { centerForm, courseForm } from '@/components/selectors';
 import {
 	setCheckboxListOptionsAction,
 	setIsShowPopup, setIsShowPopupText,
 	setCenters,
 } from '@/components/store/store';
+import { revalidatePath } from 'next/cache';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 
 import store from '@/components/store/store'
 
 
-export function* createCenterSaga({ newCenter }) {
+export function* createCenterSaga(newCenter) {
 	console.log('createCenterSaga', newCenter);
 	try {
-		const { success, payload, errors, headers } = yield call(createCenterRequest, {
-			...newCenter });
+		const { success, payload, errors, headers } = yield call(createCenterRequest,
+			newCenter );
 		if (success) {
-			yield call(getCitiesSaga)
+			yield call(getCentersSaga)
 			yield put(setIsShowPopup(true))
 			yield put(setIsShowPopupText(`Центр добавлен`))
 		} else {
@@ -36,41 +37,48 @@ export function* createCenterSaga({ newCenter }) {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
-
+		revalidatePath('/centers', 'page')
 	}
 }
 
-export function* updateCenterSaga(city) {
-	console.log('updateCenterSaga', city);
-	try {
-		const { success, payload, errors, headers } = yield call(updateCenterRequest, {
-			city });
-		if (success) {
-			yield call(getCitiesSaga)
+export function* updateCenterSaga() {
+	const data = yield select(centerForm());
+	console.log('updateCenterSaga',data);
+	if (data._id){
+		try {
+			const { success, payload, errors, headers } = yield call(updateCenterRequest,
+				data);
+			if (success) {
+				yield call(getCentersSaga)
+				yield put(setIsShowPopup(true))
+				yield put(setIsShowPopupText(`Центр обновлен`))
+			} else {
+				console.log('errors', errors);
+				yield put(setIsShowPopup(true))
+				yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${errors}`))
+			}
+		} catch (error) {
+			console.log(error);
 			yield put(setIsShowPopup(true))
-			yield put(setIsShowPopupText(`Центр обновлен`))
-		} else {
-			console.log('errors', errors);
-			yield put(setIsShowPopup(true))
-			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${errors}`))
+			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
+		} finally {
+			revalidatePath('/centers')
 		}
-	} catch (error) {
-		console.log(error);
-		yield put(setIsShowPopup(true))
-		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
-	} finally {
-
 	}
+	else {
+		yield call(createCenterSaga, data)
+	}
+
 }
 
 
-export function* deleteCenterSaga({id}) {
-	console.log('deleteCenterSaga', id);
+export function* deleteCenterSaga() {
+	const data = yield select(centerForm());
+	console.log('deleteCenterSaga', data._id);
 	try {
-		const { success, payload, errors, headers } = yield call(deleteCenterRequest, {
-			id: id });
+		const { success, payload, errors, headers } = yield call(deleteCenterRequest, { _id: data._id });
 		if (success) {
-			yield call(getCitiesSaga)
+			yield call(getCentersSaga)
 			yield put(setIsShowPopup(true))
 			yield put(setIsShowPopupText(`Центр удален`))
 		} else {
@@ -83,7 +91,7 @@ export function* deleteCenterSaga({id}) {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
-
+		revalidatePath('/centers')
 	}
 }
 export function* getCentersSaga() {

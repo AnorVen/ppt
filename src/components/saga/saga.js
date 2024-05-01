@@ -1,3 +1,10 @@
+import {
+	createCenterSaga,
+	deleteCenterSaga,
+	getCenterSaga,
+	getCentersSaga,
+	updateCenterSaga,
+} from '@/components/saga/centerSaga';
 import { deleteCitySaga, getCitiesSaga, getCitySaga, createCitySaga, updateCitySaga } from '@/components/saga/citySaga';
 import {
 	createCourseSaga,
@@ -25,11 +32,32 @@ import { takeEvery } from 'redux-saga/effects';
 
 import {
 	CREATE_CITY,
-	CREATE_COURSE, CREATE_SEMINAR, CREATE_TRAINER, DELETE_CITY,
-	DELETE_COURSE, DELETE_SEMINAR, DELETE_TRAINER, GET_CITIES, GET_CITY,
+	CREATE_COURSE,
+	CREATE_SEMINAR,
+	CREATE_TRAINER,
+	DELETE_CITY,
+	DELETE_COURSE,
+	DELETE_SEMINAR,
+	DELETE_TRAINER,
+	GET_CITIES,
+	GET_CITY,
 	GET_COURSE,
-	GET_COURSES, GET_SEMINAR, GET_SEMINARS, GET_TRAINER, GET_TRAINERS, UPDATE_CITY,
-	UPDATE_COURSE, UPDATE_SEMINAR, UPDATE_TRAINER, LOGIN, LOGOUT, CHECK_AUTH, REGISTRATION, UPLOAD_FILE,
+	GET_COURSES,
+	GET_SEMINAR,
+	GET_SEMINARS,
+	GET_TRAINER,
+	GET_TRAINERS,
+	UPDATE_CITY,
+	UPDATE_COURSE,
+	UPDATE_SEMINAR,
+	UPDATE_TRAINER,
+	LOGIN,
+	LOGOUT,
+	CHECK_AUTH,
+	REGISTRATION,
+	UPLOAD_FILE,
+	GET_CENTERS,
+	CREATE_CENTER, UPDATE_CENTER, DELETE_CENTER,
 } from '../actions';
 
 
@@ -39,6 +67,12 @@ export default function* saga() {
 	yield takeEvery(DELETE_COURSE, deleteCourseSaga);
 	yield takeEvery(GET_COURSES, getCoursesSaga);
 	yield takeEvery(GET_COURSE, getCourseSaga);
+
+	yield takeEvery(CREATE_CENTER, createCenterSaga);
+	yield takeEvery(UPDATE_CENTER, updateCenterSaga);
+	yield takeEvery(DELETE_CENTER, deleteCenterSaga);
+	yield takeEvery(GET_CENTERS, getCentersSaga);
+	yield takeEvery(GET_CENTERS, getCenterSaga);
 
 	yield takeEvery(CREATE_CITY, createCitySaga);
 	yield takeEvery(UPDATE_CITY, updateCitySaga);
