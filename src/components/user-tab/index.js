@@ -252,7 +252,7 @@ UserTab = reduxForm({
 
 UserTab = connect(
 	state => ({
-		initialValues: {},
+		initialValues: state.main.user,
 	}),
 	{},
 )(UserTab);

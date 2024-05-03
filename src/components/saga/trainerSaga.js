@@ -5,6 +5,7 @@ import {
 	deleteTrainerRequest, createTrainerRequest,
 } from '@/components/requests/trainers';
 import { checkAuthSaga } from '@/components/saga/loginSaga';
+import { centerForm } from '@/components/selectors';
 import {
 	setAboutText,
 	setCheckboxFiltersAction,
@@ -50,6 +51,8 @@ export function* createTrainerSaga() {
 export function* updateTrainerSaga() {
 	try {
 		const user = store.getState().form.about.values
+		const data = yield select(centerForm());
+		console.log('updateTrainerSaga', user);
 		if (!Object.values(user).length){
 			new Error('Нет данных пользователя')
 		}

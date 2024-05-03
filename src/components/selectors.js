@@ -30,6 +30,11 @@ export const centerForm = () =>
 		return formValues || {};
 	});
 
+export const aboutForm = () =>
+	createSelector(getFormValues('about'), formValues => {
+		return formValues || {};
+	});
+
 export const getInitialValuesAdditionalProgramSelector = () =>
 	createSelector(mainState, getFormValues('additional_program'), ({ user }, formValues) => {
 		return formValues || {

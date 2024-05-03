@@ -4,7 +4,6 @@ import { getCitiesRequest } from '@/components/requests/cities';
 
 export const getCenters = async () => {
 	const centers = await getCentersRequest();
-	console.log(centers);
 	if (!centers.error) {
 		return centers.payload;
 	}
@@ -24,7 +23,6 @@ export const getCities = async () => {
 const Centers = async () => {
 	const centers = await getCenters();
 	const cities = await getCities();
-	console.log(cities);
 	return (
 		<div className="wrapper_text">
 			<h2 className="center">Наши центры</h2>

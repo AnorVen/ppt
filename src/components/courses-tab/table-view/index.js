@@ -72,6 +72,16 @@ const TableView = ({ fields, variant }) => {
 										options={trainers}
 									/>
 								</div>
+								<div>
+									<Field
+										name={`modules.${index}.description`}
+										type="text"
+										component={FormInputField}
+										dark
+										label="Комментарии к модулю"
+										autoComplete="off"
+									/>
+								</div>
 							</div>
 
 							<div className="modules-calendar">
@@ -84,6 +94,8 @@ const TableView = ({ fields, variant }) => {
 									autoComplete="off"
 								/>
 							</div>
+
+
 						</div>
 					))}
 
