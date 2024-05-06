@@ -8,19 +8,16 @@ const mainState = state => state.main || {};
 
 export const additionalProgramMoules = () =>
 	createSelector(getFormValues('seminar'), formValues => {
-		console.log('formValues', formValues);
 		return formValues?.modules || [];
 	});
 
 export const courseForm = (type) =>
 	createSelector(getFormValues(type), formValues => {
-		console.log('formValues', formValues);
 		return formValues || {};
 	});
 
 export const seminarForm = (variant) =>
 	createSelector(getFormValues(variant), formValues => {
-		console.log('formValues', formValues);
 		return formValues || {};
 	});
 

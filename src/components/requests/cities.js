@@ -24,7 +24,6 @@ export const getCityRequest = (payload, meta) =>
 	.catch(error => error);
 
 export const createCityRequest = (payload, meta) =>{
-	console.log(payload);
 	return fetch(`${url}/api/city/add`, {
 		method: 'POST',
 		headers: {
@@ -36,7 +35,6 @@ export const createCityRequest = (payload, meta) =>{
 	.catch(error => error);
 }
 export const updateCityRequest = (payload, meta) =>{
-	console.log(payload);
 	return fetch(`${url}/api/city/update`, {
 		method: 'POST',
 		headers: {
@@ -48,7 +46,6 @@ export const updateCityRequest = (payload, meta) =>{
 	.catch(error => error);
 }
 export const deleteCityRequest = (payload, meta) =>{
-	console.log(payload);
 	return fetch(`${url}/api/city/delete`, {
 		method: 'POST',
 		headers: {

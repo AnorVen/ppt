@@ -144,10 +144,8 @@ export function* deleteTrainerSaga() {
 		} else {
 			yield put(setIsShowPopup(true))
 			yield put(setIsShowPopupText(`Удаление прошло неудачно - ${errors}`))
-			console.log('errors', errors);
 		}
 	} catch (error) {
-		console.log(error);
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Удаление прошло неудачно - ${error}`))
 	} finally {

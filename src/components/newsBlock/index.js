@@ -9,7 +9,6 @@ const NewsBlock = () => {
 		getMewsRequest();
 	}, []);
 	const getMewsRequest = () => {
-		console.log('getMewsRequest');
 		getMews([{
 			title: 'новая новость1',
 			shortText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid blanditiis ea eaque officiis possimus quas ullam. Distinctio itaque nesciunt quasi qui temporibus. Aliquam excepturi mollitia, officia quibusdam suscipit ut?',

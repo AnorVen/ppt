@@ -14,8 +14,6 @@ const Login = ({ params }) => {
 		}
 	}
 	useEffect(() => {
-		console.log(localStorage.getItem('token'));
-		console.log(user);
 		if (localStorage.getItem('token') && (!user.id || !isAuth) ){
 			dispatch({ type: sagaActions.CHECK_AUTH });
 		} else {

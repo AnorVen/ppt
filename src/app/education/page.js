@@ -26,8 +26,6 @@ const StudyPage = () => {
 	const checkboxFilters = useSelector(state => state.main.checkboxFilters);
 	const fromFilter = useSelector(state => state.main.from);
 	const toFilter = useSelector(state => state.main.to);
-	console.log('sorting', sorting);
-	console.log('checkboxFilters', checkboxFilters);
 	const seminars = useSelector((state) => {
 		const line = [];
 		state.main.seminars.forEach(seminar => {
@@ -129,14 +127,11 @@ const StudyPage = () => {
 		});
 		return acc;
 	}, {});
-	console.log('fromFilter', fromFilter);
-	console.log('toFilter', toFilter);
 	const filteredTableData = (Object.keys(filteredCheckboxFilter).length || fromFilter || toFilter) ? tableData.reduce(
 		(acc, item) => {
 			let temp = true;
 			Object.entries(filteredCheckboxFilter)?.forEach(([filterName, filter]) => {
 				if (!filter.includes(item[filterName])) {
-					console.log(22222);
 					temp = false;
 				}
 			});
@@ -151,7 +146,6 @@ const StudyPage = () => {
 				});
 			} else if (fromFilter) {
 				item.withDates?.forEach(item => {
-					console.log(moment(item, 'DD-MM-YYYY'));
 					if (
 						moment(item, 'DD-MM-YYYY').isSameOrAfter(fromFilter)
 					) {

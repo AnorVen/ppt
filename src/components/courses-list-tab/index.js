@@ -21,12 +21,8 @@ export const CoursesListTab = ({
 
 	const myCourses = useMemo(() => {
 		let temp = courses.concat(seminars);
-		console.log(id, temp);
 		return temp.filter(item => item.main_trainer === id);
 	}, [id, courses, seminars]);
-
-
-	console.log('myCourses', myCourses);
 
 	const handleEdit = (course) => {
 		handleChangeTab({

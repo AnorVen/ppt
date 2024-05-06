@@ -1,9 +1,5 @@
 import { FilterDateRange } from '@/components/filter-dropdown-content/filter-date';
 import { sagaActions } from '@/components/sagaActions';
-import React from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
-import { CheckboxList } from '@/semantic-ui/components/checkbox-list';
 import {
 	setCheckboxFiltersAction,
 	setCheckboxListSearchAction,
@@ -11,6 +7,10 @@ import {
 	setFrom,
 	setTo,
 } from '@/components/store/store';
+import { CheckboxList } from '@/semantic-ui/components/checkbox-list';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { FilterSearchType, OptionsType } from '../prop-types';
 
 export const FilterDropdownContentWrapper = ({ columnData }) => {
@@ -25,21 +25,15 @@ export const FilterDropdownContentWrapper = ({ columnData }) => {
 	const from = useSelector((state) => state.main.from);
 	const to = useSelector((state) => state.main.to);
 	const checkboxListSearch = useSelector((state) => state.main.checkboxListSearch);
-	const checkboxListOptionsWithoutFiltersCity = useSelector((state) => state.main.checkboxListOptions)
+	const checkboxListOptionsWithoutFiltersCity = useSelector((state) => state.main.checkboxListOptions);
 
-	console.log(checkboxListOptionsWithoutFiltersCity);
 	const courses = useSelector((state) => state.main.courses);
 	const seminars = useSelector((state) => state.main.seminars);
 	const filterArr = courses.concat(seminars).map(item => item.city);
-	const checkboxListOptions = {
+	const options = {
 		...checkboxListOptionsWithoutFiltersCity,
 		withCity: checkboxListOptionsWithoutFiltersCity?.withCity?.filter(item => filterArr.includes(item.value)) || [],
 	};
-
-	console.log('checkboxListOptions', checkboxListOptions);
-
-
-
 
 	const chosenOptions = useSelector(() => {
 		return Object.keys(checkboxFilters).reduce((result, key) => {
@@ -53,25 +47,9 @@ export const FilterDropdownContentWrapper = ({ columnData }) => {
 		}, {});
 	});
 
-	const options = useSelector((state) => {
-		const options = {}
-		console.log('checkboxListOptions', checkboxListOptions);
-		Object.entries(checkboxListOptions).forEach(([key, val]) => {
-
-			options[key] = val.reduce((acc, { value, text })=>{
-				if (text && checkboxListSearch[key] && text.toLowerCase().includes(checkboxListSearch[key].toLowerCase())) {
-					acc.push({ value: value, text: text, key: value });
-				}
-				return acc;
-			}, [])
-		})
-		console.log('options', options);
-		return options
-	});
 	const checkedCount = useSelector((state) => {
-		console.log('checkedCount', options);
 		return Object.entries(options).reduce((result, [key]) => {
-			if (checkboxFilters[key]){
+			if (checkboxFilters[key]) {
 				result[key] = Object.values(checkboxFilters[key]).filter(Boolean).length;
 			}
 			return result;
@@ -124,32 +102,29 @@ export const FilterDropdownContentWrapper = ({ columnData }) => {
 		});
 		onGetCoursesList();
 	};
-	console.log('options[columnData.filterName]', options[columnData.filterName]);
-	console.log(columnData.filterName);
 	if (columnData.id !== 'dates') {
 		return (
 			<CheckboxList
 				choosenOptions={chosenOptions[columnData.filterName]}
 				onCheckboxChange={handleCheckboxChange}
-				options={checkboxListOptions[columnData.filterName] || []}
+				options={options[columnData.filterName] || []}
 				hasFooter
-				isSearch
 				isCount
 				isAllChecked={isAllChecked[columnData.filterName]}
 				checkedCheckboxListLength={checkedCount[columnData.filterName]}
 				onSliderCheckboxChange={handleAllOptionsSelect}
 				onSearchChange={handleCheckboxListSearchChange}
-				width={columnData.id === 'title' ? '530px': '300px'}
+				width={columnData.id === 'title' ? '530px' : '300px'}
 			/>
 		);
 	}
 
-	return <FilterDateRange value={
-		{
-			from,
-			to,
-		}
-	} onDateRangeChange={(e, type) => {
+	return <FilterDateRange
+		value={{
+				from,
+				to,
+			}}
+		onDateRangeChange={(e, type) => {
 		const value = e.target.value || null;
 		if (type === 'from') {
 			onSetFrom(value);

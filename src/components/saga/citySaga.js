@@ -12,7 +12,6 @@ import { put, call, takeEvery, select } from 'redux-saga/effects';
 import store from '@/components/store/store'
 
 export function* createCitySaga({ newCity }) {
-	console.log('createCitySaga', newCity);
 	try {
 		const { success, payload, errors, headers } = yield call(createCityRequest, {
 			name: newCity });
@@ -27,7 +26,6 @@ export function* createCitySaga({ newCity }) {
 			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 		}
 	} catch (error) {
-		console.log(error);
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
@@ -36,7 +34,6 @@ export function* createCitySaga({ newCity }) {
 }
 
 export function* updateCitySaga(city) {
-	console.log('updateCitySaga', city);
 	try {
 		const { success, payload, errors, headers } = yield call(updateCityRequest, {
 			city });
@@ -45,12 +42,10 @@ export function* updateCitySaga(city) {
 			yield put(setIsShowPopup(true))
 			yield put(setIsShowPopupText(`Город обновлен`))
 		} else {
-			console.log('errors', errors);
 			yield put(setIsShowPopup(true))
 			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${errors}`))
 		}
 	} catch (error) {
-		console.log(error);
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
@@ -60,7 +55,6 @@ export function* updateCitySaga(city) {
 
 
 export function* deleteCitySaga({id}) {
-	console.log('deleteCitySaga', id);
 	try {
 		const { success, payload, errors, headers } = yield call(deleteCityRequest, {
 			id: id });
@@ -69,12 +63,10 @@ export function* deleteCitySaga({id}) {
 			yield put(setIsShowPopup(true))
 			yield put(setIsShowPopupText(`Город удален`))
 		} else {
-			console.log('errors', errors);
 			yield put(setIsShowPopup(true))
 			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${errors}`))
 		}
 	} catch (error) {
-		console.log(error);
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
@@ -112,7 +104,6 @@ export function* getCitiesSaga() {
 			console.log('errors', errors);
 		}
 	} catch (error) {
-		console.log(error);
 	} finally {
 
 	}
@@ -120,7 +111,6 @@ export function* getCitiesSaga() {
 }
 
 export function* getCitySaga({uuid}) {
-	console.log('getCitySaga', uuid);
 	try {
 		const { success, payload, errors, headers } = yield call(getCityRequest,{
 			id: uuid

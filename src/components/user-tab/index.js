@@ -67,7 +67,6 @@ let UserTab = () => {
 	};
 
 	const trainersFromState = useSelector(state => state.main.trainers);
-	console.log(trainersFromState);
 	const trainers = useMemo(() => {
 		return Object.values(trainersFromState).map(trainer =>({
 			id: trainer.id,
@@ -76,12 +75,9 @@ let UserTab = () => {
 	}, [trainersFromState] );
 
 	const handleSelectUser = (e) => {
-		console.log(e.target.value);
 		change('user', 'name', 123, true)
 		if (trainersFromState[e.target.value]){
 			Object.entries(trainersFromState[e.target.value]).forEach(([key, val]) =>{
-				console.log(key);
-				console.log(val);
 				dispatch(change('user', key, val, true))
 				if(key=== 'description'){
 					dispatch(setAboutText(val))
