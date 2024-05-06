@@ -14,9 +14,9 @@ import {
 	setIsShowPopupText,
 	setSeminars,
 } from '@/components/store/store';
+import { revalidateSeminar, revalidateUsers } from '@/utils/serverUtils';
 import { reset } from 'redux-form';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
-import store from '@/components/store/store'
 
 export function* createSeminarSaga({variant}) {
 	console.log(variant);
@@ -45,7 +45,7 @@ export function* createSeminarSaga({variant}) {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${e}`))
 	} finally {
-
+		yield call(revalidateSeminar)
 	}
 }
 
@@ -73,7 +73,7 @@ export function* updateSeminarSaga({variant}) {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${e}`))
 	} finally {
-
+		yield call(revalidateSeminar)
 	}
 }
 
@@ -130,6 +130,6 @@ export function* deleteSeminarSaga({id}) {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText('Проблема с удалением'))
 	} finally {
-
+		yield call(revalidateSeminar)
 	}
 }

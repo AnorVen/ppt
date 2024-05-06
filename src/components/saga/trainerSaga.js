@@ -14,6 +14,7 @@ import {
 	setTrainers, setUserAction,
 } from '@/components/store/store';
 import { setUser } from '@/utils';
+import { revalidateUsers } from '@/utils/serverUtils';
 import { useDispatch, useSelector } from 'react-redux';
 import { initialize, reset } from 'redux-form';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
@@ -44,7 +45,7 @@ export function* createTrainerSaga() {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
-
+		yield call(revalidateUsers)
 	}
 }
 
@@ -77,7 +78,7 @@ export function* updateTrainerSaga() {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
-
+		yield call(revalidateUsers)
 	}
 }
 
@@ -150,6 +151,6 @@ export function* deleteTrainerSaga() {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Удаление прошло неудачно - ${error}`))
 	} finally {
-
+		yield call(revalidateUsers)
 	}
 }

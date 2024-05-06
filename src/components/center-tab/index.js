@@ -42,15 +42,12 @@ let CenterTab = () => {
 		dispatch({ type: sagaActions.UPDATE_CENTER });
 		dispatch(reset('center'));
 		dispatch(change('center', 'center', 'new', true));
-		revalidateCenters()
 	};
 
 	const handleDeleteCenter = () => {
 		dispatch({ type: sagaActions.DELETE_CENTER });
 		dispatch(reset('center'));
 		dispatch(change('center', 'center', 'new', true));
-		revalidateCenters()
-
 	};
 
 	const handleAddNewCity = () => {

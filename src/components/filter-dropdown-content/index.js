@@ -36,7 +36,7 @@ export const FilterDropdownContentWrapper = ({ columnData }) => {
 		withCity: checkboxListOptionsWithoutFiltersCity?.withCity?.filter(item => filterArr.includes(item.value)) || [],
 	};
 
-	console.log(checkboxListOptions);
+	console.log('checkboxListOptions', checkboxListOptions);
 
 
 
@@ -55,19 +55,25 @@ export const FilterDropdownContentWrapper = ({ columnData }) => {
 
 	const options = useSelector((state) => {
 		const options = {}
+		console.log('checkboxListOptions', checkboxListOptions);
 		Object.entries(checkboxListOptions).forEach(([key, val]) => {
+
 			options[key] = val.reduce((acc, { value, text })=>{
-				if (text.toLowerCase().includes(checkboxListSearch[key].toLowerCase())) {
+				if (text && checkboxListSearch[key] && text.toLowerCase().includes(checkboxListSearch[key].toLowerCase())) {
 					acc.push({ value: value, text: text, key: value });
 				}
 				return acc;
 			}, [])
 		})
+		console.log('options', options);
 		return options
 	});
 	const checkedCount = useSelector((state) => {
+		console.log('checkedCount', options);
 		return Object.entries(options).reduce((result, [key]) => {
-			result[key] = Object.values(checkboxFilters[key]).filter(Boolean).length;
+			if (checkboxFilters[key]){
+				result[key] = Object.values(checkboxFilters[key]).filter(Boolean).length;
+			}
 			return result;
 		}, {});
 	});
@@ -118,13 +124,14 @@ export const FilterDropdownContentWrapper = ({ columnData }) => {
 		});
 		onGetCoursesList();
 	};
-
+	console.log('options[columnData.filterName]', options[columnData.filterName]);
+	console.log(columnData.filterName);
 	if (columnData.id !== 'dates') {
 		return (
 			<CheckboxList
 				choosenOptions={chosenOptions[columnData.filterName]}
 				onCheckboxChange={handleCheckboxChange}
-				options={options[columnData.filterName] || []}
+				options={checkboxListOptions[columnData.filterName] || []}
 				hasFooter
 				isSearch
 				isCount

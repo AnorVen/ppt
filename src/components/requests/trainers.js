@@ -2,6 +2,7 @@ import { url } from '@/constants';
 
 export const getTrainersRequest = () =>
 	fetch(`${url}/api/user/list`, {
+		next: { tags: ['user'] },
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -13,6 +14,7 @@ export const getTrainersRequest = () =>
 
 
 export const getTrainerRequest = (payload) => fetch(`${url}/api/user/get`, {
+	next: { tags: ['user'] },
 	method: 'POST',
 	headers: {
 		'Content-Type': 'application/json',

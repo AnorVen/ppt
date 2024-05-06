@@ -2,6 +2,7 @@ import {url} from '@/constants';
 
 export const getCentersRequest = () =>
 	fetch(`${url}/api/center/list`, {
+		next: { tags: ['centers'] },
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -13,6 +14,7 @@ export const getCentersRequest = () =>
 
 export const getCenterRequest = (payload, meta) =>
 	fetch(`${url}/api/center/get`, {
+		next: { tags: ['centers'] },
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

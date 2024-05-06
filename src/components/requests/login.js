@@ -1,4 +1,4 @@
-import { cookie, url } from '@/constants';
+import { url } from '@/constants';
 
 export const loginRequest = (payload) =>
 	fetch(`${url}/api/login`, {
@@ -32,6 +32,7 @@ export const checkAuthRequest = () =>
 
 export const registrationRequest = (payload) =>
 	fetch(`${url}/api/registration`, {
+		next: { tags: ['user'] },
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

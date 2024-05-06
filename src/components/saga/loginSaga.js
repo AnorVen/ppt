@@ -12,6 +12,7 @@ import store, {
 	setIsShowPopup, setIsShowPopupText,
 	setUserAction,
 } from '@/components/store/store';
+import { revalidateCourse, revalidateUsers } from '@/utils/serverUtils';
 
 import { change } from 'redux-form';
 import { call, put } from 'redux-saga/effects';
@@ -78,6 +79,9 @@ export function* registrationSaga({newUser}) {
 		console.log(error);
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Что-то пошло не так`))
+	}
+	finally {
+		yield call(revalidateUsers)
 	}
 }
 

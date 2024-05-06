@@ -11,6 +11,7 @@ import {
 	setIsShowPopup, setIsShowPopupText,
 	setCenters,
 } from '@/components/store/store';
+import { revalidateCenters } from '@/utils/serverUtils';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 import store from '@/components/store/store'
 
@@ -34,7 +35,7 @@ export function* createCenterSaga(newCenter) {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
-
+		yield call(revalidateCenters)
 	}
 }
 
@@ -59,7 +60,7 @@ export function* updateCenterSaga() {
 			yield put(setIsShowPopup(true))
 			yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 		} finally {
-
+			yield call(revalidateCenters)
 		}
 	}
 	else {
@@ -91,6 +92,7 @@ export function* deleteCenterSaga() {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
+		yield call(revalidateCenters)
 	}
 }
 export function* getCentersSaga() {

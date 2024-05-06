@@ -2,6 +2,7 @@ import {url} from '@/constants';
 
 export const getCoursesRequest = () =>
 	fetch(`${url}/api/course/list`, {
+		next: { tags: ['course'] },
 		method: 'POST', headers: {
 		'Content-Type': 'application/json',
 	},
@@ -12,6 +13,7 @@ export const getCoursesRequest = () =>
 
 export const getCourseRequest = (payload, meta) =>
 	fetch(`${url}/api/course/get`, {
+		next: { tags: ['course'] },
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

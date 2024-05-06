@@ -5,6 +5,7 @@ import {
 	setCities,
 	setIsShowPopup, setIsShowPopupText,
 } from '@/components/store/store';
+import { revalidateCenters, revalidateCities } from '@/utils/serverUtils';
 import { useDispatch, useSelector } from 'react-redux';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 
@@ -30,7 +31,7 @@ export function* createCitySaga({ newCity }) {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
-
+		yield call(revalidateCities)
 	}
 }
 
@@ -53,7 +54,7 @@ export function* updateCitySaga(city) {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
-
+		yield call(revalidateCities)
 	}
 }
 
@@ -77,7 +78,7 @@ export function* deleteCitySaga({id}) {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Сохранение прошло неудачно - ${error}`))
 	} finally {
-
+		yield call(revalidateCities)
 	}
 }
 

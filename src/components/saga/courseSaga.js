@@ -7,6 +7,7 @@ import {
 import { deleteSeminarRequest } from '@/components/requests/seminars';
 import { courseForm } from '@/components/selectors';
 import { setActiveCourse, setCourses, setIsShowPopup, setIsShowPopupText } from '@/components/store/store';
+import { revalidateCourse } from '@/utils/serverUtils';
 import { reset } from 'redux-form';
 import { call, put, select } from 'redux-saga/effects';
 
@@ -39,7 +40,7 @@ export function* createCourseSaga({ variant }) {
 		yield put(setIsShowPopupText(`Что-то пошло не так`))
 	}
 	finally {
-
+yield call(revalidateCourse)
 	}
 }
 
@@ -69,7 +70,7 @@ export function* updateCourseSaga({ variant }) {
 		yield put(setIsShowPopupText(`Что-то пошло не так`))
 	}
 	finally {
-
+		yield call(revalidateCourse)
 	}
 }
 
@@ -132,6 +133,6 @@ export function* deleteCourseSaga({ id }) {
 		yield put(setIsShowPopup(true))
 		yield put(setIsShowPopupText(`Что-то пошло не так`))
 	} finally {
-
+		yield call(revalidateCourse)
 	}
 }

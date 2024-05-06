@@ -2,6 +2,7 @@ import {url} from '@/constants';
 
 export const getCitiesRequest = () =>
 	fetch(`${url}/api/city/list`, {
+		next: { tags: ['city'] },
 		method: 'POST', headers: {
 		'Content-Type': 'application/json',
 	},
@@ -12,6 +13,7 @@ export const getCitiesRequest = () =>
 
 export const getCityRequest = (payload, meta) =>
 	fetch(`${url}/api/city/get`, {
+		next: { tags: ['city'] },
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
