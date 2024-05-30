@@ -1,6 +1,7 @@
 'use client';
 import { NewsPhoto } from '@/components/news-photo';
 import { sagaActions } from '@/components/sagaActions';
+import { getForm } from '@/components/selectors';
 import { setAboutText, setEditableUser } from '@/components/store/store';
 import { TextEditor } from '@/components/text-editor';
 import FormCheckbox from '@/semantic-ui/components/form-checkbox';
@@ -25,7 +26,15 @@ let UserTab = () => {
 			key: id,
 		}
 	}));
-	const form = useSelector(state => state.form.user)
+	const trainersFromState = useSelector(state => state.main.trainers);
+	const trainers = useMemo(() => {
+		return Object.values(trainersFromState).map(trainer =>({
+			id: trainer.id,
+			name: `${trainer.surname} ${trainer.name} ${trainer.second_name}`
+		}))
+	}, [trainersFromState] );
+
+	const form = useSelector(getForm('user'))
 
 	const textEditorValue = useSelector(state => state.main.mainAboutText);
 
@@ -45,10 +54,15 @@ let UserTab = () => {
 		change('about', 'avatar', '', true, {});
 	};
 	const handleSaveChanges = () => {
-		dispatch({ type: sagaActions.UPDATE_TRAINER });
+		console.log(form);
+		if (form.id){
+			dispatch({ type: sagaActions.UPDATE_TRAINER, formName: 'user' })
+		}else {
+			dispatch({ type: sagaActions.CREATE_TRAINER, formName: 'user' })
+		}
 	};
 	const handleDelete = () => {
-		dispatch({ type: sagaActions.DELETE_TRAINER });
+		dispatch({ type: sagaActions.DELETE_TRAINER, formName: 'user' });
 	};
 
 	const handleAddNewCity = () =>{
@@ -58,26 +72,18 @@ let UserTab = () => {
 		}
 	}
 	const matchInput = () =>{
-		if (!form?.values?.password || !form?.values?.password_repeat){
+		if (!form.password || !form.password_repeat){
 			return
 		}
-		return form?.values?.password === form.values?.password_repeat ? undefined : 'Пароль не совпадает';
+		return form?.password === form.password_repeat ? undefined : 'Пароль не совпадает';
 	}
 
 	const handleChangeText = value => {
 		dispatch(setAboutText(value))
 	};
 
-	const trainersFromState = useSelector(state => state.main.trainers);
-	const trainers = useMemo(() => {
-		return Object.values(trainersFromState).map(trainer =>({
-			id: trainer.id,
-			name: `${trainer.surname} ${trainer.name} ${trainer.second_name}`
-		}))
-	}, [trainersFromState] );
 
 	const handleSelectUser = (e) => {
-		change('user', 'name', 123, true)
 		if (trainersFromState[e.target.value]){
 			Object.entries(trainersFromState[e.target.value]).forEach(([key, val]) =>{
 				dispatch(change('user', key, val, true))
@@ -89,8 +95,6 @@ let UserTab = () => {
 			dispatch(reset('user'))
 			dispatch(setAboutText(''))
 		}
-
-
 	}
 	return (
 		<div>
@@ -216,7 +220,7 @@ let UserTab = () => {
 									type="text"
 									component={FormInputField}
 									dark
-									label="Новый пароль, если хочешь поменять."
+									label="Новый пароль, если хочешь поменять. ДЛЯ НОВЫХ ПОЛЬЗОВАТЕЛЕЙ ОБЯЗАТЕЛЬНО!!"
 									autoComplete="off"
 									placeholder="Новый пароль, если хочешь поменять."
 								/>
@@ -227,7 +231,7 @@ let UserTab = () => {
 									type="text"
 									component={FormInputField}
 									dark
-									label="Повторить новый пароль"
+									label="Повторить новый пароль. ДЛЯ НОВЫХ ПОЛЬЗОВАТЕЛЕЙ ОБЯЗАТЕЛЬНО!!"
 									autoComplete="off"
 									placeholder="Повторить новый пароль"
 									meta={{

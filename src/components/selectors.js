@@ -21,6 +21,10 @@ export const seminarForm = (variant) =>
 		return formValues || {};
 	});
 
+export const getForm = (formName) =>
+	createSelector(getFormValues(formName), formValues => {
+		return formValues || {};
+	});
 
 export const centerForm = () =>
 	createSelector(getFormValues('center'), formValues => {

@@ -2,10 +2,13 @@
   &_items{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
   }
   &_item{
     max-width: 300px;
+    margin-left: 30px;
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 5px;
     .module_items{
       display: none;
       &.active{

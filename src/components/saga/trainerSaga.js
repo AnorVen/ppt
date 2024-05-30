@@ -5,7 +5,7 @@ import {
 	deleteTrainerRequest, createTrainerRequest,
 } from '@/components/requests/trainers';
 import { checkAuthSaga } from '@/components/saga/loginSaga';
-import { centerForm } from '@/components/selectors';
+import { centerForm, getForm } from '@/components/selectors';
 import {
 	setAboutText,
 	setCheckboxFiltersAction,
@@ -21,9 +21,10 @@ import { put, call, takeEvery, select } from 'redux-saga/effects';
 
 import store from '@/components/store/store'
 
-export function* createTrainerSaga() {
+export function* createTrainerSaga({formName = 'about'}) {
+	console.log(formName);
 	try {
-		const user = store.getState().form.about.values
+		const user = getForm(formName)
 		const { success, payload, errors, headers } = yield call(createTrainerRequest, user);
 		if (success) {
 			yield put(setUserAction(payload))
@@ -49,10 +50,9 @@ export function* createTrainerSaga() {
 	}
 }
 
-export function* updateTrainerSaga() {
+export function* updateTrainerSaga({formName = 'about'}) {
 	try {
-		const user = store.getState().form.about.values
-		const data = yield select(centerForm());
+		const user = getForm(formName)
 		console.log('updateTrainerSaga', user);
 		if (!Object.values(user).length){
 			new Error('Нет данных пользователя')
@@ -130,9 +130,9 @@ export function* getTrainerSaga({id}) {
 	}
 }
 
-export function* deleteTrainerSaga() {
+export function* deleteTrainerSaga({formName = 'about'}) {
 	try {
-		const id = store.getState().form.user.values.id
+		const {id} = getForm(formName)
 		console.log('id', id);
 		const { success, payload, errors, headers } = yield call(deleteTrainerRequest, {
 			id
