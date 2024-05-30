@@ -3,6 +3,8 @@ import { NewsPhoto } from '@/components/news-photo';
 import { sagaActions } from '@/components/sagaActions';
 import { setAboutText, setEditableUser } from '@/components/store/store';
 import { TextEditor } from '@/components/text-editor';
+import FormCheckbox from '@/semantic-ui/components/form-checkbox';
+import { FormCheckboxField } from '@/semantic-ui/components/form-checkbox-field';
 import { FormInputField } from '@/semantic-ui/components/form-input-field';
 import { FormSelectField } from '@/semantic-ui/components/form-select-field';
 import React, { useEffect, useMemo, useState } from 'react';
@@ -136,6 +138,33 @@ let UserTab = () => {
 									label="Фамилия*"
 									autoComplete="off"
 									placeholder="Фамилия"
+								/>
+							</Segment>
+							<Segment>
+								<Field
+									name="master"
+									type="checkbox"
+									component={FormCheckboxField}
+									dark
+									label="Это тренер?"
+								/>
+							</Segment>
+							<Segment>
+								<Field
+									name="superUser"
+									type="checkbox"
+									component={FormCheckboxField}
+									dark
+									label="Супер-юзер?"
+								/>
+							</Segment>
+							<Segment>
+								<Field
+									name="ethicalCommittee"
+									type="checkbox"
+									component={FormCheckboxField}
+									dark
+									label="Состоит в этическом комитете?"
 								/>
 							</Segment>
 						</Grid.Column>
